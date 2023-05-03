@@ -10,11 +10,44 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+
+      Product.belongsTo(models.User, {
+        foreignKey: "userId"
+      })
+
+      Product.hasMany(models.ProductImage,{
+        foreignKey: "productImageId",
+        onDelete: "CASCADE",
+        hooks:true
+      })
+
+      Product.hasMany(models.Review,{
+        foreignKey: "reivewId",
+        onDelete: "CASCADE",
+        hooks:true
+      })
+
+      Product.hasMany(models.Cart,{
+        through: models.CartProduct,
+        foreignKey: "cardId"
+      })
+
+      Product.hasMany(models.CartProduct, {
+        foreignKey: "productId",
+        onDelete: "CASCADE",
+        hooks:true
+      })
+
+
     }
   }
   Product.init({
-    productId: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     name: DataTypes.STRING,
     price: DataTypes.FLOAT,
     type: DataTypes.STRING,
