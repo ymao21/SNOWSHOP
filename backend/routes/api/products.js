@@ -1,17 +1,14 @@
 const express = require('express')
 const { setTokenCookie, restoreUser, requireAuth} = require('../../utils/auth');
-const { User, Product, Cart, Review} = require('../../db/models');
+const {  Product, Review} = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors} = require('../../utils/validation');
 const {newError} = require('../../utils/newError');
 const product = require('../../db/models/product');
 const router = express.Router();
 
-
 //get products
-
 router.get("/home", async (req, res, next) => {
-
     const userId = req.user.id
 
     const products = await Product.findAll({
@@ -24,7 +21,6 @@ router.get("/home", async (req, res, next) => {
 
 //get product by id
 router.get("/home/:productId", async (req, res, next) => {
-
     const {productId} = req.params;
     const product = await Product.findByPk(productId,{})
 
@@ -78,3 +74,23 @@ router.put("/home/:productId" , requireAuth , async (req, res, next) => {
     await product.save()
     return res.json(product)
 })
+
+//delete product
+router.delete("/home/:productId", requireAuth, restoreUser, async(req, res, next) => {
+    const {productId} = req.params;
+    const deleteProduct= await Product.findByPk(productId)
+
+    if(!deleteProduct) {
+        const err = new Error("Product couldn't be found")
+        err.status = 404
+        return next(err);
+    }
+    await deleteProduct.destroy()
+    return res.json({ message: 'Sucessfully deleted' });
+    })
+
+
+//get reviews
+//create reviews
+
+module.exports = router;
