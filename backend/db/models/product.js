@@ -29,7 +29,9 @@ module.exports = (sequelize, DataTypes) => {
 
       Product.hasMany(models.Cart,{
         through: models.CartProduct,
-        foreignKey: "cardId"
+        foreignKey: "cardId",
+        onDelete: "CASCADE",
+        hooks:true
       })
 
       Product.hasMany(models.CartProduct, {

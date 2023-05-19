@@ -22,7 +22,7 @@ module.exports = {
         references: {
           model: "Products",
           key: "id"
-        }
+        },
       },
       createdAt: {
         allowNull: false,

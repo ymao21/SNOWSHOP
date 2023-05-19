@@ -12,17 +12,17 @@ module.exports = {
       {
         userId: 1,
         quantity: 2,
-        productId: 'product description 1',
+        productId: 1,
       },
       {
         userId: 1,
         quantity: 1,
-        productId: 'product description 2',
+        productId: 2,
       },
       {
         userId: 1,
         quantity: 1,
-        productId: 'product description 3',
+        productId: 3,
       }
     ], {});
   },
