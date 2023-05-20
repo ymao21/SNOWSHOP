@@ -89,8 +89,59 @@ router.delete("/home/:productId", requireAuth, restoreUser, async(req, res, next
     return res.json({ message: 'Sucessfully deleted' });
     })
 
-
 //get reviews
+router.get("home/:productId/reviews", async (req, res, next) =>{
+    const {productId} = req.params;
+    const product = await Product.findByPk(productId)
+
+    if(!product){
+        const err = newError("Product couldn't be found", 404)
+        return next(err);
+    }
+    const review = await Review.findAll({
+        where:{
+            productId
+        },
+        include: [
+            {model: User,
+            attributes: {
+                exclude: [
+                    "firstName",
+                    "lastName",
+                    "about",
+                    "createdAt",
+                    "updatedAt",
+                    "hashedPassword",
+                    "email",
+                ]
+            }
+              }
+            ]
+    })
+
+    return res.json(review)
+} )
+
 //create reviews
+router.post("/home/:productId/review"), async (req, res, next) => {
+    const userId = req.user.id
+    const productId = req.params.productId
+
+    const {body} = req.body
+    const review = await Product.findByPk(productId)
+
+    if(productId !== null && !review) {
+        const err = newError("Product couldn't be found", 404)
+        return next(err);
+    }
+    const newReview = await Review.create({
+        userId,
+        productId,
+        body
+    })
+    return res.json(newReview)
+}
+
+
 
 module.exports = router;
