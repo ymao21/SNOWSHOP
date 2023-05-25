@@ -16,13 +16,13 @@ module.exports = (sequelize, DataTypes) => {
       })
 
       Product.hasMany(models.ProductImage,{
-        foreignKey: "productImageId",
+        foreignKey: "productId",
         onDelete: "CASCADE",
         hooks:true
       })
 
       Product.hasMany(models.Review,{
-        foreignKey: "reivewId",
+        foreignKey: "productId",
         onDelete: "CASCADE",
         hooks:true
       })
@@ -33,12 +33,6 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: "CASCADE",
         hooks:true
       })
-
-      // Product.hasMany(models.CartProduct, {
-      //   foreignKey: "productId",
-      //   onDelete: "CASCADE",
-      //   hooks:true
-      // })
 
     }
   }

@@ -7,8 +7,39 @@ const {newError} = require('../../utils/newError');
 const product = require('../../db/models/product');
 const router = express.Router();
 
-//get products
-router.get("/home", async (req, res, next) => {
+const validateQuery = [
+    check('page')
+        .isInt({ min: 0, max: 10 })
+        .withMessage("Page must be greater than or equal to 0"),
+    check('size')
+        .isInt({ min: 0, max: 20 })
+        .withMessage("Size must be greater than or equal to 0"),
+]
+
+//get all products
+router.get("/", validateQuery, async (req, res, next) => {
+
+    let page = req.query.page || 0;
+    let size = req.query.size || 20;
+
+    page = parseInt(page);
+    size = parseInt(size);
+
+    const pagination = {};
+    if (page >= 1 && size >= 1) {
+        pagination.limit = size;
+        pagination.offset = size * (page - 1);
+
+    }
+    const products = await Product.findAll({
+        ...pagination,
+    })
+
+    return res.json({products, page, size})
+})
+
+//get products based on user
+router.get("/current", async (req, res, next) => {
     const userId = req.user.id
 
     const products = await Product.findAll({
@@ -20,7 +51,7 @@ router.get("/home", async (req, res, next) => {
 })
 
 //get product by id
-router.get("/home/:productId", async (req, res, next) => {
+router.get("/:productId", async (req, res, next) => {
     const {productId} = req.params;
     const product = await Product.findByPk(productId,{})
 
@@ -32,7 +63,7 @@ router.get("/home/:productId", async (req, res, next) => {
 })
 
 //create product
-router.post("/home", requireAuth, async (req, res, next) => {
+router.post("/", requireAuth, async (req, res, next) => {
     const userId = req.user.id
     const {name, price, type, color, category,description, previewImageUrl} = req.body
 
@@ -51,7 +82,7 @@ router.post("/home", requireAuth, async (req, res, next) => {
 });
 
 //update product
-router.put("/home/:productId" , requireAuth , async (req, res, next) => {
+router.put("/:productId" , requireAuth , async (req, res, next) => {
     const {productId} = req.params;
     const userId = req.user.id;
     const {name, price, type, color, category,description, previewImageUrl} = req.body
@@ -76,7 +107,7 @@ router.put("/home/:productId" , requireAuth , async (req, res, next) => {
 })
 
 //delete product
-router.delete("/home/:productId", requireAuth, restoreUser, async(req, res, next) => {
+router.delete("/:productId", requireAuth, restoreUser, async(req, res, next) => {
     const {productId} = req.params;
     const deleteProduct= await Product.findByPk(productId)
 
@@ -90,7 +121,7 @@ router.delete("/home/:productId", requireAuth, restoreUser, async(req, res, next
     })
 
 //get reviews
-router.get("home/:productId/reviews", async (req, res, next) =>{
+router.get("/:productId/reviews", async (req, res, next) =>{
     const {productId} = req.params;
     const product = await Product.findByPk(productId)
 
@@ -123,7 +154,7 @@ router.get("home/:productId/reviews", async (req, res, next) =>{
 } )
 
 //create reviews
-router.post("/home/:productId/review"), async (req, res, next) => {
+router.post("/:productId/review"), async (req, res, next) => {
     const userId = req.user.id
     const productId = req.params.productId
 

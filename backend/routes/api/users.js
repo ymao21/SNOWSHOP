@@ -5,7 +5,14 @@ const { User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
+const {newError} = require('../../utils/newError');
+const {Op} = require('sequelize')
+
 const validateSignup = [
+    check('firstName')
+      .exists({ checkFalsy: true }),
+    check('lastName')
+      .exists({ checkFalsy: true }),
     check('email')
       .exists({ checkFalsy: true })
       .isEmail()
@@ -22,21 +29,42 @@ const validateSignup = [
       .exists({ checkFalsy: true })
       .isLength({ min: 6 })
       .withMessage('Password must be 6 characters or more.'),
+    check('about')
+      .exists({ checkFalsy: true })
+      .isLength({ min: 5 })
+      .withMessage('Please provide a description with at least 5 characters'),
     handleValidationErrors
   ];
 
   router.post(
     '/',
     validateSignup,
-    async (req, res) => {
-      const { email, password, about, username } = req.body;
-      const user = await User.signup({ email, username, password, about });
+    async (req, res, next) => {
+      const { email, password, about, username, firstName, lastName } = req.body;
+
+      const checkEmail = await User.findOne({
+        where: {
+          [Op.or]: [{email}, {username}]
+        }
+      })
+
+      if(checkEmail){
+        const err = newError("User already exists with the specified email", 403, 'Email Error', ["User already exists with the specified Email or Username"])
+        return next(err)
+      }
+
+      const user = await User.signup({ email, username, about, password, firstName, lastName });
+
+      user.dataValues.token = await setTokenCookie(res, user);
 
       await setTokenCookie(res, user);
 
-      return res.json({
-        user: user,
-      });
+      // return res.json({
+      //   user: user,
+      // });
+
+      return res.json(user);
+
     }
   );
 
