@@ -123,34 +123,15 @@ router.delete("/:productId", requireAuth, restoreUser, async(req, res, next) => 
 //get reviews
 router.get("/:productId/reviews", async (req, res, next) =>{
     const {productId} = req.params;
-    const product = await Product.findByPk(productId)
+    // const product = await Product.findByPk(productId)
+    const reviews = await Review.findByPk(productId)
 
-    if(!product){
-        const err = newError("Product couldn't be found", 404)
+    if(!reviews){
+        const err = newError("reviews couldn't be found", 404)
         return next(err);
     }
-    const review = await Review.findAll({
-        where:{
-            productId
-        },
-        include: [
-            {model: User,
-            attributes: {
-                exclude: [
-                    "firstName",
-                    "lastName",
-                    "about",
-                    "createdAt",
-                    "updatedAt",
-                    "hashedPassword",
-                    "email",
-                ]
-            }
-              }
-            ]
-    })
 
-    return res.json(review)
+    return res.json(reviews)
 } )
 
 //create reviews
@@ -159,7 +140,7 @@ router.post("/:productId/review"), async (req, res, next) => {
     const productId = req.params.productId
 
     const {body} = req.body
-    const review = await Product.findByPk(productId)
+    const review = await Review.findByPk(productId)
 
     if(productId !== null && !review) {
         const err = newError("Product couldn't be found", 404)
@@ -168,8 +149,10 @@ router.post("/:productId/review"), async (req, res, next) => {
     const newReview = await Review.create({
         userId,
         productId,
-        body
+        body,
+        rating
     })
+    
     return res.json(newReview)
 }
 

@@ -14,7 +14,7 @@ const validateReview = [
 ]
 
 //edit review
-router.put("/home/:productId/reviews/:reviewId" , requireAuth , validateReview,  async (req, res, next) => {
+router.put("/products/:productId/reviews/:reviewId" , requireAuth , validateReview,  async (req, res, next) => {
     const {reviewId} = req.params;
     const userId = req.user.id;
     const {productId, body} = req.body;
@@ -34,7 +34,7 @@ router.put("/home/:productId/reviews/:reviewId" , requireAuth , validateReview, 
 })
 
 //delete reivew
-router.delete("/home/:productId/reviews/:reviewId", requireAuth, restoreUser, async(req, res, next) => {
+router.delete("/products/:productId/reviews/:reviewId", requireAuth, restoreUser, async(req, res, next) => {
     const {reviewId} = req.params;
     const deleteReview = await Review.findByPk(reviewId)
 
