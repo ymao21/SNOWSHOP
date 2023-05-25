@@ -16,6 +16,13 @@ const validateQuery = [
         .withMessage("Size must be greater than or equal to 0"),
 ]
 
+const validateReview = [
+    check('body')
+        .exists({ checkFalsy: true })
+        .withMessage("Review body text is required"),
+     handleValidationErrors
+]
+
 //get all products
 router.get("/", validateQuery, async (req, res, next) => {
 
@@ -135,25 +142,27 @@ router.get("/:productId/reviews", async (req, res, next) =>{
 } )
 
 //create reviews
-router.post("/:productId/review"), async (req, res, next) => {
+router.post("/:productId/reviews"), requireAuth, validateReview, async (req, res, next) => {
     const userId = req.user.id
     const productId = req.params.productId
 
-    const {body} = req.body
-    const review = await Review.findByPk(productId)
+    console.log("hi")
 
-    if(productId !== null && !review) {
-        const err = newError("Product couldn't be found", 404)
-        return next(err);
-    }
-    const newReview = await Review.create({
-        userId,
-        productId,
-        body,
-        rating
-    })
-    
-    return res.json(newReview)
+    // const {body} = req.body
+    // const review = await Review.findByPk(productId)
+
+    // if(productId !== null && !review) {
+    //     const err = newError("Product couldn't be found", 404)
+    //     return next(err);
+    // }
+    // const newReview = await Review.create({
+    //     userId,
+    //     productId,
+    //     body,
+    //     rating
+    // })
+
+    // return res.json(newReview)
 }
 
 
