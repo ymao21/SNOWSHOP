@@ -1,0 +1,90 @@
+.Navigation {
+    background-color:#333;
+    font-weight: 100;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+.soundcloudlogo {
+    width: 10%;
+    height: 10%;
+}
+
+.profile-dropdown{
+    background-color: #71655c;
+    list-style: none;
+    position: absolute;
+    right: 120px;
+    top: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.logoutbtn{
+    background-color:#11abd6;
+    border: none;
+    color: rgb(0, 0, 0);
+    /* padding: 8px 20px; */
+    font-size: 15px;
+    border-radius: 2px;
+    margin: 10px;
+}
+
+.logoutbtn:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color:#F26F23;
+    color: rgb(0, 0, 0);
+}
+
+.profilebutton{
+    background-color:#ffcd67;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 8px 15px;
+    font-size: 12px;
+    border-radius: 2px;
+    margin: 20px;
+
+}
+
+.profilebutton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color:#F26F23;
+    color: rgb(0, 0, 0);
+}
+
+.navlogin {
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+    align-content: flex-start;
+
+}
+
+.navsignup {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    color: white;
+}
+
+
+.Homebtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.linkedinbtn {
+  color: white;
+}
+
+.githubbtn {
+    color: white;
+}
