@@ -146,23 +146,23 @@ router.post("/:productId/reviews"), requireAuth, validateReview, async (req, res
     const userId = req.user.id
     const productId = req.params.productId
 
-    console.log("hi")
+    const {body, rating} = req.body
+    const review = await Review.findByPk(productId)
 
-    // const {body} = req.body
-    // const review = await Review.findByPk(productId)
+    console.log("test")
 
-    // if(productId !== null && !review) {
-    //     const err = newError("Product couldn't be found", 404)
-    //     return next(err);
-    // }
-    // const newReview = await Review.create({
-    //     userId,
-    //     productId,
-    //     body,
-    //     rating
-    // })
+    if(productId !== null && !review) {
+        const err = newError("Product couldn't be found", 404)
+        return next(err);
+    }
+    const newReview = await Review.create({
+        userId,
+        productId,
+        body,
+        rating
+    })
 
-    // return res.json(newReview)
+    return res.json(newReview)
 }
 
 
