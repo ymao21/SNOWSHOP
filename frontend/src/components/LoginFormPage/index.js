@@ -25,7 +25,8 @@ function LoginFormPage() {
       });
   }
 
-  const demouser = { credential: 'demo@user.io', password: 'password'}
+  const demouser = { credential: 'Demo', password: 'password'}
+  
   const handleSubmitDemo = (e) => {
     e.preventDefault();
     setErrors([]);

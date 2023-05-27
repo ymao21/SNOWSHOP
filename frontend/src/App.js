@@ -5,8 +5,9 @@ import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import { useHistory } from "react-router-dom";
 import Navigation from "./components/Navigation";
-import LoginFormPage from "./components/LoginFormPage";
+import LoginFormPage from "./components/LoginFormPage/index";
 import SignupFormPage from "./components/SignupFormPage";
+import ProductDetails from "./components/ProductDetails/ProductDetails";
 import ProductList from "./components/ProductList/ProductList";
 
 function App() {
@@ -28,6 +29,10 @@ function App() {
       {isLoaded && (
         <Switch>
 
+          <Route exact path="/">
+            <>HOME page</>
+          </Route>
+
           <Route path="/login">
             <LoginFormPage />
           </Route>
@@ -36,8 +41,12 @@ function App() {
             <SignupFormPage />
           </Route>
 
-          <Route path="/products">
+          <Route exact path="/products">
             <ProductList />
+          </Route>
+
+          <Route exact path="/products/:productId">
+            <ProductDetails />
           </Route>
 
         </Switch>

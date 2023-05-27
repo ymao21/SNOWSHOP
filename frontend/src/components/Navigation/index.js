@@ -7,8 +7,11 @@ import './Navigation.css';
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
+  console.log("currentuser", sessionUser.user)
+
   let sessionLinks;
-  if (sessionUser.id) {
+
+  if (sessionUser.user) {
     sessionLinks = (
       <ProfileButton user={sessionUser} />
     );
@@ -16,7 +19,7 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <NavLink className= "navlogin" to="/login">Log In</NavLink>
-        <NavLink className= "navsignup" to="/signup">Sign Up</NavLink>
+        <NavLink className= "navsignup" to="/signup">Register</NavLink>
       </>
     );
   }
@@ -24,8 +27,9 @@ function Navigation({ isLoaded }){
   return (
 
     <ul className='Navigation'>
-
-        <>Navigation</>
+      <div className='navbaritems'>
+        {isLoaded && sessionLinks}
+      </div>
     </ul>
   );
 }

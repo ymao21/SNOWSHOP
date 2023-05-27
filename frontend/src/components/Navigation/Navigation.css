@@ -1,16 +1,48 @@
 .Navigation {
-    background-color:#333;
+    background-color:#c6cad5;
     font-weight: 100;
     font-size: 14px;
     line-height: 1.5;
     padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
+
 }
-.soundcloudlogo {
-    width: 10%;
-    height: 10%;
+
+
+
+.navlogin {
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+    align-content: flex-start;
+    width:4 0px;
+    cursor: pointer;
+
+}
+
+.navsignup {
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+    width:50px;
+    cursor: pointer;
+}
+
+.profilebutton{
+    margin-right: 10vw;
+    height: 32px;
+    width: 32px;
+    background-image: url(https://i.pinimg.com/564x/99/ff/83/99ff838ed16c22dee73f455cd56596bb.jpg);
+    background-size: contain;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.navbaritems{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
 }
 
 .profile-dropdown{
@@ -22,69 +54,4 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-}
-
-
-.logoutbtn{
-    background-color:#11abd6;
-    border: none;
-    color: rgb(0, 0, 0);
-    /* padding: 8px 20px; */
-    font-size: 15px;
-    border-radius: 2px;
-    margin: 10px;
-}
-
-.logoutbtn:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-    background-color:#F26F23;
-    color: rgb(0, 0, 0);
-}
-
-.profilebutton{
-    background-color:#ffcd67;
-    border: none;
-    color: rgb(0, 0, 0);
-    padding: 8px 15px;
-    font-size: 12px;
-    border-radius: 2px;
-    margin: 20px;
-
-}
-
-.profilebutton:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-    background-color:#F26F23;
-    color: rgb(0, 0, 0);
-}
-
-.navlogin {
-    display: flex;
-    justify-content: flex-end;
-    color: white;
-    align-content: flex-start;
-
-}
-
-.navsignup {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    color: white;
-}
-
-
-.Homebtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-
-.linkedinbtn {
-  color: white;
-}
-
-.githubbtn {
-    color: white;
 }
