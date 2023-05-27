@@ -146,6 +146,8 @@ router.post("/:productId/reviews"), requireAuth, validateReview, async (req, res
     const userId = req.user.id
     const productId = req.params.productId
 
+    console.log(userId)
+
     const {body, rating} = req.body
     const review = await Review.findByPk(productId)
 
@@ -164,7 +166,5 @@ router.post("/:productId/reviews"), requireAuth, validateReview, async (req, res
 
     return res.json(newReview)
 }
-
-
 
 module.exports = router;
