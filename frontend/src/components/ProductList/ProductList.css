@@ -1,0 +1,15 @@
+
+
+
+.productListContainer {
+margin: 50px;
+background-color: red;
+}
+
+.eachProduct {
+    max-width: 2000px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 10px;
+}

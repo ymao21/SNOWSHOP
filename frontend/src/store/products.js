@@ -38,7 +38,9 @@ export const getProductsThunk = () => async (dispatch) => {
 
     if(response.ok) {
         const products = await response.json();
-        return dispatch(loadProducts(products.product))
+        // console.log("products", products.products)
+        return dispatch(loadProducts(products.products))
+
     }
     return response
 }
@@ -98,6 +100,7 @@ export const deleteProductThunk = (productId) => async (dispatch) => {
 const initialState = {};
 
 const productsReducer = (state = initialState, action) => {
+
     let newState = {...state};
     switch(action.type){
         case LOAD_PRODUCTS:
@@ -118,7 +121,6 @@ const productsReducer = (state = initialState, action) => {
 
         default:
             return state;
-
     }
 }
 

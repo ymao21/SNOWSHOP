@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
-import ProductList from "./components/ProductList";
+import ProductList from "./components/ProductList/ProductList";
 
 function App() {
   const dispatch = useDispatch();
