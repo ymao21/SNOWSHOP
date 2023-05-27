@@ -3,11 +3,12 @@
     font-weight: 100;
     font-size: 14px;
     line-height: 1.5;
-    padding: 20px;
-
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    position: sticky;
+    top: 5px;
 }
-
-
 
 .navlogin {
     display: flex;
@@ -16,7 +17,6 @@
     align-content: flex-start;
     width:4 0px;
     cursor: pointer;
-
 }
 
 .navsignup {
@@ -29,13 +29,15 @@
 
 .profilebutton{
     margin-right: 10vw;
-    height: 32px;
-    width: 32px;
+    height: 35px;
+    width: 35px;
     background-image: url(https://i.pinimg.com/564x/99/ff/83/99ff838ed16c22dee73f455cd56596bb.jpg);
     background-size: contain;
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    background-color: red;
+
 }
 
 .navbaritems{
@@ -46,12 +48,20 @@
 }
 
 .profile-dropdown{
-    background-color: #71655c;
+    position:absolute;
+    background-color: #bcb8ca;
     list-style: none;
     position: absolute;
     right: 120px;
-    top: 20px;
+    top: 70px;
     display: flex;
     align-items: center;
     flex-direction: column;
+    padding: 20px;
+}
+
+.logoutbtn{
+    background-color: rgb(97, 97, 157);
+    border:none;
+    padding: 10px;
 }

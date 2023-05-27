@@ -6,19 +6,33 @@ import { Link, useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 const ProductDetail = () => {
- const dispatch = useDispatch();
-
+  const dispatch = useDispatch();
   const {productId} = useParams();
   const sessionuser = useSelector(state => state.session.user)
-  const productObj = useSelector(state => state.productState)
+  const product = useSelector(state => state.productState[undefined])
 
+  useEffect(() =>{
+   dispatch(getProductDetailThunk(productId))
+  }, [dispatch, productId])
 
-
-//   console.log("product!!", productObj)
+//   console.log("productsId", product)
 
     return (
     <div className="ProductDetailContainer">
-     <>HIIII</>
+     <div>
+
+    {/* Name: {product.name}
+    <br/>
+    Price: {product.price}
+    <br/>
+    Color: {product.color}
+    <br/>
+    Type: {product.type}
+    <br/>
+    Description: {product.description}
+    <br/> */}
+
+     </div>
     </div>
     );
 }

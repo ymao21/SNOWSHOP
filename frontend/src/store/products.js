@@ -50,7 +50,6 @@ export const getProductDetailThunk = (productId) => async (dispatch) => {
 
     if(response.ok) {
         const product = await response.json();
-
         return dispatch(addOneProduct(product))
     }
     return response
@@ -112,6 +111,7 @@ const productsReducer = (state = initialState, action) => {
         case CREATE_PRODUCT:
             newState = {...state}
             newState[action.id] = action.product
+            // console.log("productdetailthunk", newState[undefined])
             return newState
 
         case DELETE_PRODUCT:

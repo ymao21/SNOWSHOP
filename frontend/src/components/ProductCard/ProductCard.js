@@ -12,9 +12,10 @@ const ProductCard = ({product}) => {
 
     const dispatch = useDispatch();
 
-    const deleteHandler = () => {
-        dispatch(deleteProductThunk(product.id))
-            }
+    // const deleteHandler = () => {
+    //     dispatch(deleteProductThunk(product.id))
+    //         }
+
 
     const isOwner =sessionUser && sessionUser.id === product.userId
 
@@ -27,7 +28,7 @@ const ProductCard = ({product}) => {
                  {product.name} </Link>
 
                  </div>
-        { isOwner && <button className="deleteProductBttn" onClick={deleteHandler}>delete</button> }
+        {/* { isOwner && <button className="deleteProductBttn" onClick={deleteHandler}>delete</button> } */}
 
         </div>
 

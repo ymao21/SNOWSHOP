@@ -8,7 +8,6 @@ function ProfileButton({ user }) {
   const [showMenu, setShowMenu] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
 
-
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -33,6 +32,8 @@ function ProfileButton({ user }) {
 
   return (
     <>
+    <div className="Navigation">
+
       <button className="profilebutton" onClick={openMenu}>
       </button>
 
@@ -46,6 +47,7 @@ function ProfileButton({ user }) {
         </ul>
       )}
 
+</div>
     </>
   );
 }
