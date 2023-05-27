@@ -2,14 +2,23 @@
 
 
 .productListContainer {
-margin: 50px;
-background-color: red;
+margin: 150px;
+background-color: rgb(254, 254, 254);
+text-align: center;
 }
 
 .eachProduct {
     max-width: 2000px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
-    gap: 10px;
+    gap: 15px;
+}
+
+.productimg{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 250px;
 }

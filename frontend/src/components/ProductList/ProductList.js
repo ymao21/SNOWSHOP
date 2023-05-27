@@ -26,7 +26,7 @@ const ProductList = () => {
             return <ProductCard key={product.id} product={product}/>
             })}
           </div>
-          <button className = "addProduct" type="button" >add product</button>
+          {/* <button className = "addProduct" type="button" >add product</button> */}
         </main>
 
       );
