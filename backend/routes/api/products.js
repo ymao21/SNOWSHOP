@@ -4,7 +4,6 @@ const {  Product, Review} = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors} = require('../../utils/validation');
 const {newError} = require('../../utils/newError');
-const product = require('../../db/models/product');
 const router = express.Router();
 
 const validateQuery = [
@@ -88,7 +87,7 @@ router.post("/", requireAuth, async (req, res, next) => {
     return res.json(newProduct)
 });
 
-//update product
+//edit product
 router.put("/:productId" , requireAuth , async (req, res, next) => {
     const {productId} = req.params;
     const userId = req.user.id;
@@ -142,21 +141,18 @@ router.get("/:productId/reviews", async (req, res, next) =>{
 } )
 
 //create reviews
-router.post("/:productId/reviews"), requireAuth, validateReview, async (req, res, next) => {
+router.post("/:productId/reviews", requireAuth, validateReview, async (req, res, next) => {
     const userId = req.user.id
     const productId = req.params.productId
 
-    console.log(userId)
-
     const {body, rating} = req.body
     const review = await Review.findByPk(productId)
-
-    console.log("test")
 
     if(productId !== null && !review) {
         const err = newError("Product couldn't be found", 404)
         return next(err);
     }
+
     const newReview = await Review.create({
         userId,
         productId,
@@ -165,6 +161,6 @@ router.post("/:productId/reviews"), requireAuth, validateReview, async (req, res
     })
 
     return res.json(newReview)
-}
+})
 
 module.exports = router;

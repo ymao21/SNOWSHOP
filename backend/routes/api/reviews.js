@@ -9,15 +9,18 @@ const router = express.Router();
 const validateReview = [
     check('body')
         .exists({ checkFalsy: true })
-         .withMessage("Comment body text is required"),
+         .withMessage("Review body text is required"),
+    check('rating')
+        .exists({ checkFalsy: true })
+        .withMessage("Rating is required"),
      handleValidationErrors
 ]
 
 //edit review
-router.put("/products/:productId/reviews/:reviewId" , requireAuth , validateReview,  async (req, res, next) => {
+router.put("/:reviewId" , requireAuth , validateReview,  async (req, res, next) => {
     const {reviewId} = req.params;
     const userId = req.user.id;
-    const {productId, body} = req.body;
+    const {productId, body, rating} = req.body;
     const review = await Review.findByPk(reviewId, {});
 
     if(!review){
@@ -28,13 +31,14 @@ router.put("/products/:productId/reviews/:reviewId" , requireAuth , validateRevi
     if(productId) review.productId = productId
     if(body) review.body = body
     if(userId) review.userId = userId
+    if(rating) review.rating = rating
 
     await review.save()
     return res.json(review)
 })
 
 //delete reivew
-router.delete("/products/:productId/reviews/:reviewId", requireAuth, restoreUser, async(req, res, next) => {
+router.delete("/:reviewId", requireAuth, restoreUser, async(req, res, next) => {
     const {reviewId} = req.params;
     const deleteReview = await Review.findByPk(reviewId)
 
