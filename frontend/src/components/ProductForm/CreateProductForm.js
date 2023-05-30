@@ -9,7 +9,7 @@ const CreateProductForm = () => {
 
     const dispatch = useDispatch();
     const [errors, setErrors] = useState([])
-    const { closeModal } = useModal();
+    // const { closeModal } = useModal();
     const sessionUser = useSelector(state => state.session.user)
     const history = useHistory()
 
@@ -61,13 +61,6 @@ const CreateProductForm = () => {
 
   return sessionUser.user.id ? (
     <section className="createProductFormContainer">
-
-        <div className="close-modal">
-				<span style={{cursor:"pointer"}} onClick={closeModal}>
-					{/* <i className = "fa-solid fa-xmark" /> */}
-					<i className="fas fa-times"></i>
-				</span>
-			</div>
 
       <form className ="CreatProductForm" onSubmit={handleSubmit}>
       {errors.length > 0 && errors.map((error, i) => {

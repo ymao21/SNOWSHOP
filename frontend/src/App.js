@@ -10,6 +10,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import ProductList from "./components/ProductList/ProductList";
 import CreateProductForm from "./components/ProductForm/CreateProductForm";
+import EditProductForm from "./components/ProductForm/EditProductForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,10 +19,6 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  // const history = useHistory()
-  // const redirectToSongs = () => {
-  //   history.push('/products')
-  // }
 
   return (
     <>
@@ -49,6 +46,7 @@ function App() {
           <Route exact path="/products/:productId">
             <ProductDetails />
             <CreateProductForm/>
+            <EditProductForm/>
           </Route>
 
         </Switch>
