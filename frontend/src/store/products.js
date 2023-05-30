@@ -110,8 +110,7 @@ const productsReducer = (state = initialState, action) => {
 
         case CREATE_PRODUCT:
             newState = {...state}
-            newState[action.id] = action.product
-            // console.log("productdetailthunk", newState[undefined])
+            newState[action.product.id] = action.product
             return newState
 
         case DELETE_PRODUCT:

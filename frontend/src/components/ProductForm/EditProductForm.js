@@ -13,7 +13,7 @@ const EditProductForm = () => {
 
     const productName = useSelector(state => state.productState)
 
-console.log("productinfo", productName)
+// console.log("productinfo", productName)
 
 return (
 

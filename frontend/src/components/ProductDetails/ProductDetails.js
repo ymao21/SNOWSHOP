@@ -9,13 +9,13 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const {productId} = useParams();
   const sessionuser = useSelector(state => state.session.user)
-  const product = useSelector(state => state.productState[undefined])
+  const product = useSelector(state => state.productState[productId])
 
   useEffect(() =>{
    dispatch(getProductDetailThunk(productId))
   }, [dispatch, productId])
 
-//   console.log("productsId", product)
+console.log("currproduct", product)
 
     return (
     <div className="ProductDetailContainer">
