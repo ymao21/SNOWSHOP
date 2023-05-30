@@ -3,14 +3,16 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createProductThunk } from '../../store/products';
 import { useHistory } from 'react-router-dom';
+import { useModal } from "../../context/Modal";
 
 const CreateProductForm = () => {
 
     const dispatch = useDispatch();
     const [errors, setErrors] = useState([])
-
+    const { closeModal } = useModal();
     const sessionUser = useSelector(state => state.session.user)
     const history = useHistory()
+
 
     const [name, setName] = useState('')
     const [color, setColor] = useState('')
@@ -48,15 +50,25 @@ const CreateProductForm = () => {
         const data = await response.json()
         if (data.errors) setErrors(data.errors);
     })
+    // closeModal()
    }
+
    const handleCancelClick = (e) => {
     e.preventDefault();
-    history.push('/products')
+    // closeModal()
   };
 
 
-  return sessionUser.id ? (
+  return sessionUser.user.id ? (
     <section className="createProductFormContainer">
+
+        <div className="close-modal">
+				<span style={{cursor:"pointer"}} onClick={closeModal}>
+					{/* <i className = "fa-solid fa-xmark" /> */}
+					<i className="fas fa-times"></i>
+				</span>
+			</div>
+
       <form className ="CreatProductForm" onSubmit={handleSubmit}>
       {errors.length > 0 && errors.map((error, i) => {
             return <div key={i} >{error}</div>

@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/ymao21/SNOWSHOP#readme",
   "dependencies": {
-    "pg": "^8.11.0"
+    "pg": "^8.11.0",
+    "react-context-modals": "^2.0.1"
   }
 }

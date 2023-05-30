@@ -9,6 +9,7 @@ import LoginFormPage from "./components/LoginFormPage/index";
 import SignupFormPage from "./components/SignupFormPage";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import ProductList from "./components/ProductList/ProductList";
+import CreateProductForm from "./components/ProductForm/CreateProductForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ function App() {
 
           <Route exact path="/products/:productId">
             <ProductDetails />
+            <CreateProductForm/>
           </Route>
 
         </Switch>
