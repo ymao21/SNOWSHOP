@@ -38,6 +38,7 @@ const validateSignup = [
 
   router.post(
     '/',
+    singleMulterUpload("image"),
     validateSignup,
     async (req, res, next) => {
       const { email, password, about, username, firstName, lastName } = req.body;
