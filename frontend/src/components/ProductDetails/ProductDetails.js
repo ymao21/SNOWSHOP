@@ -30,7 +30,8 @@ const ProductDetail = () => {
 
     return (
     <div className="ProductDetailContainer">
-      <>product details</>
+
+      <img className='productimg' src = {product?.previewImageUrl} alt = "productimg" />
      <div>
     Name: {product?.name}
     <br/>
@@ -42,20 +43,18 @@ const ProductDetail = () => {
     <br/>
     Description: {product?.description}
     <br/>
-            <OpenModalButton
-											className="nav-form"
-											modalComponent={<EditProductForm />}
-											buttonText="Edit Product"
-										/>
 
+     <OpenModalButton
+			className="nav-form"
+			modalComponent={<EditProductForm />}
+			buttonText="Edit Product"
+			/>
 
      </div>
-
      { isOwner && <button className="deletesongbtndetail" onClick={deletehandler}>delete</button> }
-
-
-     <ReviewList/>
      
+     <ReviewList/>
+
     </div>
     );
 }

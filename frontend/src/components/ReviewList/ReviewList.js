@@ -12,7 +12,7 @@ const ReviewList = () => {
         return state.reviewState
       });
 
-// console.log("reviewObj", reviewObj)
+console.log("reviewObj", reviewObj)
 
     return (
         <>Review list</>

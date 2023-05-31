@@ -1,5 +1,5 @@
 .Navigation {
-    background-color:#c6cad5;
+    background-color:#03045E;
     font-weight: 100;
     font-size: 14px;
     line-height: 1.5;
@@ -64,4 +64,9 @@
     background-color: rgb(97, 97, 157);
     border:none;
     padding: 10px;
+}
+
+.logo{
+    width: 7%;
+    height: 7%;
 }

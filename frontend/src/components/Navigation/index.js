@@ -7,6 +7,7 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormPage from '../LoginFormPage';
 import SignupFormPage from '../SignupFormPage';
 import CreateProductForm from '../ProductForm/CreateProductForm';
+import logo from '../../../src/logo.png'
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -54,6 +55,7 @@ function Navigation({ isLoaded }){
   return (
 
     <ul className='Navigation'>
+        {/* <img src={logo} alt="Logo" className='logo' /> */}
       <div className='navbaritems'>
         {isLoaded && sessionLinks}
       </div>

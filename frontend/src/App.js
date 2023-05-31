@@ -11,6 +11,7 @@ import ProductDetails from "./components/ProductDetails/ProductDetails";
 import ProductList from "./components/ProductList/ProductList";
 import CreateProductForm from "./components/ProductForm/CreateProductForm";
 import EditProductForm from "./components/ProductForm/EditProductForm";
+import CreateReviewForm from "./components/ReviewForm/CreateReviewForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function App() {
 
           <Route exact path="/products/:productId">
             <ProductDetails />
+            <CreateReviewForm/>
           </Route>
 
         </Switch>
