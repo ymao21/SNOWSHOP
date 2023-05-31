@@ -10,6 +10,7 @@ import EditProductForm from '../ProductForm/EditProductForm';
 const ProductDetail = () => {
   const dispatch = useDispatch();
   const {productId} = useParams();
+  const history = useHistory()
   const sessionuser = useSelector(state => state.session.user)
   const product = useSelector(state => state.productState[productId])
 
@@ -17,6 +18,13 @@ const ProductDetail = () => {
    dispatch(getProductDetailThunk(productId))
   }, [dispatch, productId])
 
+
+  const deletehandler =() => {
+    dispatch(deleteProductThunk(productId))
+    history.push(`/products`)
+  }
+
+  const isOwner =sessionuser && sessionuser.user.id === product?.userId
 
 
     return (
@@ -41,6 +49,8 @@ const ProductDetail = () => {
 
 
      </div>
+
+     { isOwner && <button className="deletesongbtndetail" onClick={deletehandler}>delete</button> }
     </div>
     );
 }
