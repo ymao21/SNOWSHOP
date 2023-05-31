@@ -15,23 +15,22 @@ const ProductDetail = () => {
    dispatch(getProductDetailThunk(productId))
   }, [dispatch, productId])
 
-console.log("currproduct", product)
+ 
 
     return (
     <div className="ProductDetailContainer">
       <>product details</>
      <div>
-
-    {/* Name: {product.name}
+    Name: {product?.name}
     <br/>
-    Price: {product.price}
+    Price: {product?.price}
     <br/>
-    Color: {product.color}
+    Color: {product?.color}
     <br/>
-    Type: {product.type}
+    Type: {product?.type}
     <br/>
-    Description: {product.description}
-    <br/> */}
+    Description: {product?.description}
+    <br/>
 
      </div>
     </div>

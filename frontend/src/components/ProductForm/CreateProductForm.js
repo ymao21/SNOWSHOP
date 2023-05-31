@@ -20,7 +20,7 @@ const CreateProductForm = () => {
     const [category, setCateogry] = useState('')
     const [type, setType] = useState('')
     const [description, setDescription] = useState('')
-    const [previewImageUrl, setPreviewImageUrl] = useState('')
+    const [image, setImage] = useState('')
 
    const createName = (e) => setName(e.target.value)
    const createColor = (e) => setColor(e.target.value)
@@ -28,7 +28,7 @@ const CreateProductForm = () => {
    const createCategory = (e) => setCateogry(e.target.value)
    const createType = (e) => setType(e.target.value)
    const createDescription = (e) => setDescription(e.target.value)
-   const createPreviewImageUrl = (e) => setPreviewImageUrl(e.target.value)
+   const createImage = (e) => setImage(e.target.value)
 
    const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +42,7 @@ const CreateProductForm = () => {
      category,
      type,
      description,
-     previewImageUrl
+     image
     };
 
     dispatch(createProductThunk(payload))
@@ -58,6 +58,10 @@ const CreateProductForm = () => {
     // closeModal()
   };
 
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+  };
 
   return sessionUser.user.id ? (
     <section className="createProductFormContainer">
@@ -103,11 +107,12 @@ const CreateProductForm = () => {
           value={description}
           onChange={createDescription} />
 
-        <input
-          type="text" className='ProductFormInput'
-          placeholder="product previewImageUrl"
-          value={previewImageUrl}
-          onChange={createPreviewImageUrl} />
+
+        <label className='imageFileInput'>
+
+          <input type="file" onChange={updateFile} />
+
+        </label>
 
         <button className = "createProductBtn"type="submit" > create product</button>
         <button className = "cancelbtn" type="button" onClick={handleCancelClick}>Cancel</button>

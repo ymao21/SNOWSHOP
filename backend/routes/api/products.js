@@ -5,6 +5,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors} = require('../../utils/validation');
 const {newError} = require('../../utils/newError');
 const router = express.Router();
+const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3')
 
 const validateQuery = [
     check('page')
@@ -69,9 +70,14 @@ router.get("/:productId", async (req, res, next) => {
 })
 
 //create product
-router.post("/", requireAuth, async (req, res, next) => {
+router.post("/", requireAuth, singleMulterUpload("image"), async (req, res, next) => {
     const userId = req.user.id
-    const {name, price, type, color, category,description, previewImageUrl} = req.body
+
+
+    const {name, price, type, color, category, description} = req.body
+
+    console.log("req.body", req.body)
+    const previewImageUrl = await singlePublicFileUpload(req.file)
 
     const newProduct = await Product.create({
         userId,
@@ -83,6 +89,7 @@ router.post("/", requireAuth, async (req, res, next) => {
         description,
         previewImageUrl
     })
+    // setTokenCookie(res, user);
 
     return res.json(newProduct)
 });
