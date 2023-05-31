@@ -3,13 +3,17 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.css';
+import { useModal } from "../../context/Modal";
+
 
 function LoginFormPage() {
   const dispatch = useDispatch();
+  const { closeModal } = useModal();
   const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
+
 
   if (sessionUser.id) return (
     <Redirect to="/" />
@@ -26,9 +30,9 @@ function LoginFormPage() {
   }
 
   const demouser = { credential: 'Demo', password: 'password'}
-  
+
   const handleSubmitDemo = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     setErrors([]);
     return dispatch(sessionActions.login( demouser ))
 
@@ -37,7 +41,6 @@ function LoginFormPage() {
         if (data && data.errors) setErrors(data.errors);
       });
   }
-
 
   return (
     <div className='Loginformcontainer'>
@@ -69,7 +72,10 @@ function LoginFormPage() {
       <button className = "userloginbtn" type="submit">Log In</button>
       </a>
     </form>
-    <button className="demouserbtn" onClick={handleSubmitDemo} type="submit">Demo User</button>
+    <button className="demouserbtn" onClick={() => {
+          handleSubmitDemo();
+          closeModal();
+        }} type="submit">Demo User</button>
     </div>
   );
 }

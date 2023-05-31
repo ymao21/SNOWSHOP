@@ -31,22 +31,12 @@ function App() {
             <>HOME page</>
           </Route>
 
-          <Route path="/login">
-            <LoginFormPage />
-          </Route>
-
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-
           <Route exact path="/products">
             <ProductList />
           </Route>
 
           <Route exact path="/products/:productId">
             <ProductDetails />
-            <CreateProductForm/>
-            <EditProductForm/>
           </Route>
 
         </Switch>

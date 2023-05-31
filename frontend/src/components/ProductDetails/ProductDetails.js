@@ -4,6 +4,8 @@ import './ProductDetails.css';
 import {  getProductDetailThunk, deleteProductThunk, getProductsThunk, editProductThunk } from '../../store/products';
 import { Link, useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import OpenModalButton from "../OpenModalButton";
+import EditProductForm from '../ProductForm/EditProductForm';
 
 const ProductDetail = () => {
   const dispatch = useDispatch();
@@ -15,7 +17,7 @@ const ProductDetail = () => {
    dispatch(getProductDetailThunk(productId))
   }, [dispatch, productId])
 
- 
+
 
     return (
     <div className="ProductDetailContainer">
@@ -31,6 +33,12 @@ const ProductDetail = () => {
     <br/>
     Description: {product?.description}
     <br/>
+            <OpenModalButton
+											className="nav-form"
+											modalComponent={<EditProductForm />}
+											buttonText="Edit Product"
+										/>
+
 
      </div>
     </div>
