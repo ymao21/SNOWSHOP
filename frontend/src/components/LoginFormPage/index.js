@@ -43,24 +43,24 @@ function LoginFormPage() {
   }
 
   return (
-    <div className='Loginformcontainer'>
+
     <form  className="loginform" onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
 
-      <label className='loginusertext'>
+      <label className='loginlabel'>
         Username or Email
-        <input   className='usernamelogin'
+        <input   className='loginInput'
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
         />
       </label>
-      <label className='loginpasswordtext'>
+      <label className='loginlabel'>
         Password
-        <input  className='passwordlogin'
+        <input  className='loginInput'
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -68,15 +68,19 @@ function LoginFormPage() {
         />
       </label>
 
-      <a className='Login'>
-      <button className = "userloginbtn" type="submit">Log In</button>
-      </a>
-    </form>
-    <button className="demouserbtn" onClick={() => {
+
+      <button className = "loginBtn" type="submit">Log In</button>
+
+      <button className="loginBtn" onClick={() => {
           handleSubmitDemo();
           closeModal();
         }} type="submit">Demo User</button>
-    </div>
+
+
+
+
+    </form>
+
   );
 }
 

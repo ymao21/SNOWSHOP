@@ -1,0 +1,53 @@
+.CreatProductForm{
+    width: 660px;
+    height: 500px;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #ecf0f3;
+
+}
+
+.ProductFormInput{
+    display: block;
+    width: 40%;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    caret-color: #90E0EF;
+    background: #ecf0f3;
+    padding: 10px;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 50px;
+    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+
+.imageFileInput{
+  background-color: blue;
+}
+
+.createProductBtn{
+    display: block;
+    width: 30%;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    margin-top: 30px;
+    margin-left: 200px;
+    background: #0077B6;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 900;
+    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+    transition: 0.5s;
+}
+
+.createProductBtn:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color:#03045E;
+    color: rgb(255, 255, 255);
+}

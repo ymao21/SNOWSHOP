@@ -53,10 +53,10 @@ const CreateProductForm = () => {
     closeModal()
    }
 
-   const handleCancelClick = (e) => {
-    e.preventDefault();
-    // closeModal()
-  };
+  //  const handleCancelClick = (e) => {
+  //   e.preventDefault();
+  //   // closeModal()
+  // };
 
   const updateFile = (e) => {
     const file = e.target.files[0];
@@ -64,8 +64,6 @@ const CreateProductForm = () => {
   };
 
   return sessionUser.user.id ? (
-    <section className="createProductFormContainer">
-
 
       <form className ="CreatProductForm" onSubmit={handleSubmit}>
       {errors.length > 0 && errors.map((error, i) => {
@@ -116,9 +114,7 @@ const CreateProductForm = () => {
         </label>
 
         <button className = "createProductBtn"type="submit" > create product</button>
-        <button className = "cancelbtn" type="button" onClick={handleCancelClick}>Cancel</button>
       </form>
-    </section>
   ) :
   null;
 
