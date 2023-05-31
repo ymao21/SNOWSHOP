@@ -9,7 +9,7 @@ const CreateProductForm = () => {
 
     const dispatch = useDispatch();
     const [errors, setErrors] = useState([])
-    // const { closeModal } = useModal();
+    const { closeModal } = useModal();
     const sessionUser = useSelector(state => state.session.user)
     const history = useHistory()
 
@@ -50,7 +50,7 @@ const CreateProductForm = () => {
         const data = await response.json()
         if (data.errors) setErrors(data.errors);
     })
-    // closeModal()
+    closeModal()
    }
 
    const handleCancelClick = (e) => {
@@ -65,6 +65,7 @@ const CreateProductForm = () => {
 
   return sessionUser.user.id ? (
     <section className="createProductFormContainer">
+
 
       <form className ="CreatProductForm" onSubmit={handleSubmit}>
       {errors.length > 0 && errors.map((error, i) => {

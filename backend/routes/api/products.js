@@ -76,7 +76,7 @@ router.post("/", requireAuth, singleMulterUpload("image"), async (req, res, next
 
     const {name, price, type, color, category, description} = req.body
 
-    console.log("req.body", req.body)
+    // console.log("req.body", req.body)
     const previewImageUrl = await singlePublicFileUpload(req.file)
 
     const newProduct = await Product.create({
