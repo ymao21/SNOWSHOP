@@ -6,6 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import OpenModalButton from "../OpenModalButton";
 import EditProductForm from '../ProductForm/EditProductForm';
+import ReviewList from '../ReviewList/ReviewList'
 
 const ProductDetail = () => {
   const dispatch = useDispatch();
@@ -51,6 +52,10 @@ const ProductDetail = () => {
      </div>
 
      { isOwner && <button className="deletesongbtndetail" onClick={deletehandler}>delete</button> }
+
+
+     <ReviewList/>
+     
     </div>
     );
 }

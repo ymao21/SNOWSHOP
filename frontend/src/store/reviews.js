@@ -7,49 +7,47 @@ const CREATE_REVIEW = 'reviews/createReview'
 const EDIT_REVIEW = 'reviews/editReview'
 const DELETE_REVIEW = 'reviews/deleteReview'
 
-
-
-const loadReviews = (reviews) => {
+export const loadReviews = (reviews) => {
     return {
     type: LOAD_REVIEWS,
     reviews
     }
 }
 
-const createReview = (review) => {
+export const createReview = (review) => {
     return {
     type: CREATE_REVIEW,
     review
     }
 }
 
-const editReview = (review) => {
+export const editReview = (review) => {
     return {
     type: EDIT_REVIEW,
     review
     }
 }
 
-const deleteReview = (reviewId) => {
+export const deleteReview = (reviewId) => {
     return {
         type: DELETE_REVIEW,
         reviewId
     }
 }
 
-
 export const getReviewsThunk = (productId) => async (dispatch) => {
     const response = await csrfFetch(`/api/products/${productId}/reviews`);
 
     if(response.ok){
         const reviews = await response.json();
+        console.log("getReviewsThunk",reviews )
         dispatch(loadReviews(reviews))
         return reviews
     }
 }
 
 export const createReviewThunk = (payload, sessionUser) => async (dispatch) => {
-    const response = await csrfFetch(`/api/products/${productId}/reviews`, {
+    const response = await csrfFetch(`/api/products/${payload.productId}/reviews`, {
         method: 'POST',
         body: JSON.stringify(payload)
     });
@@ -98,8 +96,10 @@ const reviewsReducer = (state = initialState, action) => {
     switch(action.type){
         case LOAD_REVIEWS:
             action.reviews.forEach((review) => {
+
                 newState[review.id] = review
             });
+
             return newState
 
         case CREATE_REVIEW:

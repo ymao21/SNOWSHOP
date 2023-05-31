@@ -75,12 +75,8 @@ function LoginFormPage() {
           handleSubmitDemo();
           closeModal();
         }} type="submit">Demo User</button>
-
-
-
-
     </form>
-
+    
   );
 }
 
