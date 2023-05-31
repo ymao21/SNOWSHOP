@@ -36,8 +36,6 @@
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    background-color: red;
-
 }
 
 .navbaritems{
@@ -49,7 +47,7 @@
 
 .profile-dropdown{
     position:absolute;
-    background-color: #bcb8ca;
+    background-color: white;
     list-style: none;
     position: absolute;
     right: 120px;
@@ -58,13 +56,31 @@
     align-items: center;
     flex-direction: column;
     padding: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .logoutbtn{
-    background-color: rgb(97, 97, 157);
-    border:none;
-    padding: 10px;
+    display: block;
+    width: 120%;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    margin-top: 20px;
+    background: #0077B6;
+    height: 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 900;
+    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+    transition: 0.5s;
 }
+.logoutbtn:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color:#03045E;
+    color: rgb(255, 255, 255);
+}
+
 
 .logo{
     width: 7%;

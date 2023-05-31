@@ -4,10 +4,10 @@
     position: relative;
     width: 350px;
     height: 400px;
-    border-radius: 30px;
+    /* border-radius: 30px; */
     padding: 40px;
     box-sizing: border-box;
-    background: #f3eeec;
+    background: #ecf0f3;
 }
 
 .loginlabel{
