@@ -4,6 +4,7 @@ import { useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {getReviewsThunk} from '../../store/reviews'
 import ReviewCard from '../ReviewCard/ReviewCard'
+import CreateReviewForm from '../ReviewForm/CreateReviewForm'
 
 const ReviewList = () => {
     const dispatch = useDispatch()
@@ -30,9 +31,13 @@ useEffect(() => {
 }, [dispatch])
 
     return (
+        <>
         <div> {reviewFiltered.map(review => (
             <ReviewCard key={review.id} review={review}/>
         ))} </div>
+        <CreateReviewForm/>
+
+        </>
     )
 }
 

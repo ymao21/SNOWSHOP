@@ -49,8 +49,8 @@ const ProductDetail = () => {
     <div className='productInfodet'>Type: {product?.type}</div>
     <br/>
 
-    <div class="addToCartBtn">
-      <button class="add">Add to Cart</button>
+    <div className="addToCartBtn">
+      <button className="add">Add to Cart</button>
     </div>
 
 

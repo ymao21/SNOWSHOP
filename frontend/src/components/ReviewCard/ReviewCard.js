@@ -23,7 +23,7 @@ const ReviewCard = ({review}) => {
             {/* <div className = "reviewUser">{review.User.username}</div> */}
             <div className = "ReviewInput">{review.body}</div>
             <div className = "ReviewInput">{review.rating}</div>
-            {isOwner && <button className="deleteReviewBtn" onClick={deleteHandler}>Review Delete</button>}
+            {isOwner && <button className="deleteReviewBtn" onClick={deleteHandler}> Delete Review</button>}
             </div>
         </div>
         </>

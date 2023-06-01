@@ -48,7 +48,7 @@ function App() {
 
           <Route exact path="/products/:productId">
             <ProductDetails />
-            <CreateReviewForm/>
+           
           </Route>
 
         </Switch>

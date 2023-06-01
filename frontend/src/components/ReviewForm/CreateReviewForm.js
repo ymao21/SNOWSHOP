@@ -58,12 +58,12 @@ const CreateReviewForm =() => {
             </div>
 
            <label className='reviewText' >
-               New Review:
+               Write a Review:
            </label>
 
            <input className= "reviewInput"value={body} onChange = {createBody} />
            <label className='reviewText' >
-               New Rating:
+               Rate:
            </label>
            <input className= "reviewInput"value={rating} onChange = {createRating} />
 
