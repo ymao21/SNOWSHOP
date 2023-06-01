@@ -14,8 +14,7 @@ const ReviewCard = ({review}) => {
     dispatch(deleteReviewThunk(review.id))
     }
 
-    console.log("review", review)
-
+    // console.log("review", review
 
     return (
         <>
