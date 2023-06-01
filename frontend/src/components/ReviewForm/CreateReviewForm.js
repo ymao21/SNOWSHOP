@@ -26,8 +26,8 @@ const CreateReviewForm =() => {
 
        setErrors([])
 
-       if(body.length === 0) {
-        setErrors(['Review body text is required'])
+       if((body.length === 0) && (rating.length === 0)) {
+        setErrors(['Review and ratingis required'])
       }
         const payload = {
             productId,
@@ -44,9 +44,6 @@ const CreateReviewForm =() => {
             })
         }
     }
-
-    console.log(sessionUser.user)
-
 
 
     return sessionUser.user.id ? (
@@ -68,7 +65,7 @@ const CreateReviewForm =() => {
            <label className='reviewText' >
                New Rating:
            </label>
-           <input className= "reviewInput"value={body} onChange = {createRating} />
+           <input className= "reviewInput"value={rating} onChange = {createRating} />
 
            <button className= "Reviewsubmitbtn">Submit</button>
        </form>

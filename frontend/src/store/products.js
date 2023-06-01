@@ -119,6 +119,7 @@ const productsReducer = (state = initialState, action) => {
     let newState = {...state};
     switch(action.type){
         case LOAD_PRODUCTS:
+
             action.products.forEach((product) => {
                 newState[product.id] = product
             });

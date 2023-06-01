@@ -1,7 +1,6 @@
 
 import { csrfFetch } from "./csrf";
 
-
 const LOAD_REVIEWS = 'reviews/loadReviews'
 const CREATE_REVIEW = 'reviews/createReview'
 const EDIT_REVIEW = 'reviews/editReview'
@@ -38,9 +37,9 @@ export const deleteReview = (reviewId) => {
 export const getReviewsThunk = (productId) => async (dispatch) => {
     const response = await csrfFetch(`/api/products/${productId}/reviews`);
 
+
     if(response.ok){
         const reviews = await response.json();
-        console.log("getReviewsThunk",reviews )
         dispatch(loadReviews(reviews))
         return reviews
     }
@@ -94,9 +93,7 @@ const reviewsReducer = (state = initialState, action) => {
     switch(action.type){
         case LOAD_REVIEWS:
 
-
             action.reviews.forEach((review) => {
-                console.log("actionreviews",review)
                 newState[review.id] = review
             });
 

@@ -1,6 +1,6 @@
 const express = require('express')
 const { setTokenCookie, restoreUser, requireAuth} = require('../../utils/auth');
-const {  Product, Review} = require('../../db/models');
+const {  Product, Review } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors} = require('../../utils/validation');
 const {newError} = require('../../utils/newError');
@@ -136,8 +136,10 @@ router.delete("/:productId", requireAuth, restoreUser, async(req, res, next) => 
 //get reviews
 router.get("/:productId/reviews", async (req, res, next) =>{
     const {productId} = req.params;
-    // const product = await Product.findByPk(productId)
-    const reviews = await Review.findByPk(productId)
+
+    const reviews = await Review.findAll()
+
+    console.log("backend get reviews", reviews)
 
     if(!reviews){
         const err = newError("reviews couldn't be found", 404)

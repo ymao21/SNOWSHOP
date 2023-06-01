@@ -51,8 +51,8 @@ const ProductDetail = () => {
 			/>
 
      </div>
-     { isOwner && <button className="deletesongbtndetail" onClick={deletehandler}>delete</button> }
-     
+     { isOwner && <button className="Delete" onClick={deletehandler}>delete</button> }
+
      <ReviewList/>
 
     </div>

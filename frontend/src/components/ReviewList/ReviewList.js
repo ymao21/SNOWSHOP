@@ -8,14 +8,31 @@ import ReviewCard from '../ReviewCard/ReviewCard'
 const ReviewList = () => {
     const dispatch = useDispatch()
     const {productId} = useParams()
+    const [isLoaded, setIsLoaded] = useState(false)
+
     const reviewObj = useSelector(state => {
         return state.reviewState
       });
 
-console.log("reviewObj", reviewObj)
+    const reviewArr = Object.values(reviewObj)
+
+    const reviewFiltered = reviewArr.filter(review => {
+
+        return review.productId == productId
+
+    })
+
+
+
+
+useEffect(() => {
+    dispatch(getReviewsThunk(productId)).then(()=> setIsLoaded(true))
+}, [dispatch])
 
     return (
-        <>Review list</>
+        <div> {reviewFiltered.map(review => (
+            <ReviewCard key={review.id} review={review}/>
+        ))} </div>
     )
 }
 
