@@ -35,10 +35,13 @@ useEffect(() => {
     return (
         <>
 
-        <div> {reviewFiltered.map(review => (
+        <div className='eachReviewCard'> {reviewFiltered.map(review => (
+             
             <ReviewCard key={review.id} review={review}/>
+
         ))} </div>
         <CreateReviewForm/>
+
 
         {/* <OpenModalButton
 				className="nav-form"

@@ -29,9 +29,11 @@ const ReviewCard = ({review}) => {
     return (
         <>
 
-        {sessionUser.user.username}
+       <div className='reviewUser'>{sessionUser.user.username}</div>
 
-<div className="star-rating">
+
+        <div className="star-rating">
+        <div >
       {[...Array(5)].map((star, index) => {
         const ratingValue = index + 1;
         return (
@@ -48,22 +50,26 @@ const ReviewCard = ({review}) => {
             />
 
             </label>
-
         );
       })}
-
+      </div>
     </div>
+
         <div className="reviewCard">
             <div className='reviewCard'>
-            {/* <div className = "reviewUser">{review.User.username}</div> */}
+
             <div className = "ReviewInput">{review?.body}</div>
+
             {isOwner && <button className="deleteReviewBtn" onClick={() => {
             deleteHandler()
             refreshPage()
-            }}
-            > Delete Review</button>}
+            }}> Delete Review</button>}
+
             </div>
+
         </div>
+        <hr/>
+
         </>
     )
 }

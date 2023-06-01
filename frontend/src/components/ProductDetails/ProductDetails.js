@@ -54,14 +54,14 @@ const ProductDetail = () => {
     </div>
 
 
-    </div>
+    </div >
      <OpenModalButton
-			className="EditButtonModal"
+     className="EditProductModal"
 			modalComponent={<EditProductForm />}
 			buttonText="Edit Product"
 			/>
      </div>
-     { isOwner && <button className="DeleteBtn" onClick={deletehandler}>delete</button> }
+     { isOwner && <button className="DeleteBtn" onClick={deletehandler}>Delete Product</button> }
      <ReviewList/>
      </div>
     </div>

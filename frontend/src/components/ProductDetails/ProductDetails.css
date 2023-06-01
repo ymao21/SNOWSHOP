@@ -4,17 +4,19 @@
     margin: auto;
     overflow: hidden;
     width: 1000px;
-    height: 800px;
+    height: 100%;
     background: rgb(255, 255, 255);
     box-shadow: 5px 5px 15px rgba(pink, .5);
     border-radius: 10px;
     padding: 50px;
+    /* margin-top: 100px; */
 }
 
 
 .productimg{
     width: 290px;
     margin-top: 40px;
+    margin-left: 90px;
 }
 
 .productInfo{
@@ -74,7 +76,9 @@
   }
 
   .ModalBtn{
-
+    position:relative;
+    left:20px;
+    margin-top: 5px;
     display: inline-block;
     outline: 0;
     appearance: none;
@@ -100,6 +104,9 @@
   }
 
   .DeleteBtn{
+    position:relative;
+    left:20px;
+    margin-top: 5px;
     display: inline-block;
     outline: 0;
     appearance: none;

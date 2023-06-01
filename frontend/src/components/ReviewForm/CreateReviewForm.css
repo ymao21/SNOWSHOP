@@ -1,4 +1,30 @@
 
+.reviewForm{
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    width: 700px;
+    position:relative;
+    left:115px;
+}
+
+
 .starRating{
     display:none
+}
+
+.reviewInput{
+    box-shadow: 0 2px 3px 0 rgba(233, 226, 226, 0.2);
+    transition: 0.3s;
+    padding: 5px;
+    margin: 10px;
+    width: 700px;
+    border-radius: 3px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
