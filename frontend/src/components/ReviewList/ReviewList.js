@@ -5,11 +5,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import {getReviewsThunk} from '../../store/reviews'
 import ReviewCard from '../ReviewCard/ReviewCard'
 import CreateReviewForm from '../ReviewForm/CreateReviewForm'
+import OpenModalButton from "../OpenModalButton";
 
 const ReviewList = () => {
     const dispatch = useDispatch()
     const {productId} = useParams()
     const [isLoaded, setIsLoaded] = useState(false)
+    const sessionUser = useSelector(state => state.session.user);
 
     const reviewObj = useSelector(state => {
         return state.reviewState
@@ -32,11 +34,16 @@ useEffect(() => {
 
     return (
         <>
+
         <div> {reviewFiltered.map(review => (
             <ReviewCard key={review.id} review={review}/>
         ))} </div>
-        <CreateReviewForm/>
 
+        <OpenModalButton
+				className="nav-form"
+				modalComponent={<CreateReviewForm/>}
+				buttonText="Write a Review"
+										/>
         </>
     )
 }

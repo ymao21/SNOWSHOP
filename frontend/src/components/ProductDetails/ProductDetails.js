@@ -60,14 +60,9 @@ const ProductDetail = () => {
 			modalComponent={<EditProductForm />}
 			buttonText="Edit Product"
 			/>
-
      </div>
      { isOwner && <button className="DeleteBtn" onClick={deletehandler}>delete</button> }
-
-
-
      <ReviewList/>
-
      </div>
     </div>
     );

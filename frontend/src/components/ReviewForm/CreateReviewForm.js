@@ -3,10 +3,13 @@ import { useSelector, useDispatch} from 'react-redux'
 import { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { createReviewThunk } from '../../store/reviews';
+import { FaStar } from "react-icons/fa";
 
 const CreateReviewForm =() => {
 
     const dispatch = useDispatch()
+    const [rating, setRating] = useState(0)
+    const [hover, setHover] = useState(0)
     const sessionUser = useSelector(state => state.session.user);
 
     const productIdobj = useParams()
@@ -14,7 +17,7 @@ const CreateReviewForm =() => {
 
     const [errors, setErrors] = useState([])
     const [body, setBody] = useState("");
-    const [rating, setRating] = useState("");
+
 
     const createBody = (e) => setBody(e.target.value)
     const createRating = (e) => setRating(e.target.value)
@@ -38,6 +41,7 @@ const CreateReviewForm =() => {
         if (errors.length === 0) {
             dispatch(createReviewThunk(payload, sessionUser.user))
             .then(() => setBody(''))
+            .then(() => setRating(''))
             .catch(async response => {
                 const data = await response.json()
                 if(data.errors) setErrors(data.errors)
@@ -47,6 +51,7 @@ const CreateReviewForm =() => {
 
 
     return sessionUser.user.id ? (
+        <>
 
          <form className = "reviewForm" onSubmit = {submitHandler}>
 
@@ -65,13 +70,47 @@ const CreateReviewForm =() => {
            <label className='reviewText' >
                Rate:
            </label>
-           <input className= "reviewInput"value={rating} onChange = {createRating} />
+
+           <div className="star-rating">
+
+{[...Array(5)].map((star, index) => {
+  const ratingValue = index + 1;
+
+  return (
+
+      <label>
+      <input
+      className = "starRating"
+      name='rating'
+      max='5'
+      min='1'
+      required
+      value={ratingValue}
+      onChange = {createRating}
+      onClick={() => setRating(ratingValue)}
+      />
+      <FaStar
+      className='star'
+      color= {ratingValue <= (hover || rating)? "#ffc107" : "#e4e5e9"}
+      size={25}
+      onMouseEnter={ () => setHover(ratingValue)}
+      onMouseLeave={ () => setHover(null) }
+      />
+
+      </label>
+
+            );
+            })}
 
            <button className= "Reviewsubmitbtn">Submit</button>
+           </div>
        </form>
+
+       </>
 
     ) :
     null;
+
 }
 
 export default CreateReviewForm

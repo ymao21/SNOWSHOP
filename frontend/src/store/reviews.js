@@ -80,9 +80,9 @@ export const deleteReviewThunk = (reviewId) => async (dispatch) => {
         method: 'DELETE'
     })
     if(response.ok) {
-        const deleteReview = await response.json()
+        const removeReview = await response.json()
         dispatch(deleteReview(reviewId))
-        return deleteReview
+        return removeReview
     }
 }
 

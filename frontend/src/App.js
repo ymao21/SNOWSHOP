@@ -13,6 +13,7 @@ import CreateProductForm from "./components/ProductForm/CreateProductForm";
 import EditProductForm from "./components/ProductForm/EditProductForm";
 import CreateReviewForm from "./components/ReviewForm/CreateReviewForm";
 
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -48,7 +49,8 @@ function App() {
 
           <Route exact path="/products/:productId">
             <ProductDetails />
-           
+
+
           </Route>
 
         </Switch>
