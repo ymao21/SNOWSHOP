@@ -24,8 +24,12 @@ const ReviewCard = ({review}) => {
         window.location.reload();
     }
 
+    // console.log(sessionUser.user.username)
+
     return (
         <>
+
+        {sessionUser.user.username}
 
 <div className="star-rating">
       {[...Array(5)].map((star, index) => {

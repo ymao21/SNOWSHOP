@@ -15,6 +15,8 @@ const CreateReviewForm =() => {
     const productIdobj = useParams()
     const productId = productIdobj.productId
 
+    console.log("frontendProductid",productIdobj )
+
     const [errors, setErrors] = useState([])
     const [body, setBody] = useState("");
 
@@ -32,6 +34,7 @@ const CreateReviewForm =() => {
        if((body.length === 0) && (rating.length === 0)) {
         setErrors(['Review and ratingis required'])
       }
+
         const payload = {
             productId,
             body,
@@ -85,9 +88,9 @@ const CreateReviewForm =() => {
       max='5'
       min='1'
       required
-      value={ratingValue}
+      value={Math.floor(ratingValue)}
       onChange = {createRating}
-      onClick={() => setRating(ratingValue)}
+      onClick={() => setRating(Math.floor(ratingValue))}
       />
       <FaStar
       className='star'

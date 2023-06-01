@@ -38,12 +38,13 @@ useEffect(() => {
         <div> {reviewFiltered.map(review => (
             <ReviewCard key={review.id} review={review}/>
         ))} </div>
+        <CreateReviewForm/>
 
-        <OpenModalButton
+        {/* <OpenModalButton
 				className="nav-form"
 				modalComponent={<CreateReviewForm/>}
 				buttonText="Write a Review"
-										/>
+										/> */}
         </>
     )
 }

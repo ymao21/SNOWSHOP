@@ -46,6 +46,8 @@ export const getReviewsThunk = (productId) => async (dispatch) => {
 }
 
 export const createReviewThunk = (payload, sessionUser) => async (dispatch) => {
+
+    // console.log("productId", productId)
     const response = await csrfFetch(`/api/products/${payload.productId}/reviews`, {
         method: 'POST',
         body: JSON.stringify(payload)
