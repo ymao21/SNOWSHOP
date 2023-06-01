@@ -8,6 +8,13 @@ const router = express.Router();
 
 
 //view cart
+router.get("/", async (req, res, next) => {
+
+    const cartQuantity = await Cart.findAll()
+
+    const allProducts = await Product.findAll()
+
+})
 
 //add to cart
 
@@ -15,3 +22,4 @@ const router = express.Router();
 
 //delete from cart
 
+module.exports = router;
