@@ -29,32 +29,46 @@ const ProductDetail = () => {
 
 
     return (
+      <div className='productBackgroundContainer'>
     <div className="ProductDetailContainer">
 
       <img className='productimg' src = {product?.previewImageUrl} alt = "productimg" />
-     <div>
-    Name: {product?.name}
-    <br/>
-    Price: {product?.price}
-    <br/>
-    Color: {product?.color}
-    <br/>
-    Type: {product?.type}
-    <br/>
-    Description: {product?.description}
+      <div>
+     <div className='productInfo'>
+
+    <div className='productInfoName'> Name: {product?.name} </div>
+
     <br/>
 
+    <div className='productInfoPrice'>  $ {product?.price}  </div>
+    <br/>
+    <div className='productInfoDesc'>Description: {product?.description}</div>
+    <br/>
+    <div className='productInfodet'> Color: {product?.color}</div>
+    <br/>
+    <div className='productInfodet'>Type: {product?.type}</div>
+    <br/>
+
+    <div class="addToCartBtn">
+      <button class="add">Add to Cart</button>
+    </div>
+
+
+    </div>
      <OpenModalButton
-			className="nav-form"
+			className="EditButtonModal"
 			modalComponent={<EditProductForm />}
 			buttonText="Edit Product"
 			/>
 
      </div>
-     { isOwner && <button className="Delete" onClick={deletehandler}>delete</button> }
+     { isOwner && <button className="DeleteBtn" onClick={deletehandler}>delete</button> }
+
+
 
      <ReviewList/>
 
+     </div>
     </div>
     );
 }

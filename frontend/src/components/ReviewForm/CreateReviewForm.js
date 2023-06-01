@@ -58,7 +58,7 @@ const CreateReviewForm =() => {
             </div>
 
            <label className='reviewText' >
-               New Comment:
+               New Review:
            </label>
 
            <input className= "reviewInput"value={body} onChange = {createBody} />

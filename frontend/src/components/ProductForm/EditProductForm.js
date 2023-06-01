@@ -125,7 +125,7 @@ const EditProductForm = () => {
 
         </label>
 
-            <button className= "editProduct" type="submit" >edit </button>
+            <button className= "editProductBtn" type="submit" >edit </button>
 
           </form>
         </section>
