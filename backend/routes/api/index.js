@@ -14,7 +14,7 @@ router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/products', productsRouter);
 router.use('/reviews', reviewsRouter);
-router.use('/session', cartRouter);
+router.use('/cart', cartRouter);
 
 
 router.post('/test', (req, res) => {

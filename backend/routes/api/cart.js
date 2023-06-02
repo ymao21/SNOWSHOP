@@ -10,18 +10,18 @@ const router = express.Router();
 //view cart
 router.get("/", async (req, res, next) => {
 
-    const cartQuantity = await Cart.findAll()
+    const CurrentInCart = await Cart.findAll()
 
-    const allProducts = await Product.findAll()
+    // const allProducts = await Product.findAll()
 
-    console.log("current quantity", allProducts)
+    // console.log("current quantity", allProducts)
 
-    if(!cartQuantity) {
+    if(!CurrentInCart) {
         const err = newError("products couldn't be found", 404)
         return next(err);
     }
 
-    return res.json(cartQuantity)
+    return res.json(CurrentInCart)
 
 })
 

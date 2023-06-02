@@ -49,8 +49,10 @@ function App() {
 
           <Route exact path="/products/:productId">
             <ProductDetails />
+          </Route>
 
-
+          <Route path="/cart">
+            <>cart stuff</>
           </Route>
 
         </Switch>
