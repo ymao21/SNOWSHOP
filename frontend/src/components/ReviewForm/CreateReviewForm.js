@@ -15,7 +15,7 @@ const CreateReviewForm =() => {
     const productIdobj = useParams()
     const productId = productIdobj.productId
 
-    console.log("frontendProductid",productIdobj )
+    // console.log("frontendProductid",productIdobj )
 
     const [errors, setErrors] = useState([])
     const [body, setBody] = useState("");

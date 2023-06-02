@@ -19,11 +19,6 @@ function Navigation({ isLoaded }){
   if (sessionUser.user) {
     sessionLinks = (
       <>
-      <OpenModalButton
-											className="nav-form"
-											modalComponent={<CreateProductForm/>}
-											buttonText="SELL ON SNOWSHOP"
-										/>
       <ProfileButton user={sessionUser} />
       </>
     );

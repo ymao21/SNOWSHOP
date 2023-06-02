@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import OpenModalButton from "../OpenModalButton";
 import EditProductForm from '../ProductForm/EditProductForm';
 import ReviewList from '../ReviewList/ReviewList'
+import CreateProductForm from '../ProductForm/CreateProductForm';
 
 const ProductDetail = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,13 @@ const ProductDetail = () => {
 
     return (
       <div className='productBackgroundContainer'>
+
+              <OpenModalButton
+											className="nav-form"
+											modalComponent={<CreateProductForm/>}
+											buttonText="List My Product"
+										/>
+
     <div className="ProductDetailContainer">
 
       <img className='productimg' src = {product?.previewImageUrl} alt = "productimg" />

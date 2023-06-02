@@ -11,7 +11,6 @@
     left:115px;
 }
 
-
 .starRating{
     display:none
 }
@@ -27,4 +26,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.Reviewsubmitbtn{
+    margin-top: 3px;
+    position:relative;
+    margin-left: 10px;
+    top: -5px;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-weight: 400;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    height: 26px;
+    line-height: 28px;
+    font-size: 12px;
+    color: #241c15;
+    background-color: #efeeea;
+    transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
+    padding: 0 18px;
+    :hover {
+        color: #241c15;
+        background-color: #d9d7cd;
+    }
 }
