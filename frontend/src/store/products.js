@@ -86,15 +86,24 @@ export const createProductThunk = (payload) => async (dispatch) => {
 
 
 export const editProductThunk = (payload) => async (dispatch) => {
+    const formData = new FormData();
+    formData.append("name", payload.name)
+    formData.append("color",  payload.color)
+    formData.append("price",payload.price)
+    formData.append("category",payload.category)
+    formData.append("type",  payload.type)
+    formData.append("description", payload.description)
+    if (payload.image) formData.append("image", payload.image);
+
     const response = await csrfFetch(`/api/products/${payload.productId}`,{
     method: "PUT",
 	headers: { "Content-Type": "application/json" },
-	body: JSON.stringify(payload)
+    body: formData,
 });
     if(response.ok) {
-        const product = await response.json();
-        dispatch(editProduct(product));
-        return product
+        const productEdit = await response.json();
+        dispatch(editProduct(productEdit));
+        return productEdit
     }
     return response
 }

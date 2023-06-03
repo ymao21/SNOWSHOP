@@ -14,7 +14,7 @@ const EditReview = () => {
     const reviewIdObj = useParams()
 
 
-    console.log("reviewId",reviewIdObj )
+    console.log("reviewId", reviewIdObj )
 
     return (
         <>

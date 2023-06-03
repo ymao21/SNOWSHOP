@@ -1,3 +1,9 @@
-.titlelink {
-    word-wrap: break-word;
+
+
+.titlelink{
+/* background-color: red; */
+/* overflow-wrap: break-word; */
+word-break: break-all;
+width: 140px;
+margin-left: 55px;
 }

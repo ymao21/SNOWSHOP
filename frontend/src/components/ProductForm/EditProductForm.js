@@ -1,5 +1,5 @@
 import './EditProductForm.css'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editProductThunk } from '../../store/products';
 import { Link, useParams, useHistory } from 'react-router-dom';
@@ -23,7 +23,7 @@ const EditProductForm = () => {
 
 
 
-//   console.log("productinfo", productId)
+  console.log("productinfo", productName)
 
     const [name, setName] = useState(productName || "")
     const [color, setColor] = useState(productColor || "")
@@ -70,7 +70,7 @@ const EditProductForm = () => {
       };
 
     return sessionUser.user.id ? (
-        <section className="edit-product-form">
+        <section className="≈">
           <form className="editproductform" onSubmit={handleSubmit}>
           {errors.length > 0 && errors.map((error, i) => {
                 return <div key={i} >{error}</div>
@@ -112,18 +112,11 @@ const EditProductForm = () => {
               value={description}
               onChange={editProductDescription} />
 
-            <input  className='ProductFormInput'
-              type="text"
-              placeholder="product description"
-              value={description}
-              onChange={editProductDescription} />
 
 
-        <label className='imageFileInput'>
+        <input type="fileInput" onChange={updateFile} />
 
-        <input type="file" onChange={updateFile} />
 
-        </label>
 
             <button className= "editProductBtn" type="submit" >edit </button>
 

@@ -17,14 +17,31 @@
     caret-color: #90E0EF;
     background: #ecf0f3;
     padding: 10px;
+    margin: 10px;
     height: 40px;
     font-size: 14px;
     border-radius: 50px;
     box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
 }
 
-.imageFileInput{
-  background-color: blue;
+.fileInput {
+    margin-top: 1rem;
+}
+
+.fileInput::file-selector-button {
+    border-radius: 4px;
+  padding: 0 16px;
+  height: 40px;
+  cursor: pointer;
+  color: #03045E;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  margin-right: 16px;
+  transition: background-color 200ms;
+}
+.fileInput::file-selector-button:hover{
+    background-color: #f3f4f6;
 }
 
 .createProductBtn{
@@ -34,7 +51,7 @@
     border: none;
     outline: none;
     box-sizing: border-box;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     margin-top: 30px;
     margin-left: 200px;
     background: #0077B6;
@@ -42,7 +59,7 @@
     border-radius: 20px;
     cursor: pointer;
     font-weight: 900;
-    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+    box-shadow:4px 4px 4px #cbced1, -6px -6px 6px white;
     transition: 0.5s;
 }
 

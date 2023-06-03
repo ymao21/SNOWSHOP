@@ -1,3 +1,4 @@
+import { csrfFetch } from "./csrf";
 
 const LOAD_CART = './cart/LOAD_CART'
 const ADD_CART  = '/cart/ADD_CART'
@@ -6,14 +7,15 @@ const EDIT_QUANTITY = '/cart/EDIT_QUANTITY'
 const CLEAR_CART = '/cart/CLEAR_CART'
 
 
-const loadToCartThunk = (products) => {
+//action creators
+export const loadToCart = (products) => {
     return {
         type: LOAD_CART,
         products
     }
 }
 
-const addToCart = (product) => {
+export const addToCart = (product) => {
    return {
     type: ADD_CART,
     product
@@ -21,10 +23,43 @@ const addToCart = (product) => {
 }
 
 
-export const loadAllInCart = () => async (dispatch) => {
-    const response = await csrfFetch(`/api/cart`)
+export const loadAllCartThunk = () => async (dispatch) => {
 
+    const response = await csrfFetch('/api/cart')
+    
     console.log("items in cart", response)
 
-    
+    if(response.ok){
+        const cartItem = await response.json();
+
+    }
+    return response
+
 }
+
+
+const initialState = {};
+
+const cartReducer = (state = initialState, action) => {
+    let newState;
+
+    switch(action.type) {
+        case LOAD_CART:
+            newState = {...state}
+            action.cart.forEach((product)=>{
+                newState[product.id] = product
+            });
+            return newState
+
+
+        default:
+            return state;
+
+
+
+
+    }
+
+}
+
+export default cartReducer

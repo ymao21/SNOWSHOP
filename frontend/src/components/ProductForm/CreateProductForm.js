@@ -1,5 +1,5 @@
 import './CreateProductForm.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createProductThunk } from '../../store/products';
 import { useHistory } from 'react-router-dom';
@@ -28,7 +28,7 @@ const CreateProductForm = () => {
    const createCategory = (e) => setCateogry(e.target.value)
    const createType = (e) => setType(e.target.value)
    const createDescription = (e) => setDescription(e.target.value)
-   const createImage = (e) => setImage(e.target.value)
+  //  const createImage = (e) => setImage(e.target.value)
 
    const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,6 +57,9 @@ const CreateProductForm = () => {
   //   e.preventDefault();
   //   // closeModal()
   // };
+  const redirectToProductPage = (()=> {
+    history.push('/products')
+  })
 
   const updateFile = (e) => {
     const file = e.target.files[0];
@@ -107,13 +110,13 @@ const CreateProductForm = () => {
           onChange={createDescription} />
 
 
-        <label className='imageFileInput'>
 
-          <input type="file" onChange={updateFile} />
 
-        </label>
+          <input className= 'fileInput' type="file" onChange={updateFile} />
 
-        <button className = "createProductBtn"type="submit" > create product</button>
+
+
+        <button className = "createProductBtn"type="submit" onClick={redirectToProductPage}> Create Product</button>
       </form>
   ) :
   null;

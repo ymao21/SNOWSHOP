@@ -14,7 +14,7 @@ router.get("/", async (req, res, next) => {
 
     // const allProducts = await Product.findAll()
 
-    // console.log("current quantity", allProducts)
+    // console.log("current quantity", CurrentInCart)
 
     if(!CurrentInCart) {
         const err = newError("products couldn't be found", 404)

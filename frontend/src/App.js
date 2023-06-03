@@ -37,8 +37,13 @@ function App() {
           <div className="imageContainer">
       <img className = "homeimage" src="https://images.unsplash.com/photo-1529669851596-ba9a5549af95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80"
      alt = "homepage"  />
-     <div className="imageText" > Buy, sell, and discover snowboards, skis, accessories, and more </div>
-      <button className="getstartedbtn"onClick={redirectToProduct} >  get started</button>
+
+     <div className="imageTextContainer">
+     <div className="imageText" > Buy, sell, and discover  </div>
+     <div className="imageText2" >Snowboards Skis Accessories & More </div>
+      <button className="getstartedbtn"onClick={redirectToProduct} > Buy Now</button>
+      </div>
+
       </div>
 
           </Route>
