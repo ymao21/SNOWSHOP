@@ -25,30 +25,16 @@ const ReviewList = () => {
 
     })
 
-
-
-
 useEffect(() => {
     dispatch(getReviewsThunk(productId)).then(()=> setIsLoaded(true))
 }, [dispatch])
 
     return (
         <>
-
         <div className='eachReviewCard'> {reviewFiltered.map(review => (
-
             <ReviewCard key={review.id} review={review}/>
-
         ))} </div>
         <CreateReviewForm/>
-        
-
-
-        {/* <OpenModalButton
-				className="nav-form"
-				modalComponent={<CreateReviewForm/>}
-				buttonText="Write a Review"
-										/> */}
         </>
     )
 }

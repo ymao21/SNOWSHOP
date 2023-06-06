@@ -1,8 +1,7 @@
 import './ProductList.css';
-import { useState, useEffect } from 'react';
+import {  useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Link, Route, useParams, useHistory } from 'react-router-dom';
-import {  deleteProductThunk, getProductsThunk } from '../../store/products';
+import {  getProductsThunk } from '../../store/products';
 import ProductCard from '../ProductCard/ProductCard';
 
 
@@ -26,7 +25,6 @@ const ProductList = () => {
             return <ProductCard key={product.id} product={product}/>
             })}
           </div>
-          {/* <button className = "addProduct" type="button" >add product</button> */}
         </main>
 
       );

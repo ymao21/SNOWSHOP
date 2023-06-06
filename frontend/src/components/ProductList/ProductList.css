@@ -1,6 +1,4 @@
 
-
-
 .productListContainer {
 margin: 12px;
 background-color: rgb(254, 254, 254);
@@ -8,14 +6,13 @@ text-align: center;
 }
 
 .eachProduct {
-
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 2px;
-  max-width: 2000px;
-   
+    max-width: 2000px;
+
 }
 
 .productimg{
