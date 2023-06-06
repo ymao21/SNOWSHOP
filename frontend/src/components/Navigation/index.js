@@ -8,6 +8,7 @@ import LoginFormPage from '../LoginFormPage';
 import SignupFormPage from '../SignupFormPage';
 import CreateProductForm from '../ProductForm/CreateProductForm';
 import logo from '../../../src/logo.png'
+import SearchBar from '../SearchBar/Search';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -50,6 +51,7 @@ function Navigation({ isLoaded }){
   return (
 
     <ul className='Navigation'>
+      <SearchBar/>
         {/* <img src={logo} alt="Logo" className='logo' /> */}
       <div className='navbaritems'>
         {isLoaded && sessionLinks}

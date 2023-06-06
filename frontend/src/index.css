@@ -17,7 +17,7 @@
 .imageText {
     color: rgb(0, 0, 0);
     position: absolute;
-    top: 20%;
+    top: 40%;
     left: 10%;
 
   font-size: 5vw;
@@ -44,7 +44,7 @@
 .imageText2{
     color: rgb(0, 0, 0);
     position: absolute;
-    top:30%;
+    top:60%;
     left: 10%;
 
   font-size: 5vw;
@@ -57,7 +57,7 @@
 .getstartedbtn{
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 56%;
+    top: 110%;
     left: 15%;
     background-color:#03045E;
     border: none;
