@@ -8,6 +8,7 @@ const router = express.Router();
 
 
 //view cart
+
 router.get("/", async (req, res, next) => {
 
     const CurrentInCart = await Cart.findAll()

@@ -26,12 +26,12 @@ export const addToCart = (product) => {
 export const loadAllCartThunk = () => async (dispatch) => {
 
     const response = await csrfFetch('/api/cart')
-    
-    console.log("items in cart", response)
 
     if(response.ok){
         const cartItem = await response.json();
-
+        dispatch(loadToCart(cartItem))
+        // console.log("thunkResponse", cartItem)
+        return cartItem
     }
     return response
 
@@ -46,9 +46,11 @@ const cartReducer = (state = initialState, action) => {
     switch(action.type) {
         case LOAD_CART:
             newState = {...state}
-            action.cart.forEach((product)=>{
-                newState[product.id] = product
-            });
+            console.log(newState)
+
+            // action.cart.forEach((product)=>{
+            //     newState[product.id] = product
+            // });
             return newState
 
 

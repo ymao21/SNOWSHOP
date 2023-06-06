@@ -12,6 +12,8 @@ import CreateProductForm from '../ProductForm/CreateProductForm';
 const ProductDetail = () => {
   const dispatch = useDispatch();
   const {productId} = useParams();
+  // console.log("ProductId", productId)
+
   const history = useHistory()
   const sessionuser = useSelector(state => state.session.user)
   const product = useSelector(state => state.productState[productId])
@@ -69,6 +71,7 @@ const ProductDetail = () => {
 			buttonText="Edit Product"
 			/>
      </div>
+
      { isOwner && <button className="DeleteBtn" onClick={deletehandler}>Delete Product</button> }
      <ReviewList/>
      </div>
