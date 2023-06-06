@@ -10,6 +10,8 @@ router.get("/:q", async (req, res, next) => {
 
     const searchTerm = req.query.q;
 
+    // console.log(searchTerm)
+
     try {
 
       const results = await Product.findAll({
@@ -21,6 +23,7 @@ router.get("/:q", async (req, res, next) => {
       });
 
       res.json(results);
+
     } catch (error) {
       console.error('Error performing search:', error);
       res.status(500).json({ error: 'An error occurred while performing the search' });

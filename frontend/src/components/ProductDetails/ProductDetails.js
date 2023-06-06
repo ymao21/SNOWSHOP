@@ -35,6 +35,7 @@ const ProductDetail = () => {
       <div className='productBackgroundContainer'>
 
               <OpenModalButton
+
 											className="nav-form"
 											modalComponent={<CreateProductForm/>}
 											buttonText="List My Product"
@@ -66,11 +67,13 @@ const ProductDetail = () => {
 
     </div >
      <OpenModalButton
+     productId = {productId}
      className="EditProductModal"
 			modalComponent={<EditProductForm />}
 			buttonText="Edit Product"
 			/>
      </div>
+     
 
      { isOwner && <button className="DeleteBtn" onClick={deletehandler}>Delete Product</button> }
      <ReviewList/>

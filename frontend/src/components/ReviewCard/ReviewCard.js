@@ -5,6 +5,7 @@ import {  useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { FaStar } from "react-icons/fa";
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import EditReviewForm from '../ReviewForm/EditReviewForm'
 
 
 
@@ -63,7 +64,10 @@ const ReviewCard = ({review}) => {
             {isOwner && <button className="deleteReviewBtn" onClick={() => {
             deleteHandler()
             refreshPage()
-            }}> Delete Review</button>}
+            }}> Delete Review</button>
+
+            }
+            < EditReviewForm review={review} />
 
             </div>
 

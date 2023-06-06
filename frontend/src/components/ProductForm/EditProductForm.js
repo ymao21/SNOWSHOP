@@ -7,8 +7,10 @@ import { useModal } from "../../context/Modal";
 
 const EditProductForm = () => {
     const dispatch = useDispatch()
+
     const { productId } = useParams();
-    // console.log("ProductId", productId)
+    console.log("ProductId", productId)
+
 
 
     const [errors, setErrors] = useState([]);
@@ -17,8 +19,6 @@ const EditProductForm = () => {
     const productOwned = useSelector((state)=> state.productState)
 
     const productName = useSelector(state => state.productState[productId]?.name)
-
-
 
 
     const productColor = useSelector(state => state.productState[productId]?.color)

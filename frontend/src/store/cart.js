@@ -46,7 +46,7 @@ const cartReducer = (state = initialState, action) => {
     switch(action.type) {
         case LOAD_CART:
             newState = {...state}
-            console.log(newState)
+            // console.log(newState)
 
             // action.cart.forEach((product)=>{
             //     newState[product.id] = product
