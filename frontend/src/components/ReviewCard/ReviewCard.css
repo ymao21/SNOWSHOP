@@ -20,7 +20,32 @@
     margin-top: 7px;
     position:relative;
     right:2px;
+    margin-right: 5px;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-weight: 400;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+    color: #241c15;
+    background-color: #efeeea;
+    transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
+    padding: 0 18px;
+    :hover {
+        color: #241c15;
+        background-color: #d9d7cd;
+    }
 
+}
+
+.EditReviewBtn{
+    margin-top: 7px;
+    position:relative;
+    right:2px;
+    margin-right: 5px;
     display: inline-block;
     outline: none;
     cursor: pointer;

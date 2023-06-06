@@ -59,10 +59,17 @@ const EditReviewForm = ({review}) => {
 
     return sessionUserId ?(
 
+
              <form className="editReviewForm" onSubmit={submitHandler}>
               {errors.length > 0 && errors.map((error, i) => {
                 return <div key={i} >{error}</div>
             })}
+
+<input  className='reviewEditInput'
+              type="text"
+              placeholder="review body"
+              value={body}
+              onChange={updateBody} />
 
 {[...Array(5)].map((star, index) => {
   const ratingValue = index + 1;
@@ -81,7 +88,7 @@ const EditReviewForm = ({review}) => {
       onClick={() => setRating(Math.floor(ratingValue))}
       />
       <FaStar
-      className='star'
+      className='EditReviewstar'
       color= {ratingValue <= (hover || rating)? "#ffc107" : "#e4e5e9"}
       size={25}
       onMouseEnter={ () => setHover(ratingValue)}
@@ -92,11 +99,7 @@ const EditReviewForm = ({review}) => {
             );
             })}
 
-            <input  className='reviewEditInput'
-              type="text"
-              placeholder="review body"
-              value={body}
-              onChange={updateBody} />
+
 
             <button className= "updateReviewBtn" type="submit" onClick={() => {
 

@@ -16,8 +16,6 @@ const EditProductForm = () => {
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
     const sessionUser = useSelector(state => state.session.user)
-    const productOwned = useSelector((state)=> state.productState)
-
     const productName = useSelector(state => state.productState[productId]?.name)
 
 
@@ -27,10 +25,6 @@ const EditProductForm = () => {
     const productType = useSelector(state => state.productState[productId]?.type)
     const productDescription = useSelector(state => state.productState[productId]?.description)
     const productImage = useSelector(state => state.productState[productId]?.image)
-
-
-
-  // console.log("productinfo", productName)
 
     const [name, setName] = useState(productName || "")
     const [color, setColor] = useState(productColor || "")

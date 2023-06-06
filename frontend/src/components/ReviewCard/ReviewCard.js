@@ -6,13 +6,14 @@ import { useEffect, useState } from 'react';
 import { FaStar } from "react-icons/fa";
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import EditReviewForm from '../ReviewForm/EditReviewForm'
-
+import OpenModalButton from "../OpenModalButton";
 
 
 const ReviewCard = ({review}) => {
 
   const dispatch = useDispatch()
   const [rating, setRating] = useState(Math.floor(review?.rating))
+  const [isEditing, setIsEditing] = useState(false);
   const [hover, setHover] = useState(0)
   const sessionUser = useSelector(state => state.session.user)
   const isOwner =sessionUser && sessionUser.user.id === review.userId
@@ -21,7 +22,16 @@ const ReviewCard = ({review}) => {
     dispatch(deleteReviewThunk(review.id))
 
     }
-    function refreshPage(){
+
+    const handleEdit = () => {
+        setIsEditing(true);
+      };
+
+      const handleSave = (editedReview) => {
+        setIsEditing(false);
+      };
+
+    const refreshPage = ()=>{
         window.location.reload();
     }
 
@@ -65,9 +75,13 @@ const ReviewCard = ({review}) => {
             deleteHandler()
             refreshPage()
             }}> Delete Review</button>
-
             }
-            < EditReviewForm review={review} />
+
+            {isEditing ? (
+                 <EditReviewForm review={review} onSave={handleSave} />
+                ) : (
+        <button className = "EditReviewBtn" onClick={handleEdit}>Edit Review</button>
+                )}
 
             </div>
 
