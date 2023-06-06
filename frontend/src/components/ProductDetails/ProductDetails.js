@@ -8,6 +8,7 @@ import OpenModalButton from "../OpenModalButton";
 import EditProductForm from '../ProductForm/EditProductForm';
 import ReviewList from '../ReviewList/ReviewList'
 import CreateProductForm from '../ProductForm/CreateProductForm';
+import { addToCart } from '../../store/cart';
 
 const ProductDetail = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,11 @@ const ProductDetail = () => {
     dispatch(deleteProductThunk(productId))
     history.push(`/products`)
   }
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    history.push('/cart');
+  };
 
   const isOwner =sessionuser && sessionuser.user.id === product?.userId
 
@@ -61,7 +67,7 @@ const ProductDetail = () => {
     <br/>
 
     <div className="addToCartBtn">
-      <button className="add">Add to Cart</button>
+      <button className="add" onClick= {handleAddToCart}>Add to Cart</button>
     </div>
 
 
@@ -73,7 +79,7 @@ const ProductDetail = () => {
 			buttonText="Edit Product"
 			/>
      </div>
-     
+
 
      { isOwner && <button className="DeleteBtn" onClick={deletehandler}>Delete Product</button> }
      <ReviewList/>

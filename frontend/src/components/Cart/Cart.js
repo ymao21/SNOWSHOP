@@ -36,10 +36,10 @@ const Cart = () => {
     return (
       <div key={cartItem.id} className="CartItem">
         <div className="CartItem__Image">
-          <img src={product.previewImageUrl} alt={product.name} />
+          <img src={product?.previewImageUrl} alt={product?.name} />
         </div>
         <div className="CartItem__Details">
-          <h3 className="CartItem__Name">{product.name}</h3>
+          <h3 className="CartItem__Name">{product?.name}</h3>
           <div className="CartItem__Price">Price: ${totalPrice}</div>
           <div className="CartItem__Quantity">
             Quantity:
@@ -58,14 +58,14 @@ const Cart = () => {
   // Calculate the total price of all cart items
   const totalPrice = cartItemsArr.reduce((total, cartItem) => {
     const product = productArr.find((product) => product.id === cartItem.productId);
-    const itemPrice = (product.price * cartItem.quantity);
+    const itemPrice = (product?.price * cartItem.quantity);
     return total + itemPrice;
   }, 0);
 
   return (
     <div className="Cart">
+          {cartItems}
       <h2 className="Cart__Total">Total: ${totalPrice.toFixed(2)}</h2>
-      {cartItems}
       <div className="Cart__Buttons">
         <button className="ContinueShoppingButton" onClick={handleCheckout}>Continue Shopping</button>
         <button className="CheckoutButton" onClick={handleCheckout}>
