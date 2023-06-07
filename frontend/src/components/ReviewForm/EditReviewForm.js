@@ -14,8 +14,6 @@ const EditReviewForm = ({review}) => {
     const sessionUserId = sessionUser.user.id
     const [errors, setErrors] = useState([]);
 
-    // console.log("reviews", review.id )
-
     const reviewBody = review.body
     const reviewRating = review.rating
     const reviewId = review.id
@@ -23,13 +21,15 @@ const EditReviewForm = ({review}) => {
     const [body, setBody] = useState(reviewBody)
     const [rating, setRating] = useState(reviewRating)
 
+    useEffect(() => {
+        setBody(review.body || '');
+        setRating(review.rating || 0);
+      }, [review]);
+
+
 
     const updateBody = (e) => setBody(e.target.value)
     const updateRating = (e) => setRating(e.target.value)
-
-        function refreshPage(){
-        window.location.reload();
-    }
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -101,10 +101,7 @@ const EditReviewForm = ({review}) => {
 
 
 
-            <button className= "updateReviewBtn" type="submit" onClick={() => {
-
-            refreshPage()
-            }}>Update Review</button>
+            <button className= "updateReviewBtn" type="submit" >Update Review</button>
             </form>
 
     ):

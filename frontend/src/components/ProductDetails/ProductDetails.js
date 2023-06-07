@@ -64,7 +64,7 @@ const ProductDetail = () => {
      <OpenModalButton
      productId = {productId}
      className="EditProductModal"
-			modalComponent={<EditProductForm />}
+			modalComponent={<EditProductForm productId = {productId} />}
 			buttonText="Edit Product"
 			/>
      </div>

@@ -2,15 +2,10 @@ import './EditProductForm.css'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editProductThunk } from '../../store/products';
-import { Link, useParams, useHistory } from 'react-router-dom';
 import { useModal } from "../../context/Modal";
 
-const EditProductForm = () => {
+const EditProductForm = ({productId}) => {
     const dispatch = useDispatch()
-
-    const { productId } = useParams();
-
-    console.log("ProductId", productId)
 
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
@@ -37,7 +32,7 @@ const EditProductForm = () => {
     const editProductName = (e) => setName(e.target.value)
     const editProductColor = (e) => setColor(e.target.value)
     const editProductPrice = (e) => setPrice(e.target.value)
-    const editProductCateogry = (e) => setCateogry(e.target.value)
+    const editProductCategory = (e) => setCateogry(e.target.value)
     const editProductType = (e) => setType(e.target.value)
     const editProductDescription = (e) => setDescription(e.target.value)
 
@@ -82,11 +77,25 @@ const EditProductForm = () => {
               value={name}
               onChange={editProductName} />
 
-            <input  className='ProductFormInput'
-              type="text"
-              placeholder="product color"
-              value={color}
-              onChange={editProductColor} />
+            <select
+          className="ProductFormInput"
+          value={color}
+          onChange={editProductColor}
+            >
+          <option value="">Select Color</option>
+          <option value="red">Red</option>
+          <option value="orange">Orange</option>
+          <option value="yellow">Yellow</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+          <option value="purple">Purple</option>
+          <option value="pink">Pink</option>
+          <option value="silver">Silver</option>
+          <option value="gold">Gold</option>
+          <option value="black">Black</option>
+          <option value="white">White</option>
+          <option value="other">Other</option>
+           </select>
 
             <input  className='ProductFormInput'
               type="text"
@@ -94,17 +103,29 @@ const EditProductForm = () => {
               value={price}
               onChange={editProductPrice} />
 
-            <input  className='ProductFormInput'
-              type="text"
-              placeholder="product category"
-              value={category}
-              onChange={editProductCateogry} />
+            <select
+          className="ProductFormInput"
+          value={category}
+          onChange={editProductCategory}
+           >
+          <option value="">Select Category</option>
+          <option value="snowboard">Snowboard</option>
+          <option value="ski">Ski</option>
+          <option value="snowboard boots">Snowboard Boots</option>
+          <option value="ski boots">Ski Boots</option>
+          <option value="jackets">Jackets</option>
+          <option value="other">Other</option>
+            </select>
 
-            <input  className='ProductFormInput'
-              type="text"
-              placeholder="product type"
-              value={type}
-              onChange={editProductType} />
+          <select
+          className="ProductFormInput"
+          value={type}
+          onChange={editProductType}
+          >
+          <option value="">Select Type</option>
+          <option value="men">Men</option>
+          <option value="women">Women</option>
+        </select>
 
             <input  className='ProductFormInput'
               type="text"
@@ -112,13 +133,9 @@ const EditProductForm = () => {
               value={description}
               onChange={editProductDescription} />
 
+        <input className= 'fileInput' type="file" onChange={updateFile} />
 
-
-        <input type="fileInput" onChange={updateFile} />
-
-
-
-            <button className= "editProductBtn" type="submit" >edit </button>
+            <button className= "editProductBtn" type="submit" >Edit </button>
 
           </form>
         </section>

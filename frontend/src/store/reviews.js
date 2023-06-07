@@ -46,8 +46,6 @@ export const getReviewsThunk = (productId) => async (dispatch) => {
 }
 
 export const createReviewThunk = (payload, sessionUser) => async (dispatch) => {
-
-    // console.log("productId", productId)
     const response = await csrfFetch(`/api/products/${payload.productId}/reviews`, {
         method: 'POST',
         body: JSON.stringify(payload)
@@ -71,10 +69,10 @@ export const editReviewThunk = (payload) => async (dispatch) => {
 
     if(response.ok) {
         const review = await response.json();
+        console.log("reviews", review)
         dispatch(editReview(review))
         return review
     }
-
 }
 
 export const deleteReviewThunk = (reviewId) => async (dispatch) => {
@@ -101,12 +99,17 @@ const reviewsReducer = (state = initialState, action) => {
 
             return newState
 
-        case CREATE_REVIEW:
-            newState = {...state}
-            newState[action.id] = action.review
-            return newState
+            case CREATE_REVIEW:
+                newState = { ...state };
+                newState[action.review.id] = action.review;
+                return newState;
 
-        case DELETE_REVIEW:
+            case EDIT_REVIEW:
+                newState = { ...state };
+                newState[action.review.id] = action.review;
+                return newState;
+
+            case DELETE_REVIEW:
             newState = {...state}
             delete newState[action.reviewId]
             return newState

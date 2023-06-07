@@ -1,12 +1,9 @@
 import './ReviewCard.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteReviewThunk } from '../../store/reviews';
-import {  useHistory } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { FaStar } from "react-icons/fa";
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import EditReviewForm from '../ReviewForm/EditReviewForm'
-import OpenModalButton from "../OpenModalButton";
 
 
 const ReviewCard = ({review}) => {
@@ -27,21 +24,15 @@ const ReviewCard = ({review}) => {
         setIsEditing(true);
       };
 
-      const handleSave = (editedReview) => {
+      const handleSave = () => {
         setIsEditing(false);
       };
 
-    const refreshPage = ()=>{
-        window.location.reload();
-    }
-
-    // console.log(sessionUser.user.username)
 
     return (
         <>
 
        <div className='reviewUser'>{sessionUser.user.username}</div>
-
 
         <div className="star-rating">
         <div >
@@ -73,14 +64,15 @@ const ReviewCard = ({review}) => {
 
             {isOwner && <button className="deleteReviewBtn" onClick={() => {
             deleteHandler()
-            refreshPage()
+
             }}> Delete Review</button>
             }
 
             {isEditing ? (
-                 <EditReviewForm review={review} onSave={handleSave} />
-                ) : (
-        <button className = "EditReviewBtn" onClick={handleEdit}>Edit Review</button>
+                 <EditReviewForm review={review} onSave={handleSave}/>
+                ) :
+                   (
+            <button className = "EditReviewBtn" onClick={handleEdit}>Edit Review</button>
                 )}
 
             </div>
