@@ -8,7 +8,7 @@ import ProductDetails from "./components/ProductDetails/ProductDetails";
 import ProductList from "./components/ProductList/ProductList";
 import Cart from "./components/Cart/Cart";
 import Home from "./components/Home/Home"
-
+import SubNavigation from "./components/SubNavigation/SubNavigation";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +23,8 @@ function App() {
     <>
     <div>
       <Navigation isLoaded={isLoaded} />
+
+      <SubNavigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
 

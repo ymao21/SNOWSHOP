@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './ProductDetails.css';
-import {  getProductDetailThunk, deleteProductThunk, getProductsThunk, editProductThunk } from '../../store/products';
-import { Link, useParams } from 'react-router-dom';
+import {  getProductDetailThunk, deleteProductThunk } from '../../store/products';
+import {  useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import OpenModalButton from "../OpenModalButton";
 import EditProductForm from '../ProductForm/EditProductForm';
@@ -13,8 +13,6 @@ import { addToCart } from '../../store/cart';
 const ProductDetail = () => {
   const dispatch = useDispatch();
   const {productId} = useParams();
-  // console.log("ProductId", productId)
-
   const history = useHistory()
   const sessionuser = useSelector(state => state.session.user)
   const product = useSelector(state => state.productState[productId])
@@ -22,7 +20,6 @@ const ProductDetail = () => {
   useEffect(() =>{
    dispatch(getProductDetailThunk(productId))
   }, [dispatch, productId])
-
 
   const deletehandler =() => {
     dispatch(deleteProductThunk(productId))
@@ -36,16 +33,8 @@ const ProductDetail = () => {
 
   const isOwner =sessionuser && sessionuser.user.id === product?.userId
 
-
     return (
       <div className='productBackgroundContainer'>
-
-              <OpenModalButton
-
-											className="nav-form"
-											modalComponent={<CreateProductForm/>}
-											buttonText="List My Product"
-										/>
 
     <div className="ProductDetailContainer">
 

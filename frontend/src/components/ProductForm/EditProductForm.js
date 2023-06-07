@@ -9,9 +9,8 @@ const EditProductForm = () => {
     const dispatch = useDispatch()
 
     const { productId } = useParams();
+
     console.log("ProductId", productId)
-
-
 
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();

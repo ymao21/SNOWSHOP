@@ -1,0 +1,19 @@
+.subNavigationContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 15px;
+  }
+
+  .cartButton {
+    margin-left: 10px;
+  }
+
+  .searchButton {
+    margin-left: 10px;
+
+  }
+
+  .listProductButton {
+    margin-right: 10px;
+  }

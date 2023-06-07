@@ -16,7 +16,7 @@ router.get("/:q", async (req, res, next) => {
 
       const results = await Product.findAll({
         where: {
-          title: {
+          name: {
             [Op.iLike]: `%${searchTerm}%`,
           },
         },

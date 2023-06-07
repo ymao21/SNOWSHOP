@@ -13,7 +13,6 @@ const CreateProductForm = () => {
     const sessionUser = useSelector(state => state.session.user)
     const history = useHistory()
 
-
     const [name, setName] = useState('')
     const [color, setColor] = useState('')
     const [price, setPrice] = useState( )
@@ -28,7 +27,6 @@ const CreateProductForm = () => {
    const createCategory = (e) => setCateogry(e.target.value)
    const createType = (e) => setType(e.target.value)
    const createDescription = (e) => setDescription(e.target.value)
-  //  const createImage = (e) => setImage(e.target.value)
 
    const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,10 +51,6 @@ const CreateProductForm = () => {
     closeModal()
    }
 
-  //  const handleCancelClick = (e) => {
-  //   e.preventDefault();
-  //   // closeModal()
-  // };
   const redirectToProductPage = (()=> {
     history.push('/products')
   })
@@ -79,11 +73,21 @@ const CreateProductForm = () => {
           value={name}
           onChange={createName} />
 
-        <input
-          type="text" className='ProductFormInput'
-          placeholder="product color"
-          value={color}
-          onChange={createColor} />
+          <select className='ProductFormInput' value={color} onChange={createColor}>
+        <option value=''>Select color</option>
+        <option value='red'>Red</option>
+        <option value='orange'>Orange</option>
+        <option value='yellow'>Yellow</option>
+        <option value='green'>Green</option>
+        <option value='blue'>Blue</option>
+        <option value='purple'>Purple</option>
+        <option value='pink'>Pink</option>
+        <option value='silver'>Silver</option>
+        <option value='gold'>Gold</option>
+        <option value='black'>Black</option>
+        <option value='white'>White</option>
+        <option value='other'>Other</option>
+            </select>
 
         <input
           type="text" className='ProductFormInput'
@@ -91,17 +95,22 @@ const CreateProductForm = () => {
           value={price}
           onChange={createPrice} />
 
-        <input
-          type="text" className='ProductFormInput'
-          placeholder="product category"
-          value={category}
-          onChange={createCategory} />
+      <select className='ProductFormInput' value={category} onChange={createCategory}>
+        <option value=''>Select category</option>
+        <option value='snowboard'>Snowboard</option>
+        <option value='ski'>Ski</option>
+        <option value='snowboard boots'>Snowboard Boots</option>
+        <option value='ski boots'>Ski Boots</option>
+        <option value='jackets'>Jackets</option>
+        <option value='others'>Other</option>
+      </select>
 
-        <input
-          type="text" className='ProductFormInput'
-          placeholder="product type"
-          value={type}
-          onChange={createType} />
+
+        <select className='ProductFormInput' value={type} onChange={createType}>
+        <option value=''>Select type</option>
+        <option value='men'>Men</option>
+        <option value='women'>Women</option>
+       </select>
 
         <input
           type="text" className='ProductFormInput'
@@ -109,12 +118,7 @@ const CreateProductForm = () => {
           value={description}
           onChange={createDescription} />
 
-
-
-
           <input className= 'fileInput' type="file" onChange={updateFile} />
-
-
 
         <button className = "createProductBtn"type="submit" onClick={redirectToProductPage}> Create Product</button>
       </form>

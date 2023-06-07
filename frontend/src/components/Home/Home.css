@@ -1,6 +1,6 @@
 .home-container {
     position: relative;
-    top:800px;
+    top:1000px;
   }
 
   .hero-section {
@@ -15,8 +15,8 @@
 
   .image-collage {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     grid-gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -44,9 +44,9 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) skewY(+10deg);
+    transform: translate(-50%, -50%) skewY(+7deg);
     color: #fff;
-    font-size: 55px;
+    font-size: 25px;
     font-weight: bold;
     text-align: center;
     padding: 10px;
@@ -58,9 +58,9 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) skewY(-10deg);
+    transform: translate(-50%, -50%) skewY(-7deg);
     color: #fff;
-    font-size: 60px;
+    font-size: 25px;
     font-weight: bolder;
     text-align: center;
     padding: 10px;
@@ -71,7 +71,7 @@
 
   .hero-content {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
 
   .hero-title {
