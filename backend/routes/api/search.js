@@ -1,37 +1,24 @@
-const express = require('express')
-const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { User, Product, Cart, Review} = require('../../db/models');
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
-const {newError} = require('../../utils/newError');
+const express = require('express');
+const { Product } = require('../../db/models');
+const { Op } = require('sequelize');
 const router = express.Router();
 
 router.get("/:q", async (req, res, next) => {
-
-    const searchTerm = req.query.q;
-
-    // console.log(searchTerm)
-
-    try {
-
-      const results = await Product.findAll({
-        where: {
-          name: {
-            [Op.iLike]: `%${searchTerm}%`,
-          },
+  const searchTerm = req.params.q;
+  try {
+    const results = await Product.findAll({
+      where: {
+        name: {
+          [Op.like]: `%${searchTerm}%`,
         },
-      });
+      },
+    });
 
-      res.json(results);
-
-    } catch (error) {
-      console.error('Error performing search:', error);
-      res.status(500).json({ error: 'An error occurred while performing the search' });
-    }
-
-
-})
-
-
+    res.json(results);
+  } catch (error) {
+    console.error('Error performing search:', error);
+    res.status(500).json({ error: 'An error occurred while performing the search' });
+  }
+});
 
 module.exports = router;
