@@ -4,6 +4,7 @@ import * as sessionActions from '../../store/session';
 import { useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 
+
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
@@ -32,14 +33,11 @@ function ProfileButton({ user }) {
   }, [showMenu]);
 
   const logout = (e) => {
-    // e.preventDefault();
     dispatch(sessionActions.logout());
   };
 
   return (
     <>
-    <div className="Navigation">
-
       <button className="profilebutton" onClick={openMenu}>
       </button>
 
@@ -55,8 +53,6 @@ function ProfileButton({ user }) {
           </li>
         </ul>
       )}
-
-</div>
     </>
   );
 }

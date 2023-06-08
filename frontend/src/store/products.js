@@ -38,7 +38,7 @@ export const getProductsThunk = () => async (dispatch) => {
 
     if(response.ok) {
         const products = await response.json();
-    
+
         return dispatch(loadProducts(products.products))
 
     }
@@ -148,8 +148,9 @@ const productsReducer = (state = initialState, action) => {
             return newState
 
         case EDIT_PRODUCT:
-            newState = { ...state };
-             newState[action.product.id] = action.product;
+
+            const updateProduct = {}
+            updateProduct[action.product.id] = action.product;
             return newState;
 
         case DELETE_PRODUCT:

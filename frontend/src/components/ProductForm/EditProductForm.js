@@ -20,8 +20,6 @@ const EditProductForm = ({productId}) => {
     const productDescription = useSelector(state => state.productState[productId]?.description)
     const productImage = useSelector(state => state.productState[productId]?.image)
 
-
-
     const [name, setName] = useState(productName || "")
     const [color, setColor] = useState(productColor || "")
     const [price, setPrice] = useState(productPrice  || "")
@@ -66,7 +64,6 @@ const EditProductForm = ({productId}) => {
         const file = e.target.files[0];
         if (file) setImage(file);
       };
-
 
 
     return sessionUser.user.id ? (
@@ -147,8 +144,6 @@ const EditProductForm = ({productId}) => {
       ):
       null;
 
-
 }
-
 
 export default EditProductForm
