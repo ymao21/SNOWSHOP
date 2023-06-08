@@ -44,7 +44,7 @@
 
   .SearchPage {
     position: absolute;
-    top: 14%;
+    top: 130px;
     left: 50%;
     width: 50%;
     background-color: #fff;
@@ -64,4 +64,3 @@
   .SearchResultItem:hover {
     background-color: #f5f5f5;
   }
-

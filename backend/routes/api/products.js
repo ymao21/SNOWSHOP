@@ -98,10 +98,10 @@ router.post("/", requireAuth, singleMulterUpload("image"), async (req, res, next
 router.put("/:productId" , requireAuth , async (req, res, next) => {
     const {productId} = req.params;
     const userId = req.user.id;
-    const {name, price, type, color, category,description, previewImageUrl} = req.body
+    const {name, price, type, color, category, description, previewImageUrl} = req.body
     const product = await Product.findByPk(productId);
 
-
+    console.log("body", req.body)
 
     if(!product){
         const err = newError("Product couldn't be found", 404)
