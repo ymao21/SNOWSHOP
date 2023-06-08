@@ -44,10 +44,7 @@ const SearchBar = () => {
             value={search}
             onChange={handleInput}
           />
-             <BsSearchHeart className='SearchSymbol'/>
         </div>
-
-
       </form>
 
       {isCursorInSearchInput && (

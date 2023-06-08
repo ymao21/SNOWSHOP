@@ -10,24 +10,29 @@ const SubNavigation = () => {
   const history = useHistory();
 
   const redirectCart = () => {
-    history.push('./cart');
+    history.push('/cart');
   };
 
   return (
     <div className="subNavigationContainer">
-     <img src= {logo} className = "logo" alt="logo"></img>
+      
+     <img  src= {logo} className = "logo" alt="logo"></img>
+
 
       <OpenModalButton
-        className="listProductButton"
+        // className="listProductButton"
         modalComponent={<CreateProductForm />}
         buttonText="List My Product"
       />
-
       <SearchBar />
-
+      <img
+          src="https://img.uxwing.com/wp-content/themes/uxwing/download/user-interface/search-icon.png"
+          alt="SearchSymbol"
+          className="SearchSymbol"
+        />
       <button className="cartButton" onClick={redirectCart}>
         <img
-          src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png"
+          src="https://www.freeiconspng.com/thumbs/bags-icon/bag-icon-6.png"
           alt="Shopping Cart"
           className="cartIcon"
         />

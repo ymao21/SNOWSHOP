@@ -149,9 +149,9 @@ const productsReducer = (state = initialState, action) => {
 
         case EDIT_PRODUCT:
 
-            const updateProduct = {}
+            const updateProduct = {...state}
             updateProduct[action.product.id] = action.product;
-            return newState;
+            return updateProduct;
 
         case DELETE_PRODUCT:
             newState = {...state}
