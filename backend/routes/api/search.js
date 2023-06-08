@@ -17,7 +17,7 @@ router.get("/:q", async (req, res, next) => {
     res.json(results);
   } catch (error) {
     console.error('Error performing search:', error);
-    res.status(500).json({ error: 'An error occurred while performing the search' });
+
   }
 });
 

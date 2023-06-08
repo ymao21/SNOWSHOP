@@ -41,6 +41,19 @@ module.exports = {
         rating: 3.0,
         body: 'Beginner friendly',
       },
+      {
+        userId: 1,
+        productId: 1,
+        rating: 3.0,
+        body: 'Wish it was smaller',
+      },
+      
+      {
+        userId: 1,
+        productId: 2,
+        rating: 3.0,
+        body: 'Fantastic',
+      },
     ], {});
   },
 

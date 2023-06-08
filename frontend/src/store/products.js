@@ -38,6 +38,7 @@ export const getProductsThunk = () => async (dispatch) => {
 
     if(response.ok) {
         const products = await response.json();
+    
         return dispatch(loadProducts(products.products))
 
     }
@@ -105,7 +106,9 @@ export const editProductThunk = (payload) => async (dispatch) => {
       console.log("payload", payload)
 
     if(response.ok) {
+
         const productEdit = await response.json();
+        console.log("productEdit", productEdit)
         dispatch(editProduct(productEdit));
         return productEdit
     }
