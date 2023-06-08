@@ -24,7 +24,7 @@
 
 }
 
-.SearchButton{
+.SearchSymbol{
     margin-left: 5px;
     cursor: pointer;
     outline: 0;
@@ -65,14 +65,15 @@
 
   .SearchPage {
     position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
+    top: 80%;
+    left: 40%;
+    width: 50%;
     background-color: #fff;
-    border: 1px solid #ced4da;
+
     border-top: none;
     border-radius: 0 0 4px 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 3;
   }
 
   .SearchResultItem {

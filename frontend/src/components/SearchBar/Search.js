@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadSearchThunk } from '../../store/search';
 import { useHistory } from "react-router-dom";
+import {BiSearch} from 'react-icons/bi';
 
 const SearchBar = () => {
   const [search, setSearch] = useState('');
@@ -44,9 +45,8 @@ const SearchBar = () => {
             onChange={handleInput}
           />
         </div>
-        <button className="SearchButton" type="submit">
-          Search
-        </button>
+
+       <BiSearch className='SearchSymbol'/>
       </form>
 
       {isCursorInSearchInput && (
