@@ -26,25 +26,6 @@
 
 .SearchSymbol{
     margin-left: 5px;
-    cursor: pointer;
-    outline: 0;
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1;
-    text-align: center;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: 6px 12px;
-    font-size: 1rem;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    color: #03045E;
-    border-color: #03045E;
-    :hover {
-        color: #fff;
-        background-color: #0d6efd;
-        border-color: #0d6efd;
-    }
 
 }
 
@@ -53,9 +34,6 @@
     border: none;
     cursor: pointer;
     text-decoration: none;
-    :hover {
-        border-color: #e3e5e8;
-    }
   }
 
   .cartIcon {
@@ -65,7 +43,7 @@
 
   .SearchPage {
     position: absolute;
-    top: 80%;
+    top: 30%;
     left: 40%;
     width: 50%;
     background-color: #fff;

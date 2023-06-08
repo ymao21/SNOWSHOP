@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadSearchThunk } from '../../store/search';
 import { useHistory } from "react-router-dom";
-import {BiSearch} from 'react-icons/bi';
+import {BsSearchHeart} from 'react-icons/bs';
 
 const SearchBar = () => {
   const [search, setSearch] = useState('');
@@ -44,9 +44,10 @@ const SearchBar = () => {
             value={search}
             onChange={handleInput}
           />
+             <BsSearchHeart className='SearchSymbol'/>
         </div>
 
-       <BiSearch className='SearchSymbol'/>
+
       </form>
 
       {isCursorInSearchInput && (
