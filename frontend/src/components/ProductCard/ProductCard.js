@@ -11,7 +11,7 @@ const ProductCard = ({ product }) => {
         <img className='productimg' src={product.previewImageUrl} alt='productimg' />
       </a>
 
-      <Link className='titlelink' key={product.id} to={`/products/${product.id}`}>
+      <Link className='titlelink' key={product?.id} to={`/products/${product.id}`}>
         {product.name}
       </Link>
 

@@ -1,8 +1,9 @@
 .subNavigationContainer {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-evenly;
     margin: 15px;
+    height: 500px;
   }
 
   .cartButton {

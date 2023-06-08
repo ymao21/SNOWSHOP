@@ -31,7 +31,9 @@ const ProductDetail = () => {
     history.push('/cart');
   };
 
-  const isOwner =sessionuser && sessionuser.user.id === product?.userId
+  // console.log(sessionuser)
+
+  const isOwner = sessionuser && sessionuser.user.id === product?.userId
 
     return (
       <div className='productBackgroundContainer'>

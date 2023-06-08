@@ -38,7 +38,6 @@ export const getProductsThunk = () => async (dispatch) => {
 
     if(response.ok) {
         const products = await response.json();
-        // console.log("products", products.products)
         return dispatch(loadProducts(products.products))
 
     }
@@ -93,13 +92,18 @@ export const editProductThunk = (payload) => async (dispatch) => {
     formData.append("category",payload.category)
     formData.append("type",  payload.type)
     formData.append("description", payload.description)
-    if (payload.image) formData.append("image", payload.image);
+    if (payload.image) formData.append("image", payload.image)
 
-    const response = await csrfFetch(`/api/products/${payload.productId}`,{
-    method: "PUT",
-	headers: { "Content-Type": "application/json" },
-    body: formData,
-});
+    const response = await csrfFetch(`/api/products/${payload.productId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        body: formData,
+      });
+
+      console.log("payload", payload)
+
     if(response.ok) {
         const productEdit = await response.json();
         dispatch(editProduct(productEdit));
@@ -107,6 +111,7 @@ export const editProductThunk = (payload) => async (dispatch) => {
     }
     return response
 }
+
 
 export const deleteProductThunk = (productId) => async (dispatch) => {
     const response = await csrfFetch(`/api/products/${productId}`, {
@@ -138,6 +143,11 @@ const productsReducer = (state = initialState, action) => {
             newState = {...state}
             newState[action.product.id] = action.product
             return newState
+
+        case EDIT_PRODUCT:
+            newState = { ...state };
+             newState[action.product.id] = action.product;
+            return newState;
 
         case DELETE_PRODUCT:
             newState = {...state}

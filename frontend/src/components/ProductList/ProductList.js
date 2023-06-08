@@ -22,7 +22,7 @@ const ProductList = () => {
 
           <div className='eachProduct'>
             {productArr.map((product) => {
-            return <ProductCard key={product.id} product={product}/>
+            return <ProductCard key={product?.id} product={product}/>
             })}
           </div>
         </main>

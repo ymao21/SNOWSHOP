@@ -20,6 +20,8 @@ const EditProductForm = ({productId}) => {
     const productDescription = useSelector(state => state.productState[productId]?.description)
     const productImage = useSelector(state => state.productState[productId]?.image)
 
+
+
     const [name, setName] = useState(productName || "")
     const [color, setColor] = useState(productColor || "")
     const [price, setPrice] = useState(productPrice  || "")
@@ -42,6 +44,7 @@ const EditProductForm = ({productId}) => {
         setErrors([])
 
         const payload = {
+         productId,
          name,
          color,
          price,
@@ -64,6 +67,8 @@ const EditProductForm = ({productId}) => {
         if (file) setImage(file);
       };
 
+
+
     return sessionUser.user.id ? (
         <section className="≈">
           <form className="editproductform" onSubmit={handleSubmit}>
@@ -83,18 +88,18 @@ const EditProductForm = ({productId}) => {
           onChange={editProductColor}
             >
           <option value="">Select Color</option>
-          <option value="red">Red</option>
-          <option value="orange">Orange</option>
-          <option value="yellow">Yellow</option>
-          <option value="green">Green</option>
-          <option value="blue">Blue</option>
-          <option value="purple">Purple</option>
-          <option value="pink">Pink</option>
-          <option value="silver">Silver</option>
-          <option value="gold">Gold</option>
-          <option value="black">Black</option>
-          <option value="white">White</option>
-          <option value="other">Other</option>
+          <option value="red">red</option>
+          <option value="orange">orange</option>
+          <option value="yellow">yellow</option>
+          <option value="green">green</option>
+          <option value="blue">blue</option>
+          <option value="purple">purple</option>
+          <option value="pink">pink</option>
+          <option value="silver">silver</option>
+          <option value="gold">gold</option>
+          <option value="black">black</option>
+          <option value="white">white</option>
+          <option value="other">other</option>
            </select>
 
             <input  className='ProductFormInput'
@@ -109,12 +114,12 @@ const EditProductForm = ({productId}) => {
           onChange={editProductCategory}
            >
           <option value="">Select Category</option>
-          <option value="snowboard">Snowboard</option>
-          <option value="ski">Ski</option>
-          <option value="snowboard boots">Snowboard Boots</option>
-          <option value="ski boots">Ski Boots</option>
-          <option value="jackets">Jackets</option>
-          <option value="other">Other</option>
+          <option value="snowboard">snowboard</option>
+          <option value="ski">ski</option>
+          <option value="snowboard boots">snowboard boots</option>
+          <option value="ski boots">ski Boots</option>
+          <option value="jackets">jackets</option>
+          <option value="other">other</option>
             </select>
 
           <select
@@ -123,8 +128,8 @@ const EditProductForm = ({productId}) => {
           onChange={editProductType}
           >
           <option value="">Select Type</option>
-          <option value="men">Men</option>
-          <option value="women">Women</option>
+          <option value="men">men</option>
+          <option value="women">women</option>
         </select>
 
             <input  className='ProductFormInput'

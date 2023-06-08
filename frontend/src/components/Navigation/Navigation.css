@@ -6,7 +6,7 @@
     padding: 10px;
     display: flex;
     justify-content: flex-end;
-    position: sticky;
+    height: 40px;
     top: 5px;
     z-index:3;
 }

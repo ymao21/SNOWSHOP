@@ -62,3 +62,25 @@
     width: 24px;
     height: 24px;
   }
+
+  .SearchPage {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .SearchResultItem {
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .SearchResultItem:hover {
+    background-color: #f5f5f5;
+  }

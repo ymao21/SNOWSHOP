@@ -101,6 +101,8 @@ router.put("/:productId" , requireAuth , async (req, res, next) => {
     const {name, price, type, color, category,description, previewImageUrl} = req.body
     const product = await Product.findByPk(productId);
 
+
+
     if(!product){
         const err = newError("Product couldn't be found", 404)
         return next(err)
@@ -116,6 +118,7 @@ router.put("/:productId" , requireAuth , async (req, res, next) => {
     if(previewImageUrl) product.previewImageUrl = previewImageUrl
 
     await product.save()
+
     return res.json(product)
 })
 
