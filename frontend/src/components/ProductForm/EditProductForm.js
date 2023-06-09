@@ -18,7 +18,8 @@ const EditProductForm = ({productId}) => {
     const productCateogry = useSelector(state => state.productState[productId]?.category)
     const productType = useSelector(state => state.productState[productId]?.type)
     const productDescription = useSelector(state => state.productState[productId]?.description)
-    const productImage = useSelector(state => state.productState[productId]?.image)
+
+    // const productImage = useSelector(state => state.productState[productId]?.image)
 
     const [name, setName] = useState(productName || "")
     const [color, setColor] = useState(productColor || "")
@@ -26,7 +27,7 @@ const EditProductForm = ({productId}) => {
     const [category, setCateogry] = useState(productCateogry || "")
     const [type, setType] = useState(productType || "")
     const [description, setDescription] = useState(productDescription || "")
-    const [image, setImage] = useState(productImage || "")
+    const [image, setImage] = useState(null)
 
 
     const editProductName = (e) => setName(e.target.value)

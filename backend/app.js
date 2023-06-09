@@ -50,6 +50,7 @@ app.use((_req, _res, next) => {
   });
 
   const { ValidationError } = require('sequelize');
+const { IoTRoboRunner } = require('aws-sdk');
 app.use((err, _req, _res, next) => {
     if (err instanceof ValidationError) {
       err.errors = err.errors.map((e) => e.message);

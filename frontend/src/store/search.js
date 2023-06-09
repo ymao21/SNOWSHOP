@@ -38,7 +38,6 @@ const searchReducer = (state = initialState, action) => {
       action.search.forEach((product) => {
         newState[product.id] = product;
       });
-      console.log("newState", newState)
       return newState;
 
     default:

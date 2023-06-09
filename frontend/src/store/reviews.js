@@ -104,9 +104,9 @@ const reviewsReducer = (state = initialState, action) => {
                 return newState;
 
             case EDIT_REVIEW:
-                newState = { ...state };
-                newState[action.review.id] = action.review;
-                return newState;
+                const EditReviewState = { ...state };
+                EditReviewState[action.review.id] = action.review;
+                return EditReviewState;
 
             case DELETE_REVIEW:
             newState = {...state}

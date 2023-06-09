@@ -76,7 +76,7 @@ const EditReviewForm = ({ review }) => {
           <label key={index}>
             <input
               className="starRating"
-              name="rating"
+              // name="ratingValue"
               max="5"
               min="1"
               required

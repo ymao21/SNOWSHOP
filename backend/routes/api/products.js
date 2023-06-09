@@ -75,8 +75,6 @@ router.post("/", requireAuth, singleMulterUpload("image"), async (req, res, next
 
 
     const {name, price, type, color, category, description} = req.body
-
-    // console.log("req.body", req.body)
     const previewImageUrl = await singlePublicFileUpload(req.file)
 
     const newProduct = await Product.create({
@@ -95,18 +93,20 @@ router.post("/", requireAuth, singleMulterUpload("image"), async (req, res, next
 });
 
 //edit product
-router.put("/:productId" , requireAuth , async (req, res, next) => {
+router.put("/:productId" , requireAuth , singleMulterUpload("image"), async (req, res, next) => {
     const {productId} = req.params;
     const userId = req.user.id;
-    const {name, price, type, color, category, description, previewImageUrl} = req.body
+    const {name, price, type, color, category, description} = req.body
     const product = await Product.findByPk(productId);
 
-    console.log("body", req.body)
+    const previewImageUrl = await singlePublicFileUpload(req.file)
 
     if(!product){
         const err = newError("Product couldn't be found", 404)
         return next(err)
     }
+
+    console.log("req.body", req.body)
 
     if(userId) product.userId = userId
     if(name) product.name = name
