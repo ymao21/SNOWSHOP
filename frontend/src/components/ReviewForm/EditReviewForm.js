@@ -13,25 +13,26 @@ const EditReviewForm = ({ review }) => {
 
   const reviewBody = review.body;
   const reviewRating = review.rating;
+
   const reviewId = review.id;
 
   const [body, setBody] = useState(reviewBody);
-  const [rating, setRating] = useState(reviewRating);
+  const [rating, setRating] = useState(Number(reviewRating) || 0);
 
   useEffect(() => {
     setBody(review.body || '');
-    setRating(review.rating || 0);
+    setRating(Number(review.rating) || 0);
   }, [review.body, review.rating]);
 
   const updateBody = e => setBody(e.target.value);
-  const updateRating = ratingValue => setRating(ratingValue);
+  const updateRating = ratingValue => setRating(Number(ratingValue));
 
   const submitHandler = e => {
     e.preventDefault();
 
     setErrors([]);
 
-    if (body.length === 0 && rating.length === 0) {
+    if (body.length === 0 && rating === 0) {
       setErrors(['Review and rating are required']);
     }
 
@@ -76,14 +77,14 @@ const EditReviewForm = ({ review }) => {
           <label key={index}>
             <input
               className="starRating"
-              // name="ratingValue"
+              name="ratingValue"
               max="5"
               min="1"
               required
-              value={Math.floor(ratingValue)}
+              value={ratingValue}
               type="radio"
               onChange={() => updateRating(ratingValue)}
-              onClick={() => setRating(Math.floor(ratingValue))}
+              onClick={() => setRating(ratingValue)}
             />
             <FaStar
               className="EditReviewstar"
@@ -101,7 +102,6 @@ const EditReviewForm = ({ review }) => {
       </button>
     </form>
   ) : null;
-
 };
 
 export default EditReviewForm;

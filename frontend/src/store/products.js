@@ -67,7 +67,7 @@ export const createProductThunk = (payload) => async (dispatch) => {
     // if (payload.image) formData.append("image", payload.image);
 
 
-    
+
 
     const response = await csrfFetch(`/api/products/`,{
         method: "POST",
@@ -87,34 +87,51 @@ export const createProductThunk = (payload) => async (dispatch) => {
 
 
 export const editProductThunk = (payload) => async (dispatch) => {
-    const formData = new FormData();
-    formData.append("name", payload.name)
-    formData.append("color",  payload.color)
-    formData.append("price",payload.price)
-    formData.append("category",payload.category)
-    formData.append("type",  payload.type)
-    formData.append("description", payload.description)
-    // if (payload.image) formData.append("image", payload.image)
+  const formData = new FormData();
+  formData.append("name", payload.name);
+  formData.append("color", payload.color);
+  formData.append("price", payload.price);
+  formData.append("category", payload.category);
+  formData.append("type", payload.type);
+  formData.append("description", payload.description);
 
-    console.log("payload.image", payload.image )
-
+  if (payload.image) {
+    formData.append("image", payload.image);
     const response = await csrfFetch(`/api/products/${payload.productId}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        body: formData,
-      });
+      method: "PUT",
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      body: formData,
+    });
 
-    if(response.ok) {
-
-        const productEdit = await response.json();
-        console.log("productEdit", productEdit)
-        dispatch(editProduct(productEdit));
-        return productEdit
+    if (response.ok) {
+      const productEdit = await response.json();
+      console.log("productEdit", productEdit);
+      dispatch(editProduct(productEdit));
+      return productEdit;
     }
-    return response
-}
+    return response;
+  } else {
+
+      const response = await csrfFetch(`/api/products/${payload.productId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        body: JSON.stringify(payload)
+      },
+    });
+
+    if (response.ok) {
+      const productEdit = await response.json();
+      console.log("productEdit", productEdit);
+      dispatch(editProduct(productEdit));
+      return productEdit;
+    }
+    return response;
+  }
+};
+
 
 
 export const deleteProductThunk = (productId) => async (dispatch) => {
