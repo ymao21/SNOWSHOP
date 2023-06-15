@@ -23,3 +23,25 @@ margin-top: 50px;
     padding: 5px;
     width: 200px;
 }
+
+.subFilters {
+    position: static;
+    top: 40%;
+    left: 0%;
+    z-index: 3;
+    background-color: rgb(108, 100, 100);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    word-break: break-word;
+
+  }
+  .subFilters button {
+    color: white;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 20px;
+  }
