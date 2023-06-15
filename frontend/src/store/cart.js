@@ -46,6 +46,17 @@ export const loadAllCartThunk = () => async (dispatch) => {
   return response;
 };
 
+export const addToCartThunk = (productId) => async (dispatch) => {
+  const response = await csrfFetch(`/products/${productId}`);
+
+  if (response.ok) {
+    const product = await response.json();
+    dispatch(addToCart(product));
+    return product;
+  }
+  return response;
+};
+
 const initialState = {
   cartItems: [],
 };

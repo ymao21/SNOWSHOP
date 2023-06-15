@@ -77,14 +77,19 @@ const EditReviewForm = ({ review }) => {
           <label key={index}>
             <input
               className="starRating"
-              name="ratingValue"
               max="5"
               min="1"
               required
-              value={ratingValue}
+              value={rating}
               type="radio"
               onChange={() => updateRating(ratingValue)}
-              onClick={() => setRating(ratingValue)}
+              onClick={() => {
+                if (rating === ratingValue) {
+                  setRating(0);
+                } else {
+                  setRating(ratingValue);
+                }
+              }}
             />
             <FaStar
               className="EditReviewstar"

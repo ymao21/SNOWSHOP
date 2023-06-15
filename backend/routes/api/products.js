@@ -87,7 +87,6 @@ router.post("/", requireAuth, singleMulterUpload("image"), async (req, res, next
         description,
         previewImageUrl
     })
-    // setTokenCookie(res, user);
 
     return res.json(newProduct)
 });
@@ -105,8 +104,6 @@ router.put("/:productId" , requireAuth , singleMulterUpload("image"), async (req
         const err = newError("Product couldn't be found", 404)
         return next(err)
     }
-
-    console.log("req.body", req.body)
 
     if(userId) product.userId = userId
     if(name) product.name = name

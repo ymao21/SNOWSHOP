@@ -55,13 +55,11 @@ const CreateReviewForm =() => {
 
     return sessionUser.user.id ? (
         <>
-
          <form className = "reviewForm" onSubmit = {submitHandler}>
 
             <div className='RevieError'>
         {errors.length > 0 && errors.map((error, i) => {
                return <div key={i} >{error}</div>
-
            })}
             </div>
 
@@ -71,7 +69,6 @@ const CreateReviewForm =() => {
            <br/>
 
            <input className= "reviewInput"value={body} onChange = {createBody} />
-
 
            <div className="star-rating">
 
@@ -100,7 +97,6 @@ const CreateReviewForm =() => {
       />
 
       </label>
-
             );
             })}
 

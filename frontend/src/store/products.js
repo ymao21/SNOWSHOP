@@ -64,10 +64,14 @@ export const createProductThunk = (payload) => async (dispatch) => {
     formData.append("category",payload.category)
     formData.append("type",  payload.type)
     formData.append("description", payload.description)
-    // if (payload.image) formData.append("image", payload.image);
-
-
-
+    if (payload.image) {
+        formData.append("image", payload.image);
+      } else {
+        formData.append(
+            "image",
+            "https://digitalfinger.id/wp-content/uploads/2019/12/no-image-available-icon-6-600x375.png.webp"
+          );
+        }
 
     const response = await csrfFetch(`/api/products/`,{
         method: "POST",
@@ -97,6 +101,12 @@ export const editProductThunk = (payload) => async (dispatch) => {
 
   if (payload.image) {
     formData.append("image", payload.image);
+  }else {
+    formData.append(
+      "image",
+      "https://getitdone.sandiego.gov/resource/1463537407000/NoImage"
+    );
+  }
     const response = await csrfFetch(`/api/products/${payload.productId}`, {
       method: "PUT",
       headers: {
@@ -112,26 +122,7 @@ export const editProductThunk = (payload) => async (dispatch) => {
       return productEdit;
     }
     return response;
-  } else {
-
-      const response = await csrfFetch(`/api/products/${payload.productId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        body: JSON.stringify(payload)
-      },
-    });
-
-    if (response.ok) {
-      const productEdit = await response.json();
-      console.log("productEdit", productEdit);
-      dispatch(editProduct(productEdit));
-      return productEdit;
-    }
-    return response;
-  }
-};
-
+  };
 
 
 export const deleteProductThunk = (productId) => async (dispatch) => {

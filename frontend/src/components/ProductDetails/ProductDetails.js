@@ -7,8 +7,7 @@ import { useHistory } from 'react-router-dom';
 import OpenModalButton from "../OpenModalButton";
 import EditProductForm from '../ProductForm/EditProductForm';
 import ReviewList from '../ReviewList/ReviewList'
-import CreateProductForm from '../ProductForm/CreateProductForm';
-import { addToCart } from '../../store/cart';
+import { addToCartThunk } from '../../store/cart';
 
 const ProductDetail = () => {
   const dispatch = useDispatch();
@@ -26,12 +25,10 @@ const ProductDetail = () => {
     history.push(`/products`)
   }
 
-  const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
+  const handleAddToCart =  () => {
+     dispatch(addToCartThunk(productId));
     history.push('/cart');
   };
-
-  // console.log(sessionuser)
 
   const isOwner = sessionuser && sessionuser.user.id === product?.userId
 
