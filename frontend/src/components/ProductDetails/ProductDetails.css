@@ -69,11 +69,6 @@
     cursor: pointer;
   }
 
-  button:hover {
-    background: #03045E;
-    transition: all .4s ease-in-out;
-    color: white;
-  }
 
   /* .ModalBtn{
     margin-top: 7px;

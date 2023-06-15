@@ -52,18 +52,20 @@ justify-content: center;
     text-overflow: ellipsis;
     transition: all .14s ease-out;
     white-space: nowrap;
-    :hover {
-        box-shadow: 4px 4px 0 #000;
-        transform: translate(-4px,-4px);
-    }
-    :focus-visible{
-        outline-offset: 1px;
-    }
 
+
+}
+.filterButtons:hover {
+    box-shadow: 4px 4px 0 #000;
+        transform: translate(-4px,-4px);
+}
+
+.filterButtons:focus-visible{
+    outline-offset: 1px;
 }
 
 .subFilters {
-    /* position: absolute; */
+
     top: 55%;
     left: 0%;
     z-index: 3;
