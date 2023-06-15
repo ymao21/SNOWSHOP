@@ -65,8 +65,9 @@ const ProductList = () => {
             <button onClick={() => handleWomenCategoryChange('pants')}>Pants</button>
             <button onClick={() => handleWomenCategoryChange('goggles')}>Goggles</button>
             <button onClick={() => handleWomenCategoryChange('fleece')}>Fleece</button>
-            <button onClick={() => handleWomenCategoryChange('base layers')}>Base Layers</button>
-            <button onClick={() => handleWomenCategoryChange('hoodies')}>Hoodies</button>
+            <button onClick={() => handleWomenCategoryChange('snowboards')}>Snowboards</button>
+            <button onClick={() => handleWomenCategoryChange('skis')}>Skis</button>
+            <button onClick={() => handleWomenCategoryChange('boots')}>Boots</button>
             <button onClick={() => handleWomenCategoryChange('other')}>Other</button>
           </div>
         )}
@@ -77,8 +78,9 @@ const ProductList = () => {
             <button onClick={() => handleMenCategoryChange('pants')}>Pants</button>
             <button onClick={() => handleMenCategoryChange('goggles')}>Goggles</button>
             <button onClick={() => handleMenCategoryChange('fleece')}>Fleece</button>
-            <button onClick={() => handleMenCategoryChange('base layers')}>Base Layers</button>
-            <button onClick={() => handleMenCategoryChange('hoodies')}>Hoodies</button>
+            <button onClick={() => handleMenCategoryChange('snowboards')}>Snowboards</button>
+            <button onClick={() => handleMenCategoryChange('skis')}>Skis</button>
+            <button onClick={() => handleMenCategoryChange('boots')}>Boots</button>
             <button onClick={() => handleMenCategoryChange('other')}>Other</button>
           </div>
         )}
