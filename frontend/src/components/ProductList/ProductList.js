@@ -56,9 +56,9 @@ const ProductList = () => {
 
   return (
     <main className='productListContainer'>
-      <div className='filterButtons'>
-        <button onClick={() => handleFilterChange('all')}>All Products</button>
-        <button onClick={() => handleFilterChange('women')}>Women</button>
+      <div className='filterButtonsContainer'>
+        <button className='filterButtons' onClick={() => handleFilterChange('all')}>All Products</button>
+        <button  className='filterButtons' onClick={() => handleFilterChange('women')}>Women</button>
         {activeFilter === 'women' && (
           <div className='subFilters'>
             <button onClick={() => handleWomenCategoryChange('jackets')}>Jackets</button>
@@ -71,7 +71,7 @@ const ProductList = () => {
             <button onClick={() => handleWomenCategoryChange('other')}>Other</button>
           </div>
         )}
-        <button onClick={() => handleFilterChange('men')}>Men</button>
+        <button className='filterButtons' onClick={() => handleFilterChange('men')}>Men</button>
         {activeFilter === 'men' && (
           <div className='subFilters'>
             <button onClick={() => handleMenCategoryChange('jackets')}>Jackets</button>

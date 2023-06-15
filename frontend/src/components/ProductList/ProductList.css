@@ -24,9 +24,47 @@ margin-top: 50px;
     width: 200px;
 }
 
+.filterButtonsContainer {
+display: flex;
+justify-content: center;
+
+}
+
+.filterButtons {
+    font-weight: bold;
+    margin: 20px;
+    outline: 0;
+    grid-gap: 8px;
+    align-items: center;
+    background: 0 0;
+    border: 1px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    flex-shrink: 0;
+    font-size: 16px;
+    gap: 8px;
+    justify-content: center;
+    line-height: 1.5;
+    overflow: hidden;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all .14s ease-out;
+    white-space: nowrap;
+    :hover {
+        box-shadow: 4px 4px 0 #000;
+        transform: translate(-4px,-4px);
+    }
+    :focus-visible{
+        outline-offset: 1px;
+    }
+
+}
+
 .subFilters {
-    position: static;
-    top: 40%;
+    /* position: absolute; */
+    top: 55%;
     left: 0%;
     z-index: 3;
     background-color: rgb(108, 100, 100);
@@ -44,4 +82,12 @@ margin-top: 50px;
     outline: none;
     cursor: pointer;
     padding: 20px;
+
+  }
+  .subFilters button:hover,
+  .subFilters button:focus {
+    font-weight: bold;
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+    text-decoration: underline;
   }
