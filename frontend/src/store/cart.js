@@ -29,9 +29,16 @@ export const editQuantity = (cartItemId, newQuantity) => {
   };
 };
 
-export const clearCart = () => {
+export const deleteFromCart = (ProductId) => {
   return {
     type: CLEAR_CART,
+    ProductId
+  };
+};
+
+export const clearCart = () => {
+  return {
+    type: REMOVE_CART,
   };
 };
 
@@ -57,6 +64,21 @@ export const addToCartThunk = (productId) => async (dispatch) => {
   return response;
 };
 
+
+export const deleteCartThunk = (productId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/cart/${productId}`, {
+      method: 'DELETE'
+  })
+  if(response.ok) {
+      const removeFromCart = await response.json()
+      dispatch(deleteFromCart(removeFromCart))
+      return removeFromCart
+  }
+
+  return response;
+}
+
+
 const initialState = {
   cartItems: [],
 };
@@ -80,6 +102,12 @@ const cartReducer = (state = initialState, action) => {
           item.id === action.cartItemId ? { ...item, quantity: action.newQuantity } : item
         ),
       };
+
+      case REMOVE_CART:
+        const RemoveCart = {...state}
+        delete RemoveCart[action.productId]
+        return RemoveCart
+
     case CLEAR_CART:
       return {
         ...state,

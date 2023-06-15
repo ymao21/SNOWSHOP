@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadSearchThunk } from '../../store/search';
 import { useHistory } from "react-router-dom";
-import {BsSearchHeart} from 'react-icons/bs';
 
 const SearchBar = () => {
   const [search, setSearch] = useState('');

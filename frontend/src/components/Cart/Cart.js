@@ -1,9 +1,10 @@
 import './Cart.css'
-import { loadAllCartThunk, editQuantity, clearCart } from '../../store/cart'
+import { loadAllCartThunk, editQuantity, deleteCartThunk } from '../../store/cart'
 import { getProductsThunk } from '../../store/products';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const Cart = () => {
 
   const handleQuantityChange = (cartItemId, newQuantity) => {
     if (newQuantity <= 0) {
-      dispatch(clearCart());
+      dispatch(deleteCartThunk(cartItemId));
     } else {
       dispatch(editQuantity(cartItemId, newQuantity));
     }
