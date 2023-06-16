@@ -71,11 +71,17 @@ router.get("/:productId", async (req, res, next) => {
 
 //create product
 router.post("/", requireAuth, singleMulterUpload("image"), async (req, res, next) => {
-    const userId = req.user.id
+    const userId = req.user.id;
 
+    const { name, price, type, color, category, description } = req.body;
+    let previewImageUrl = "";
 
-    const {name, price, type, color, category, description} = req.body
-    const previewImageUrl = await singlePublicFileUpload(req.file)
+    if (req.file) {
+        previewImageUrl = await singlePublicFileUpload(req.file);
+    } else {
+        previewImageUrl =
+            "https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png";
+    }
 
     const newProduct = await Product.create({
         userId,
@@ -85,11 +91,12 @@ router.post("/", requireAuth, singleMulterUpload("image"), async (req, res, next
         color,
         category,
         description,
-        previewImageUrl
-    })
+        previewImageUrl,
+    });
 
-    return res.json(newProduct)
+    return res.json(newProduct);
 });
+
 
 //edit product
 router.put("/:productId" , requireAuth , singleMulterUpload("image"), async (req, res, next) => {
@@ -98,7 +105,12 @@ router.put("/:productId" , requireAuth , singleMulterUpload("image"), async (req
     const {name, price, type, color, category, description} = req.body
     const product = await Product.findByPk(productId);
 
-    const previewImageUrl = await singlePublicFileUpload(req.file)
+    if (req.file) {
+        previewImageUrl = await singlePublicFileUpload(req.file);
+    } else {
+        previewImageUrl =
+            "https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png";
+    }
 
     if(!product){
         const err = newError("Product couldn't be found", 404)
