@@ -27,24 +27,19 @@ const ProductDetail = () => {
 
   const handleAddToCart =  () => {
      dispatch(addToCartThunk(productId));
-    history.push('/cart');
+
   };
 
   const isOwner = sessionuser && sessionuser.user.id === product?.userId
 
     return (
       <div className='productBackgroundContainer'>
-
     <div className="ProductDetailContainer">
-
       <img className='productimg' src = {product?.previewImageUrl} alt = "productimg" />
       <div>
      <div className='productInfo'>
-
     <div className='productInfoName'> Name: {product?.name} </div>
-
     <br/>
-
     <div className='productInfoPrice'>  $ {product?.price}  </div>
     <br/>
     <div className='productInfoDesc'>Description: {product?.description}</div>
@@ -57,7 +52,6 @@ const ProductDetail = () => {
     <div className="addToCartBtn">
       <button className="add" onClick= {handleAddToCart}>Add to Cart</button>
     </div>
-
 
     </div >
      <OpenModalButton
