@@ -29,16 +29,16 @@ export const editQuantity = (cartItemId, newQuantity) => {
   };
 };
 
-export const deleteFromCart = (ProductId) => {
+export const deleteFromCart = (productId) => {
   return {
-    type: CLEAR_CART,
-    ProductId
+    type: REMOVE_CART,
+    productId,
   };
 };
 
 export const clearCart = () => {
   return {
-    type: REMOVE_CART,
+    type: CLEAR_CART,
   };
 };
 
@@ -54,15 +54,17 @@ export const loadAllCartThunk = () => async (dispatch) => {
 };
 
 export const addToCartThunk = (productId) => async (dispatch) => {
-  const response = await csrfFetch(`/products/${productId}`);
+  const response = await csrfFetch(`/api/products/${productId}`);
 
   if (response.ok) {
     const product = await response.json();
     dispatch(addToCart(product));
     return product;
   }
+
   return response;
 };
+
 
 
 export const deleteCartThunk = (productId) => async (dispatch) => {
@@ -102,12 +104,11 @@ const cartReducer = (state = initialState, action) => {
           item.id === action.cartItemId ? { ...item, quantity: action.newQuantity } : item
         ),
       };
-
-      case REMOVE_CART:
-        const RemoveCart = {...state}
-        delete RemoveCart[action.productId]
-        return RemoveCart
-
+    case REMOVE_CART:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter((item) => item.id !== action.productId),
+      };
     case CLEAR_CART:
       return {
         ...state,

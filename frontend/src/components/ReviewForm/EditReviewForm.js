@@ -4,20 +4,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { editReviewThunk } from '../../store/reviews';
 import { FaStar } from 'react-icons/fa';
 
-const EditReviewForm = ({ review }) => {
+const EditReviewForm = ({ review , setIsEditing}) => {
   const dispatch = useDispatch();
-  const [hover, setHover] = useState(0);
   const sessionUser = useSelector(state => state.session.user);
   const sessionUserId = sessionUser.user.id;
   const [errors, setErrors] = useState([]);
 
   const reviewBody = review.body;
   const reviewRating = review.rating;
-
   const reviewId = review.id;
 
   const [body, setBody] = useState(reviewBody);
   const [rating, setRating] = useState(Number(reviewRating) || 0);
+  const [hover, setHover] = useState(0);
 
   useEffect(() => {
     setBody(review.body || '');
@@ -45,7 +44,7 @@ const EditReviewForm = ({ review }) => {
     if (errors.length === 0) {
       dispatch(editReviewThunk(payload, sessionUser.user))
         .then(() => {
-          setBody("");
+          setBody('');
           setRating(0);
         })
         .catch(async response => {
@@ -53,6 +52,42 @@ const EditReviewForm = ({ review }) => {
           if (data.errors) setErrors(data.errors);
         });
     }
+
+    setIsEditing(false)
+  };
+
+  const renderStars = () => {
+    return [...Array(5)].map((star, index) => {
+      const ratingValue = index + 1;
+
+      return (
+        <label key={index}>
+          <input
+            className="starRating"
+            max="5"
+            min="1"
+            required
+            value={rating}
+            type="radio"
+            onChange={() => updateRating(ratingValue)}
+            onClick={() => {
+              if (rating === ratingValue) {
+                setRating(0);
+              } else {
+                setRating(ratingValue);
+              }
+            }}
+          />
+          <FaStar
+            className="EditReviewstar"
+            color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'}
+            size={25}
+            onMouseEnter={() => setHover(ratingValue)}
+            onMouseLeave={() => setHover(null)}
+          />
+        </label>
+      );
+    });
   };
 
   return sessionUserId ? (
@@ -70,37 +105,7 @@ const EditReviewForm = ({ review }) => {
         onChange={updateBody}
       />
 
-      {[...Array(5)].map((star, index) => {
-        const ratingValue = index + 1;
-
-        return (
-          <label key={index}>
-            <input
-              className="starRating"
-              max="5"
-              min="1"
-              required
-              value={rating}
-              type="radio"
-              onChange={() => updateRating(ratingValue)}
-              onClick={() => {
-                if (rating === ratingValue) {
-                  setRating(0);
-                } else {
-                  setRating(ratingValue);
-                }
-              }}
-            />
-            <FaStar
-              className="EditReviewstar"
-              color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'}
-              size={25}
-              onMouseEnter={() => setHover(ratingValue)}
-              onMouseLeave={() => setHover(null)}
-            />
-          </label>
-        );
-      })}
+      {renderStars()}
 
       <button className="updateReviewBtn" type="submit">
         Update Review

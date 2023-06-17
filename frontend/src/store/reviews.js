@@ -69,6 +69,7 @@ export const editReviewThunk = (payload) => async (dispatch) => {
 
     if(response.ok) {
         const review = await response.json();
+        console.log("review", review)
         dispatch(editReview(review))
         return review
     }

@@ -35,13 +35,13 @@ const ReviewCard = ({review}) => {
             const ratingValue = index + 1;
             return (
               <label key={index}>
-                <b className="star-rating" name="rating" value={ratingValue} />
+                <b className="star-rating" name="rating" value={review.rating} />
                 <FaStar
                   className="star"
-                  color={ratingValue <= rating ? "#ffc107" : "#e4e5e9"}
+                  color={ratingValue <= review.rating ? "#ffc107" : "#e4e5e9"}
                   size={25}
-                  onMouseEnter={() => setHover(ratingValue)}
-                  onMouseLeave={() => setHover(0)}
+                  // onMouseEnter={() => setHover(ratingValue)}
+                  // onMouseLeave={() => setHover(0)}
 
                 />
               </label>
@@ -70,6 +70,7 @@ const ReviewCard = ({review}) => {
               review={review}
               onSave={handleSave}
               initialRating={rating}
+              setIsEditing={setIsEditing}
             />
           ) : (
             <button className="EditReviewBtn" onClick={handleEdit}>
