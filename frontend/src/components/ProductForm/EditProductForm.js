@@ -41,6 +41,36 @@ const EditProductForm = ({productId}) => {
         e.preventDefault();
 
         setErrors([])
+        
+        if (!name) {
+          setErrors(prevErrors => [...prevErrors, "Name cannot be empty"]);
+          return;
+        }
+
+        if (!color) {
+          setErrors(prevErrors => [...prevErrors, "Please select a color"]);
+          return;
+        }
+
+        if (!price || isNaN(parseFloat(price))) {
+          setErrors(prevErrors => [...prevErrors, "Price must be in the right format"]);
+          return;
+        }
+
+        if (!category) {
+          setErrors(prevErrors => [...prevErrors, "Please select a category"]);
+          return;
+        }
+
+        if (!type) {
+          setErrors(prevErrors => [...prevErrors, "Please select a type"]);
+          return;
+        }
+
+        if (!description) {
+          setErrors(prevErrors => [...prevErrors, "Please enter a product description"]);
+          return;
+        }
 
         const payload = {
          productId,

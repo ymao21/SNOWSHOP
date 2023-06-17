@@ -31,7 +31,37 @@ const CreateProductForm = () => {
    const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setErrors([])
+    setErrors([]);
+
+    if (!name) {
+      setErrors(prevErrors => [...prevErrors, "Name cannot be empty"]);
+      return;
+    }
+
+    if (!color) {
+      setErrors(prevErrors => [...prevErrors, "Please select a color"]);
+      return;
+    }
+
+    if (!price || isNaN(parseFloat(price))) {
+      setErrors(prevErrors => [...prevErrors, "Price must be in the right format"]);
+      return;
+    }
+
+    if (!category) {
+      setErrors(prevErrors => [...prevErrors, "Please select a category"]);
+      return;
+    }
+
+    if (!type) {
+      setErrors(prevErrors => [...prevErrors, "Please select a type"]);
+      return;
+    }
+
+    if (!description) {
+      setErrors(prevErrors => [...prevErrors, "Please enter a product description"]);
+      return;
+    }
 
     const payload = {
      name,
@@ -69,29 +99,29 @@ const CreateProductForm = () => {
 
         <input
           type="text" className='ProductFormInput'
-          placeholder="product name"
+          placeholder="Product name"
           value={name}
           onChange={createName} />
 
-          <select className='ProductFormInput' value={color} onChange={createColor}>
-        <option value=''>Select color</option>
-        <option value='red'>Red</option>
-        <option value='orange'>Orange</option>
-        <option value='yellow'>Yellow</option>
-        <option value='green'>Green</option>
-        <option value='blue'>Blue</option>
-        <option value='purple'>Purple</option>
-        <option value='pink'>Pink</option>
-        <option value='silver'>Silver</option>
-        <option value='gold'>Gold</option>
-        <option value='black'>Black</option>
-        <option value='white'>White</option>
-        <option value='other'>Other</option>
-            </select>
+        <select className='ProductFormInput' value={color} onChange={createColor}>
+          <option value=''>Select color</option>
+          <option value='red'>Red</option>
+          <option value='orange'>Orange</option>
+          <option value='yellow'>Yellow</option>
+          <option value='green'>Green</option>
+          <option value='blue'>Blue</option>
+          <option value='purple'>Purple</option>
+          <option value='pink'>Pink</option>
+          <option value='silver'>Silver</option>
+          <option value='gold'>Gold</option>
+          <option value='black'>Black</option>
+          <option value='white'>White</option>
+          <option value='other'>Other</option>
+        </select>
 
         <input
           type="text" className='ProductFormInput'
-          placeholder="product price"
+          placeholder="Product price"
           value={price}
           onChange={createPrice} />
 
@@ -114,17 +144,17 @@ const CreateProductForm = () => {
 
         <input
           type="text" className='ProductFormInput'
-          placeholder="product description"
+          placeholder="Product description"
           value={description}
           onChange={createDescription} />
 
-          <input className= 'fileInput' type="file" onChange={updateFile} />
+          <input className='fileInput' type="file" onChange={updateFile} />
 
-        <button className = "createProductBtn"type="submit" onClick={redirectToProductPage}> Create Product</button>
+        <button className="createProductBtn" type="submit" onClick={redirectToProductPage}>Create Product</button>
       </form>
   ) :
   null;
 
 }
 
-export default CreateProductForm
+export default CreateProductForm;

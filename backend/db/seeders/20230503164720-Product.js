@@ -53,7 +53,7 @@ module.exports = {
       {
         name: "Used Women's Burton Felix BOA Snowboard Boots",
         price: 199.95,
-        type: "snowboards",
+        type: "boots",
         color: "white",
         category: "women",
         description: "The micro-adjustable fit of Dual-Zone BOA Fit System lets you independently tension upper and lower zones to match your needs. ",
@@ -242,6 +242,16 @@ module.exports = {
         category: "women",
         description: " women beanie",
         previewImageUrl: "https://www.burton.com/static/product/W23/23421100300_1.png?impolicy=bglt&imwidth=282",
+        userId: 1,
+      },
+      {
+        name: "Men's Burton Ion Step On",
+        price: 589,
+        type: "boots",
+        color: "black",
+        category: "men",
+        description: " mens step on boots",
+        previewImageUrl: "https://www.burton.com/static/product/W23/20319103001_1.png?impolicy=bglt&imwidth=282",
         userId: 1,
       },
     ], {});
