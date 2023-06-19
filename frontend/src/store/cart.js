@@ -53,8 +53,8 @@ export const loadAllCartThunk = () => async (dispatch) => {
   return response;
 };
 
-export const addToCartThunk = (productId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/products/${productId}`);
+export const addToCartThunk = ({productId}) => async (dispatch) => {
+  const response = await csrfFetch(`/api/cart`);
 
   if (response.ok) {
     const product = await response.json();
@@ -64,7 +64,6 @@ export const addToCartThunk = (productId) => async (dispatch) => {
 
   return response;
 };
-
 
 
 export const deleteCartThunk = (productId) => async (dispatch) => {

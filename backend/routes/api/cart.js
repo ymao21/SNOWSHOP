@@ -8,7 +8,6 @@ const router = express.Router();
 
 
 //view cart
-
 router.get("/", async (req, res, next) => {
 
     const CurrentInCart = await Cart.findAll()
@@ -23,48 +22,29 @@ router.get("/", async (req, res, next) => {
 })
 
 //add to cart
-router.post("/:productId", requireAuth, async (req, res, next) => {
-    try {
-      const { productId } = req.params;
-      const { userId } = req.session.auth;
+router.post("/", requireAuth, async (req, res, next) => {
 
-      const product = await Product.findByPk(productId);
-      if (!product) {
-        const err = newError("Product not found", 404);
-        return next(err);
-      }
-
-      const cartItem = await Cart.findOne({
+    const userId = req.user.id
+    const productId = req.body.id;
+    let cartItem = await Cart.findOne({
         where: {
-          userId,
-          productId,
+          userId: userId,
+          productId: productId,
         },
       });
-
       if (cartItem) {
-        await cartItem.update({
-          quantity: cartItem.quantity + 1,
-        });
+        cartItem.quantity += 1;
+        await cartItem.save();
       } else {
-        await Cart.create({
+        const newCartItem = await Cart.create({
           userId,
           productId,
           quantity: 1,
         });
+        cartItem = newCartItem;
       }
-
-      const updatedCartItems = await Cart.findAll({
-        where: {
-          userId,
-        },
-        include: Product,
-      });
-
-      return res.json(updatedCartItems);
-    } catch (err) {
-      next(err);
-    }
-  });
+      return res.json(cartItem)
+})
 
 
 
