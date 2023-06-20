@@ -23,16 +23,9 @@ module.exports = {
         },
         onDelete: 'cascade'
       },
-      quantity: {
-        type: Sequelize.INTEGER
-      },
-      productId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Products",
-          key: "id"
-        },
-        onDelete: 'cascade'
+      checkedOut: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,

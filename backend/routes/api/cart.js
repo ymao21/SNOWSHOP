@@ -1,6 +1,6 @@
 const express = require('express')
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { User, Product, Cart, Review} = require('../../db/models');
+const { User, Product, Cart, Review, CartProduct} = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const {newError} = require('../../utils/newError');
@@ -8,9 +8,14 @@ const router = express.Router();
 
 
 //view cart
-router.get("/", async (req, res, next) => {
+router.get("/:cartId", async (req, res, next) => {
 
-    const CurrentInCart = await Cart.findAll()
+    const {cartId} = req.params
+
+
+    const CurrentInCart = await Cart.findByPk(cartId, {
+        include: CartProduct
+    })
 
     if(!CurrentInCart) {
         const err = newError("products couldn't be found", 404)
@@ -22,25 +27,31 @@ router.get("/", async (req, res, next) => {
 })
 
 //add to cart
-router.post("/", requireAuth, async (req, res, next) => {
+router.post("/:cartId", requireAuth, async (req, res, next) => {
 
+    const {cartId } = req.params
     const userId = req.user.id
-    const productId = req.body.id;
-    let cartItem = await Cart.findOne({
+    const {productId} = req.body;
+
+    let cartItem = await CartProduct.findOne({
         where: {
-          userId: userId,
+            cartId : cartId,
           productId: productId,
         },
       });
+
       if (cartItem) {
         cartItem.quantity += 1;
         await cartItem.save();
+
       } else {
-        const newCartItem = await Cart.create({
+        const newCartItem = await CartProduct.create({
+          cartId,
           userId,
           productId,
           quantity: 1,
         });
+
         cartItem = newCartItem;
       }
       return res.json(cartItem)

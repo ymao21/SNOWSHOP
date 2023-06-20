@@ -12,14 +12,17 @@ module.exports = {
       {
         cartId: 1,
         productId: 1,
+        quantity: 2,
       },
       {
         cartId: 2,
         productId: 2,
+        quantity: 1,
       },
       {
         cartId: 3,
         productId: 3,
+        quantity: 3,
       }
     ], {});
   },

@@ -36,7 +36,7 @@ router.put("/:reviewId" , requireAuth , validateReview,  async (req, res, next) 
     if(rating) review.rating = rating
 
     await review.save()
-    console.log("review", review)
+
     return res.json(review)
 })
 

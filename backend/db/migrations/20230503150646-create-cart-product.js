@@ -24,6 +24,9 @@ module.exports = {
           key: "id"
         }
       },
+      quantity: {
+        type: Sequelize.INTEGER
+      },
       productId: {
         type: Sequelize.INTEGER,
         allowNull: false,
