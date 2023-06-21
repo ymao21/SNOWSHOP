@@ -42,8 +42,8 @@ export const clearCart = () => {
   };
 };
 
-export const loadAllCartThunk = () => async (dispatch) => {
-  const response = await csrfFetch('/api/cart');
+export const loadAllCartThunk = ({cartId}) => async (dispatch) => {
+  const response = await csrfFetch(`/api/cart/${cartId}`);
 
   if (response.ok) {
     const cartItems = await response.json();
@@ -53,8 +53,12 @@ export const loadAllCartThunk = () => async (dispatch) => {
   return response;
 };
 
-export const addToCartThunk = ({productId}) => async (dispatch) => {
-  const response = await csrfFetch(`/api/cart`);
+export const addToCartThunk = ({cartId, productId}) => async (dispatch) => {
+
+ const response = await csrfFetch(`/api/cart/${cartId}`, {
+  method: 'POST',
+  body: JSON.stringify({productId, cartId})
+ });
 
   if (response.ok) {
     const product = await response.json();

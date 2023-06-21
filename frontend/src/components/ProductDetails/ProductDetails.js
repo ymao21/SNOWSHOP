@@ -16,6 +16,8 @@ const ProductDetail = () => {
   const sessionuser = useSelector(state => state.session.user)
   const product = useSelector(state => state.productState[productId])
 
+
+
   useEffect(() =>{
    dispatch(getProductDetailThunk(productId))
   }, [dispatch, productId])
@@ -26,7 +28,8 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart =  () => {
-     dispatch(addToCartThunk({productId}));
+    const cartId = sessionuser.currentCart.id
+     dispatch(addToCartThunk({productId, cartId}));
     //  history.push(`/cart`)
   };
 

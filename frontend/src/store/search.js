@@ -7,8 +7,6 @@ export const loadSearch = (search) => ({
 
 export const loadSearchThunk = (q) => async (dispatch) => {
 
-
-
   if (typeof q !== 'string') {
     throw new Error('Search term must be a string');
   }

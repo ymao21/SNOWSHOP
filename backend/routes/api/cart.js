@@ -14,7 +14,10 @@ router.get("/:cartId", async (req, res, next) => {
 
 
     const CurrentInCart = await Cart.findByPk(cartId, {
-        include: CartProduct
+        include: {model: CartProduct,
+          include: Product
+        }
+
     })
 
     if(!CurrentInCart) {
@@ -38,6 +41,7 @@ router.post("/:cartId", requireAuth, async (req, res, next) => {
             cartId : cartId,
           productId: productId,
         },
+        include: Product
       });
 
       if (cartItem) {
@@ -50,7 +54,10 @@ router.post("/:cartId", requireAuth, async (req, res, next) => {
           userId,
           productId,
           quantity: 1,
-        });
+        },
+        { include: Product
+        }
+        );
 
         cartItem = newCartItem;
       }
