@@ -9,15 +9,31 @@ import { useHistory } from 'react-router-dom';
 const Cart = () => {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false)
+  const [cartItems, setCartItems] = useState(null);
+  const [totalPrice, setTotalPrice] = useState(0);
   const cartItemsObj = useSelector((state) => state.cartState.cartItems)
   const history = useHistory()
   const cartId = useSelector((state) => state.session.user.currentCart.id )
-
 
   useEffect(() => {
     dispatch(loadAllCartThunk({cartId}))
     .then(()=> setLoaded(true))
   }, [dispatch]);
+
+  useEffect(() => {
+    if (cartItems) {
+      const totalPrice = cartItems.reduce((total, product) => {
+        return total + product.Product.price * product.quantity;
+      }, 0);
+      setTotalPrice(totalPrice);
+    }
+  }, [cartItems]);
+
+  useEffect(() => {
+    if (loaded) {
+      setCartItems(cartItemsObj.CartProducts);
+    }
+  }, [loaded]);
 
   const handleQuantityChange = (cartItemId, newQuantity) => {
     if (newQuantity <= 0) {
@@ -27,61 +43,15 @@ const Cart = () => {
     }
   };
 
-  const handleCheckout = () => {
-  history.push('/products')
-  };
+    const handleCheckout = () => {
 
+    };
 
-  // const cartItems = cartItemsArr.map((cartItem) => {
-  //   // const product = productArr.find((product) => product.id === cartItem.productId);
-  //   const totalPrice = (product?.price * cartItem.quantity).toFixed(2);
+    
 
-  //   return  (
-  //     <div key={cartItem.id} className="CartItem">
-  //       <div className="CartItem__Image">
-  //         <img src={product?.previewImageUrl} alt={product?.name} />
-  //       </div>
-  //       <div className="CartItem__Details">
-  //         <h3 className="CartItem__Name">{product?.name}</h3>
-  //         <div className="CartItem__Price">Price: ${totalPrice}</div>
-  //         <div className="CartItem__Quantity">
-  //           Quantity:
-  //           <input
-  //             type="number"
-  //             value={cartItem.quantity}
-  //             onChange={(e) => handleQuantityChange(cartItem.id, Number(e.target.value))}
-  //             min="1"
-  //           />
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // });
-
-
-
-  const getPrices = (arr) => {
-    let price = 0;
-    arr.forEach((product)=> {
-      price += product.Product.price;
-    })
-    return price;
-  }
-
-    // console.log("cartItemsObj", cartItemsObj.CartProducts[0].Product.price)
-
-    // console.log("quantity", cartItemsObj.CartProducts[0].id)
-
-  // const totalPrice = cartItemsObj.CartProducts.reduce((total, cartItem) => {
-  //   const product = productArr.find((product) => product.id === cartItem.productId);
-  //   const itemPrice = (product?.price * cartItem.quantity);
-  //   return total + itemPrice;
-  // }, 0);
-
-//  const totalPrice = cartItemsObj.CartProducts[0]
-
-//  console.log(totalPrice)
-
+    const handleContinueShopping = () => {
+      history.push('/products')
+    }
 
   return loaded && (
     <div className="Cart">
@@ -110,13 +80,14 @@ const Cart = () => {
 
           ))}
 
-      {/* <h2 className="Cart__Total">Total: ${totalPrice.toFixed(2)}</h2>
-      <div className="Cart__Buttons">
-        <button className="ContinueShoppingButton" onClick={handleCheckout}>Continue Shopping</button>
+       <div className="TotalPrice">Total Price: ${totalPrice}</div>
+
+       <div className="Cart__Buttons">
+        <button className="ContinueShoppingButton" onClick={handleContinueShopping}>Continue Shopping</button>
         <button className="CheckoutButton" onClick={handleCheckout}>
           Checkout Now
         </button>
-      </div> */}
+      </div>
 
     </div>
   );
