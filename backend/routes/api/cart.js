@@ -30,6 +30,7 @@ router.get("/:cartId", async (req, res, next) => {
 })
 
 //add to cart
+//edit cart
 router.post("/:cartId", requireAuth, async (req, res, next) => {
 
     const {cartId } = req.params
@@ -66,8 +67,33 @@ router.post("/:cartId", requireAuth, async (req, res, next) => {
 
 
 
-//edit cart
-
 //delete from cart
+router.delete("/:cartId", requireAuth, async (req, res, next) => {
+  const {cartId } = req.params
+  const userId = req.user.id
+  const {productId} = req.body;
+
+  let cartItem = await CartProduct.findOne({
+      where: {
+          cartId : cartId,
+        productId: productId,
+      },
+      include: Product
+    });
+
+  if (!cartItem) {
+    const err = newError("Cart item couldn't be found", 404);
+    return next(err);
+  }
+
+  if (cartItem.quantity > 1) {
+    cartItem.quantity -= 1;
+    await cartItem.save();
+  } else {
+    await cartItem.destroy();
+    return res.json({ message: 'Sucessfully deleted' });
+  }
+
+})
 
 module.exports = router;
