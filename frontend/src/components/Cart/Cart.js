@@ -35,19 +35,17 @@ const Cart = () => {
     }
   }, [loaded]);
 
-  const handleQuantityChange = (cartItemId, newQuantity) => {
-    if (newQuantity <= 0) {
-      dispatch(deleteCartThunk(cartItemId));
-    } else {
-      dispatch(editQuantity(cartItemId, newQuantity));
-    }
-  };
+  // const handleQuantityChange = (cartItemId, newQuantity) => {
+  //   if (newQuantity <= 0) {
+  //     dispatch(deleteCartThunk(cartItemId));
+  //   } else {
+  //     dispatch(editQuantity(cartItemId, newQuantity));
+  //   }
+  // };
 
     const handleCheckout = () => {
 
     };
-
-    
 
     const handleContinueShopping = () => {
       history.push('/products')
@@ -64,14 +62,14 @@ const Cart = () => {
         <div className="CartItem__Details">
           <h3 className="CartItem__Name">{product?.Product.name}</h3>
 
-          <div className="CartItem__Price">Price: ${product.Product.price * product.quantity}</div>
+          <div className="CartItem__Price">Price: ${(product.Product.price * product.quantity).toFixed(2)}</div>
 
           <div className="CartItem__Quantity">
             Quantity:
             <input
               type="number"
               value={product.quantity}
-              onChange={(e) => handleQuantityChange(product.id, Number(e.target.value))}
+              // onChange={(e) => handleQuantityChange(product.id, Number(e.target.value))}
               min="1"
             />
           </div>
@@ -80,7 +78,7 @@ const Cart = () => {
 
           ))}
 
-       <div className="TotalPrice">Total Price: ${totalPrice}</div>
+       <div className="TotalPrice">Total Price: ${totalPrice.toFixed(2)}</div>
 
        <div className="Cart__Buttons">
         <button className="ContinueShoppingButton" onClick={handleContinueShopping}>Continue Shopping</button>

@@ -70,18 +70,18 @@ export const addToCartThunk = ({cartId, productId}) => async (dispatch) => {
 };
 
 
-export const deleteCartThunk = (productId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/cart/${productId}`, {
-      method: 'DELETE'
-  })
-  if(response.ok) {
-      const removeFromCart = await response.json()
-      dispatch(deleteFromCart(removeFromCart))
-      return removeFromCart
-  }
+// export const deleteCartThunk = (productId) => async (dispatch) => {
+//   const response = await csrfFetch(`/api/cart/${productId}`, {
+//       method: 'DELETE'
+//   })
+//   if(response.ok) {
+//       const removeFromCart = await response.json()
+//       dispatch(deleteFromCart(removeFromCart))
+//       return removeFromCart
+//   }
 
-  return response;
-}
+//   return response;
+// }
 
 
 const initialState = {
@@ -100,23 +100,23 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cartItems: [...state.cartItems, action.product],
       };
-    case EDIT_QUANTITY:
-      return {
-        ...state,
-        cartItems: state.cartItems.map((item) =>
-          item.id === action.cartItemId ? { ...item, quantity: action.newQuantity } : item
-        ),
-      };
-    case REMOVE_CART:
-      return {
-        ...state,
-        cartItems: state.cartItems.filter((item) => item.id !== action.productId),
-      };
-    case CLEAR_CART:
-      return {
-        ...state,
-        cartItems: [],
-      };
+    // case EDIT_QUANTITY:
+    //   return {
+    //     ...state,
+    //     cartItems: state.cartItems.map((item) =>
+    //       item.id === action.cartItemId ? { ...item, quantity: action.newQuantity } : item
+    //     ),
+    //   };
+    // case REMOVE_CART:
+    //   return {
+    //     ...state,
+    //     cartItems: state.cartItems.filter((item) => item.id !== action.productId),
+    //   };
+    // case CLEAR_CART:
+    //   return {
+    //     ...state,
+    //     cartItems: [],
+    //   };
     default:
       return state;
   }
