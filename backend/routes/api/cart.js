@@ -65,6 +65,31 @@ router.post("/:cartId", requireAuth, async (req, res, next) => {
       return res.json(cartItem)
 })
 
+router.put("/:cartId", requireAuth, async (req, res, next) => {
+  const {cartId } = req.params
+  const userId = req.user.id
+  const {productId, newQuantity} = req.body;
+
+  let cartItem = await CartProduct.findOne({
+    where: {
+        cartId : cartId,
+      productId: productId,
+    },
+    include: Product
+  });
+
+  if (cartItem) {
+    cartItem.quantity = newQuantity;
+
+    await cartItem.save();
+
+  } else {
+    return res.json({Error: {message: "This item is not in your cart"}})
+  }
+  return res.json(cartItem)
+})
+
+
 
 
 //delete from cart

@@ -69,6 +69,23 @@ export const addToCartThunk = ({cartId, productId}) => async (dispatch) => {
   return response;
 };
 
+export const editQuantityThunk = (cartItemId, newQuantity, productId, cartId) => async (dispatch) => {
+
+  const response = await csrfFetch(`/api/cart/${cartId}`, {
+    method: 'PUT',
+    body: JSON.stringify({cartItemId, newQuantity, productId, cartId})
+   });
+
+if (response.ok) {
+
+  const product = await response.json()
+  dispatch(editQuantity(cartItemId, newQuantity ))
+  return product
+
+}
+
+
+}
 
 // export const deleteCartThunk = (productId) => async (dispatch) => {
 //   const response = await csrfFetch(`/api/cart/${productId}`, {
@@ -93,13 +110,26 @@ const cartReducer = (state = initialState, action) => {
     case LOAD_CART:
       return {
         ...state,
-        cartItems: action.products,
+        cartItems: action.products.CartProducts,
       };
     case ADD_CART:
       return {
         ...state,
         cartItems: [...state.cartItems, action.product],
       };
+     case EDIT_QUANTITY:
+        return {
+          ...state,
+          cartItems: state.cartItems.map((item) => {
+            if (item.id === action.cartItemId) {
+              return {
+                ...item,
+                quantity: action.newQuantity,
+              };
+            }
+            return item;
+          }),
+        };
     // case EDIT_QUANTITY:
     //   return {
     //     ...state,
@@ -107,6 +137,8 @@ const cartReducer = (state = initialState, action) => {
     //       item.id === action.cartItemId ? { ...item, quantity: action.newQuantity } : item
     //     ),
     //   };
+
+
     // case REMOVE_CART:
     //   return {
     //     ...state,

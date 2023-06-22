@@ -1,5 +1,5 @@
 import './Cart.css'
-import { loadAllCartThunk, editQuantity, deleteCartThunk } from '../../store/cart'
+import { loadAllCartThunk, editQuantityThunk, deleteCartThunk } from '../../store/cart'
 import { getProductsThunk } from '../../store/products';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
@@ -43,17 +43,23 @@ const Cart = () => {
   //   }
   // };
 
-    const handleCheckout = () => {
+  const handleQuantityChange = (cartItemId, newQuantity,  productId, cartId) => {
+    dispatch(editQuantityThunk(cartItemId, newQuantity, productId, cartId))
+  };
 
+    const handleCheckout = () => {
+      history.push('/products')
     };
 
     const handleContinueShopping = () => {
       history.push('/products')
     }
 
+    console.log("cartItemsObj", cartItemsObj)
+
   return loaded && (
     <div className="Cart">
-          {cartItemsObj.CartProducts.map((product)=> (
+          {cartItemsObj?.map((product)=> (
 
            <div key={product.Product.name} className="CartItem">
         <div className="CartItem__Image">
@@ -69,8 +75,7 @@ const Cart = () => {
             <input
               type="number"
               value={product.quantity}
-              // onChange={(e) => handleQuantityChange(product.id, Number(e.target.value))}
-              min="1"
+              onChange={(e) => handleQuantityChange(product.Product.id, Number(e.target.value), product.productId, product.CartId)}
             />
           </div>
         </div>
