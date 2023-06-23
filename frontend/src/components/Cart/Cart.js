@@ -1,6 +1,5 @@
 import './Cart.css'
-import { loadAllCartThunk, editQuantityThunk, deleteCartThunk } from '../../store/cart'
-import { getProductsThunk } from '../../store/products';
+import { loadAllCartThunk, editQuantityThunk, deleteCartThunk, clearCart } from '../../store/cart'
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -9,8 +8,6 @@ import { useHistory } from 'react-router-dom';
 const Cart = () => {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false)
-  const [cartItems, setCartItems] = useState(null);
-  const [totalPrice, setTotalPrice] = useState(0);
   const cartItemsObj = useSelector((state) => state.cartState.cartItems)
   const history = useHistory()
   const cartId = useSelector((state) => state.session.user.currentCart.id )
@@ -20,32 +17,14 @@ const Cart = () => {
     .then(()=> setLoaded(true))
   }, [dispatch]);
 
-  useEffect(() => {
-    if (cartItems) {
-      const totalPrice = cartItems.reduce((total, product) => {
-        return total + product.Product.price * product.quantity;
-      }, 0);
-      setTotalPrice(totalPrice);
-    }
-  }, [cartItems]);
-
-  useEffect(() => {
-    if (loaded) {
-      setCartItems(cartItemsObj.CartProducts);
-    }
-  }, [loaded]);
-
-  // const handleQuantityChange = (cartItemId, newQuantity) => {
-  //   if (newQuantity <= 0) {
-  //     dispatch(deleteCartThunk(cartItemId));
-  //   } else {
-  //     dispatch(editQuantity(cartItemId, newQuantity));
-  //   }
-  // };
 
   const handleQuantityChange = (cartItemId, newQuantity,  productId, cartId) => {
     dispatch(editQuantityThunk(cartItemId, newQuantity, productId, cartId))
   };
+
+  const handleRemoveFromCart = (cartId, productId) => {
+    dispatch(deleteCartThunk(cartId, productId))
+  }
 
     const handleCheckout = () => {
       history.push('/products')
@@ -55,7 +34,10 @@ const Cart = () => {
       history.push('/products')
     }
 
-    console.log("cartItemsObj", cartItemsObj)
+    const handleClearCart = (cartId) => {
+      dispatch(clearCart(cartId))
+    }
+
 
   return loaded && (
     <div className="Cart">
@@ -65,6 +47,7 @@ const Cart = () => {
         <div className="CartItem__Image">
           <img src={product?.Product.previewImageUrl} alt={product?.Product.name} />
         </div>
+
         <div className="CartItem__Details">
           <h3 className="CartItem__Name">{product?.Product.name}</h3>
 
@@ -75,15 +58,16 @@ const Cart = () => {
             <input
               type="number"
               value={product.quantity}
+              min = "1"
               onChange={(e) => handleQuantityChange(product.Product.id, Number(e.target.value), product.productId, product.CartId)}
             />
           </div>
+          <button onClick= {handleRemoveFromCart}>Remove from cart</button>
         </div>
       </div>
 
           ))}
 
-       <div className="TotalPrice">Total Price: ${totalPrice.toFixed(2)}</div>
 
        <div className="Cart__Buttons">
         <button className="ContinueShoppingButton" onClick={handleContinueShopping}>Continue Shopping</button>
@@ -91,6 +75,10 @@ const Cart = () => {
           Checkout Now
         </button>
       </div>
+
+      <button className="CheckoutButton" onClick={handleClearCart}>
+          clear cart
+        </button>
 
     </div>
   );

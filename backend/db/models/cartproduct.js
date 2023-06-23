@@ -17,7 +17,9 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       CartProduct.belongsTo(models.Product,{
-        foreignKey: "productId"
+        foreignKey: "productId",
+        onDelete: "CASCADE",
+        hooks:true
       });
     }
   }

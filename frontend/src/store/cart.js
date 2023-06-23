@@ -4,7 +4,7 @@ const LOAD_CART = '/cart/LOAD_CART';
 const ADD_CART = '/cart/ADD_CART';
 const REMOVE_CART = '/cart/REMOVE_CART';
 const EDIT_QUANTITY = '/cart/EDIT_QUANTITY';
-const CLEAR_CART = '/cart/CLEAR_CART';
+const CLEAR_CART = '/cart/CLEAR_CART'
 
 // Action creators
 export const loadToCart = (products) => {
@@ -29,18 +29,19 @@ export const editQuantity = (cartItemId, newQuantity) => {
   };
 };
 
-export const deleteFromCart = (productId) => {
+export const deleteFromCart = (cartId, productId) => {
   return {
     type: REMOVE_CART,
-    productId,
+    cartId,
   };
 };
 
-export const clearCart = () => {
+export const clearCart = (cartId) => {
   return {
     type: CLEAR_CART,
-  };
-};
+    cartId
+  }
+}
 
 export const loadAllCartThunk = ({cartId}) => async (dispatch) => {
   const response = await csrfFetch(`/api/cart/${cartId}`);
@@ -83,23 +84,36 @@ if (response.ok) {
   return product
 
 }
+}
+
+export const deleteCartThunk = (cartId, productId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/cart/${cartId}/${productId}`, {
+      method: 'DELETE'
+  })
+
+  if(response.ok) {
+    const removeFromCart = await response.json()
+    dispatch(deleteFromCart(cartId, productId))
+    return removeFromCart
+  }
+
+  return response;
+}
+
+export const clearCartThunk = (cartId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/cart/${cartId}`, {
+    method: 'DELETE'
+})
+if(response.ok) {
+  const clearCart = await response.json()
+  dispatch(clearCart(cartId))
+  return clearCart
+}
+
+return response;
 
 
 }
-
-// export const deleteCartThunk = (productId) => async (dispatch) => {
-//   const response = await csrfFetch(`/api/cart/${productId}`, {
-//       method: 'DELETE'
-//   })
-//   if(response.ok) {
-//       const removeFromCart = await response.json()
-//       dispatch(deleteFromCart(removeFromCart))
-//       return removeFromCart
-//   }
-
-//   return response;
-// }
-
 
 const initialState = {
   cartItems: [],
@@ -130,25 +144,21 @@ const cartReducer = (state = initialState, action) => {
             return item;
           }),
         };
-    // case EDIT_QUANTITY:
-    //   return {
-    //     ...state,
-    //     cartItems: state.cartItems.map((item) =>
-    //       item.id === action.cartItemId ? { ...item, quantity: action.newQuantity } : item
-    //     ),
-    //   };
 
+        case REMOVE_CART:
+          return {
+            ...state,
+            cartItems: state.cartItems.filter(
+              (item) => item.productId !== action.productId
+            ),
+          };
 
-    // case REMOVE_CART:
-    //   return {
-    //     ...state,
-    //     cartItems: state.cartItems.filter((item) => item.id !== action.productId),
-    //   };
-    // case CLEAR_CART:
-    //   return {
-    //     ...state,
-    //     cartItems: [],
-    //   };
+          case CLEAR_CART:
+            return {
+              ...state,
+              cartItems: [],
+            };
+
     default:
       return state;
   }

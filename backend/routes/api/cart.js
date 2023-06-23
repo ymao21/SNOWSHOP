@@ -30,7 +30,6 @@ router.get("/:cartId", async (req, res, next) => {
 })
 
 //add to cart
-//edit cart
 router.post("/:cartId", requireAuth, async (req, res, next) => {
 
     const {cartId } = req.params
@@ -92,33 +91,28 @@ router.put("/:cartId", requireAuth, async (req, res, next) => {
 
 
 
-//delete from cart
+//clear cart
 router.delete("/:cartId", requireAuth, async (req, res, next) => {
-  const {cartId } = req.params
-  const userId = req.user.id
-  const {productId} = req.body;
+  const { cartId } = req.params;
 
-  let cartItem = await CartProduct.findOne({
-      where: {
-          cartId : cartId,
-        productId: productId,
-      },
-      include: Product
-    });
+  await CartProduct.destroy({ where: { cartId } });
 
-  if (!cartItem) {
-    const err = newError("Cart item couldn't be found", 404);
+  if (!cartItems || cartItems.length === 0) {
+    const err = new Error("Cart items couldn't be found", 404);
     return next(err);
   }
 
-  if (cartItem.quantity > 1) {
-    cartItem.quantity -= 1;
-    await cartItem.save();
-  } else {
-    await cartItem.destroy();
-    return res.json({ message: 'Sucessfully deleted' });
-  }
+  return res.json({ message: 'Successfully cleared cart' });
+});
 
-})
+//remove product
+router.delete("/:cartId/:productId"), requireAuth, async (req, res, next) => {
+
+
+
+
+}
+
+
 
 module.exports = router;
