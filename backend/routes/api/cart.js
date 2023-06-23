@@ -95,24 +95,32 @@ router.put("/:cartId", requireAuth, async (req, res, next) => {
 router.delete("/:cartId", requireAuth, async (req, res, next) => {
   const { cartId } = req.params;
 
-  await CartProduct.destroy({ where: { cartId } });
+  const wholeCart = await CartProduct({ where: { cartId } });
 
-  if (!cartItems || cartItems.length === 0) {
+  if (!cartItems) {
     const err = new Error("Cart items couldn't be found", 404);
     return next(err);
   }
 
+  await wholeCart.destroy()
   return res.json({ message: 'Successfully cleared cart' });
 });
 
 //remove product
 router.delete("/:cartId/:productId"), requireAuth, async (req, res, next) => {
+  const { cartId, productId } = req.params;
 
+  const ProductsInCart = await CartItems({
+    where: { cartId, productId }
+  });
 
+  if(!ProductsInCart){
+    const err = new Error("Cart items couldn't be found", 404);
+    return next(err);
+  }
 
-
+  await ProductsInCart.destroy()
+  return res.json({ message: 'Successfully removed product' });
 }
-
-
 
 module.exports = router;
