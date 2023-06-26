@@ -32,7 +32,7 @@ function LoginFormPage() {
   const demouser = { credential: 'Demo', password: 'password'}
 
   const handleSubmitDemo = (e) => {
-    // e.preventDefault();
+
     setErrors([]);
     return dispatch(sessionActions.login( demouser ))
 
@@ -68,6 +68,8 @@ function LoginFormPage() {
         />
       </label>
 
+      
+
 
       <button className = "loginBtn" type="submit">Log In</button>
 
@@ -76,7 +78,7 @@ function LoginFormPage() {
           closeModal();
         }} type="submit">Demo User</button>
     </form>
-    
+
   );
 }
 
