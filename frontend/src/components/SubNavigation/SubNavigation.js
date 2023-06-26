@@ -1,5 +1,6 @@
 import './SubNavigation.css';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useLocation, useHistory } from 'react-router-dom';
 import SearchBar from '../SearchBar/Search';
 import CreateProductForm from '../ProductForm/CreateProductForm';
@@ -10,9 +11,12 @@ import logotext from '../../../src/logotext.png';
 const SubNavigation = () => {
   const location = useLocation();
   const history = useHistory();
+  const sessionUser = useSelector(state => state.session.user);
+
+
 
   const redirectCart = () => {
-    history.push('/cart');
+    history.push(`/cart/${sessionUser.currentCart.id}`);
   };
 
   const redirectToRoot = () => {
