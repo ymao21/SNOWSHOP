@@ -92,25 +92,30 @@ router.put("/:cartId", requireAuth, async (req, res, next) => {
 
 
 //clear cart
-router.delete("/:cartId", requireAuth, async (req, res, next) => {
-  const { cartId } = req.params;
+// router.delete("/:cartId", requireAuth, async (req, res, next) => {
+//   const { cartId } = req.params;
 
-  const wholeCart = await CartProduct({ where: { cartId } });
+//   const wholeCart = await CartProduct({ where: { cartId } });
 
-  if (!cartItems) {
-    const err = new Error("Cart items couldn't be found", 404);
-    return next(err);
-  }
+//   if (!wholeCart) {
+//     const err = new Error("Cart items couldn't be found", 404);
+//     return next(err);
+//   }
 
-  await wholeCart.destroy()
-  return res.json({ message: 'Successfully cleared cart' });
-});
+//   await wholeCart.destroy()
+//   return res.json({ message: 'Successfully cleared cart' });
+// });
 
 //remove product
-router.delete("/:cartId/:productId"), requireAuth, async (req, res, next) => {
+router.delete("/:cartId/:productId", requireAuth, async (req, res, next) => {
   const { cartId, productId } = req.params;
 
-  const ProductsInCart = await CartItems({
+  cartId = parseInt(cartId)
+  productId = parseInt(productId);
+
+  console.log("current cart", req.params)
+
+  const ProductsInCart = await CartProduct.findOne({
     where: { cartId, productId }
   });
 
@@ -121,6 +126,6 @@ router.delete("/:cartId/:productId"), requireAuth, async (req, res, next) => {
 
   await ProductsInCart.destroy()
   return res.json({ message: 'Successfully removed product' });
-}
+});
 
 module.exports = router;

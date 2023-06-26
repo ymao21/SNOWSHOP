@@ -85,3 +85,8 @@
     box-shadow: 3px 3px 3px #cbced1, -6px -6px 6px white;
     transition: 0.5s;
 }
+
+.logoutbtn:hover{
+    color: white;
+    background-color: #03045e;
+}

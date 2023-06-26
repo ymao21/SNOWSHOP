@@ -32,7 +32,8 @@ export const editQuantity = (cartItemId, newQuantity) => {
 export const deleteFromCart = (cartId, productId) => {
   return {
     type: REMOVE_CART,
-    cartId,
+    productId,
+    cartId
   };
 };
 

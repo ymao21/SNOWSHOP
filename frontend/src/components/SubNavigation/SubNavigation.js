@@ -5,6 +5,7 @@ import CreateProductForm from '../ProductForm/CreateProductForm';
 import OpenModalButton from '../OpenModalButton';
 import { useHistory } from 'react-router-dom';
 import logo from '../../../src/logo.png'
+import logotext from '../../../src/logotext.png'
 
 const SubNavigation = () => {
   const history = useHistory();
@@ -15,12 +16,10 @@ const SubNavigation = () => {
 
   return (
     <div className="subNavigationContainer">
-      
+
      <img  src= {logo} className = "logo" alt="logo"></img>
 
-
       <OpenModalButton
-        // className="listProductButton"
         modalComponent={<CreateProductForm />}
         buttonText="List My Product"
       />

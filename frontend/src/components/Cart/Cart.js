@@ -12,6 +12,8 @@ const Cart = () => {
   const history = useHistory()
   const cartId = useSelector((state) => state.session.user.currentCart.id )
 
+  
+
   useEffect(() => {
     dispatch(loadAllCartThunk({cartId}))
     .then(()=> setLoaded(true))
@@ -24,6 +26,7 @@ const Cart = () => {
 
   const handleRemoveFromCart = (cartId, productId) => {
     dispatch(deleteCartThunk(cartId, productId))
+
   }
 
     const handleCheckout = () => {
@@ -37,6 +40,7 @@ const Cart = () => {
     const handleClearCart = (cartId) => {
       dispatch(clearCart(cartId))
     }
+
 
 
   return loaded && (

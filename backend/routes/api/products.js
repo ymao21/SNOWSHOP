@@ -151,8 +151,6 @@ router.get("/:productId/reviews", async (req, res, next) =>{
 
     const reviews = await Review.findAll()
 
-    // console.log("backend get reviews", reviews)
-
     if(!reviews){
         const err = newError("reviews couldn't be found", 404)
         return next(err);
