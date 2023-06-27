@@ -4,7 +4,7 @@
     border-radius: 20px;
     padding: 40px;
     box-sizing: border-box;
-    background: #ecf0f3;
+    background: #ffffff;
 
 }
 
@@ -32,6 +32,9 @@
 
 .fileInput {
     margin-top: 1rem;
+    position: relative;
+    left: 55%;
+    bottom: 50%;
 }
 
 .fileInput::file-selector-button {
@@ -51,7 +54,8 @@
 }
 
 .createProductBtn{
-    margin-top: 20px;
+    position: relative;
+    bottom: 10%;
     width: 70%;
     margin-left: 15%;
     cursor: pointer;

@@ -64,12 +64,15 @@ const ProductDetail = () => {
 			modalComponent={<EditProductForm productId = {productId} />}
 			buttonText="Edit Product"
 			/>
+
      </div>
 
 
      { isOwner && <button className="DeleteBtn" onClick={deletehandler}>Delete Product</button> }
+
      <ReviewList/>
      </div>
+
     </div>
     );
 }
