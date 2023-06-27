@@ -106,14 +106,13 @@ router.put("/:cartId", requireAuth, async (req, res, next) => {
 //   return res.json({ message: 'Successfully cleared cart' });
 // });
 
+
 //remove product
 router.delete("/:cartId/:productId", requireAuth, async (req, res, next) => {
   const { cartId, productId } = req.params;
 
   cartId = parseInt(cartId)
   productId = parseInt(productId);
-
-  console.log("current cart", req.params)
 
   const ProductsInCart = await CartProduct.findOne({
     where: { cartId, productId }
@@ -127,5 +126,7 @@ router.delete("/:cartId/:productId", requireAuth, async (req, res, next) => {
   await ProductsInCart.destroy()
   return res.json({ message: 'Successfully removed product' });
 });
+
+
 
 module.exports = router;

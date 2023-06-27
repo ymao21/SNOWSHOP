@@ -8,9 +8,10 @@ import { useHistory } from 'react-router-dom';
 const Cart = () => {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false)
-  const cartItemsObj = useSelector((state) => state.cartState.cartItems)
+  const cartItemsArr = useSelector((state) => state.cartState.cartItems)
   const history = useHistory()
   const cartId = useSelector((state) => state.session.user.currentCart.id )
+
 
   useEffect(() => {
     dispatch(loadAllCartThunk({cartId}))
@@ -24,7 +25,6 @@ const Cart = () => {
 
   const handleRemoveFromCart = (cartId, productId) => {
     dispatch(deleteCartThunk(cartId, productId))
-
   }
 
     const handleCheckout = () => {
@@ -43,7 +43,7 @@ const Cart = () => {
 
   return loaded && (
     <div className="Cart">
-          {cartItemsObj?.map((product)=> (
+          {cartItemsArr?.map((product)=> (
 
            <div key={product.Product.name} className="CartItem">
         <div className="CartItem__Image">
@@ -64,7 +64,9 @@ const Cart = () => {
               onChange={(e) => handleQuantityChange(product.Product.id, Number(e.target.value), product.productId, product.CartId)}
             />
           </div>
-          <button onClick= {handleRemoveFromCart}>Remove from cart</button>
+          <button onClick={() => handleRemoveFromCart(product.cartId, product.productId)}>
+                  Remove from cart
+          </button>
         </div>
       </div>
 

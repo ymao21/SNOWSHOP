@@ -92,13 +92,13 @@ export const deleteCartThunk = (cartId, productId) => async (dispatch) => {
       method: 'DELETE'
   })
 
+  // console.log("deletethunk",cartId )
+
   if(response.ok) {
     const removeFromCart = await response.json()
     dispatch(deleteFromCart(cartId, productId))
     return removeFromCart
   }
-
-  return response;
 }
 
 export const clearCartThunk = (cartId) => async (dispatch) => {
