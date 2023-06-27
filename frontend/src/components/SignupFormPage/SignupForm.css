@@ -1,75 +1,61 @@
-
-.signupform{
-    width: 660px;
-    height: 500px;
-    padding: 40px;
-    box-sizing: border-box;
-    background: #ffffff;
+.signupform {
+  width: 660px;
+  height: 500px;
+  padding: 40px;
+  box-sizing: border-box;
+  background: #ffffff;
 }
 
-.signuplabel{
-    display: block;
-    width: 80%;
-    border: none;
-    outline: none;
-    box-sizing: border-box;
-    margin-bottom: 5px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-end;
-    gap: 15px;
-
+.signuplabel {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-left: 20%;
 }
 
-  .signupinput{
-   
-    display: block;
-    width: 40%;
-    padding: 10px;
-    margin-top: 3px;
-    font-size: 14px;
-    height: 40px;
-    display: block;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #555;
-    outline: none;
-  }
+.signuplabel span {
+  width: 120px;
+  text-align: right;
+  margin-right: 10px;
+}
 
-  .signupinput:focus {
-    border-color:  #03045e;
+.signupinput {
+  width: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #555;
+  outline: none;
+}
+
+.signupinput:focus {
+  border-color: #03045e;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-  .signupBtn{
+.signupBtn {
+  display: block;
+  width: 30%;
+  margin-top: 20px;
+  margin-left: 40%;
+  height: 40px;
+  cursor: pointer;
+  font-size: 16px;
+  color: rgb(255, 255, 255);
+  display: inline-block;
+  padding: 12px;
+  background-color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
 
-    display: block;
-    width: 30%;
-    margin-top: 30px;
-    margin-left: 200px;
-    height: 40px;
-    cursor: pointer;
-    font-size: 50px;
-    line-break:auto;
-    color: rgb(255, 255, 255);
-    display: inline-block;
-    padding: 12px;
-    background-color: #000000;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-
-
-  }
-
-  .signupBtn:hover {
-    background-color: #03045e;
-    color: white;
+.signupBtn:hover {
+  background-color: #03045e;
+  color: white;
 }

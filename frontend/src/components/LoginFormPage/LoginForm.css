@@ -3,7 +3,7 @@
 .loginform {
     position: relative;
     width: 350px;
-    height: 400px;
+    height: 420px;
     /* border-radius: 30px; */
     padding: 40px;
     box-sizing: border-box;
@@ -20,9 +20,6 @@
     margin-bottom: 5px;
 }
 
-.loginlabel:nth-of-type(2) {
-    margin-top: 12px;
-  }
 
 .loginInput{
 
@@ -47,14 +44,15 @@
 }
 
 .loginBtn{
-    width: 100%;
+    margin-top: 20px;
+    width: 70%;
+    margin-left: 15%;
     cursor: pointer;
     font-size: 50px;
     line-break:auto;
     color: rgb(255, 255, 255);
     display: inline-block;
     padding: 12px;
-    margin: 5px;
     background-color: #000000;
     font-size: 16px;
     font-weight: bold;
