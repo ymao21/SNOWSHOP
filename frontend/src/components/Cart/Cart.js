@@ -8,9 +8,11 @@ import { useHistory } from 'react-router-dom';
 const Cart = () => {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false)
-  const cartItemsArr = useSelector((state) => state.cartState.cartItems)
+  const cartItemsObj = useSelector((state) => state.cartState.cartItems)
   const history = useHistory()
   const cartId = useSelector((state) => state.session.user.currentCart.id )
+
+  const cartItemsArr = Object.values(cartItemsObj)
 
 
   useEffect(() => {

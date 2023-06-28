@@ -92,8 +92,6 @@ export const deleteCartThunk = (cartId, productId) => async (dispatch) => {
       method: 'DELETE'
   })
 
-  // console.log("deletethunk",cartId )
-
   if(response.ok) {
     const removeFromCart = await response.json()
     dispatch(deleteFromCart(cartId, productId))
@@ -110,59 +108,60 @@ if(response.ok) {
   dispatch(clearCart(cartId))
   return clearCart
 }
-
-return response;
-
-
 }
 
 const initialState = {
-  cartItems: [],
+  cartItems: {},
 };
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_CART:
+      const normalizedCartItems = action.products.CartProducts.reduce(
+        (acc, item) => {
+          acc[item.productId] = item;
+          return acc;
+        },
+        {}
+      );
       return {
         ...state,
-        cartItems: action.products.CartProducts,
+        cartItems: normalizedCartItems,
       };
     case ADD_CART:
       return {
         ...state,
-        cartItems: [...state.cartItems, action.product],
+        cartItems: {
+          ...state.cartItems,
+          [action.product.productId]: action.product,
+        },
       };
-     case EDIT_QUANTITY:
-        return {
-          ...state,
-          cartItems: state.cartItems.map((item) => {
-            if (item.id === action.cartItemId) {
-              return {
-                ...item,
-                quantity: action.newQuantity,
-              };
-            }
-            return item;
-          }),
-        };
-
-        case REMOVE_CART:
-          return {
-            ...state,
-            cartItems: state.cartItems.filter(
-              (item) => item.productId !== action.productId
-            ),
-          };
-
-          case CLEAR_CART:
-            return {
-              ...state,
-              cartItems: [],
-            };
-
+    case EDIT_QUANTITY:
+      return {
+        ...state,
+        cartItems: {
+          ...state.cartItems,
+          [action.cartItemId]: {
+            ...state.cartItems[action.cartItemId],
+            quantity: action.newQuantity,
+          },
+        },
+      };
+    case REMOVE_CART:
+      const { [action.productId]: _, ...updatedCartItems } = state.cartItems;
+      return {
+        ...state,
+        cartItems: updatedCartItems,
+      };
+    case CLEAR_CART:
+      return {
+        ...state,
+        cartItems: {},
+      };
     default:
       return state;
   }
 };
+
 
 export default cartReducer;
