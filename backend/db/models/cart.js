@@ -11,13 +11,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
 
-      // Cart.belongsToMany(models.Product,{
-      //   through: models.CartProduct,
-      //   foreignKey: "productId",
-      //   onDelete: "CASCADE",
-      //   hooks:true
-      // })
-
       Cart.belongsTo(models.User, {
         foreignKey: "userId",
         onDelete: "CASCADE",
