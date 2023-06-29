@@ -1,5 +1,5 @@
 import './Cart.css'
-import { loadAllCartThunk, editQuantityThunk, deleteCartThunk } from '../../store/cart'
+import { loadAllCartThunk, editQuantityThunk, deleteCartThunk, clearCart } from '../../store/cart'
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -41,12 +41,23 @@ const Cart = () => {
       history.push('/products')
     }
 
-    // const handleClearCart = (cartId) => {
-    //   dispatch(clearCart(cartId))
-    // }
+    const handleClearCart = (cartId) => {
+      dispatch(clearCart(cartId))
+    }
 
+    const getTotalPrice = () => {
+      let totalPrice = 0;
+      cartItemsArr.forEach((product) => {
+        totalPrice += product.Product.price * product.quantity;
+      });
+      return totalPrice.toFixed(2);
+    };
 
   return loaded && (
+
+    <>
+
+    <div className='shoppingCartBanner'> Shopping Cart </div>
     <div className="Cart">
           {cartItemsArr?.map((product)=> (
 
@@ -61,14 +72,17 @@ const Cart = () => {
           <div className="CartItem__Price">Price: ${(product.Product.price * product.quantity).toFixed(2)}</div>
 
           <div className="CartItem__Quantity">
-            Quantity:
-            <input
-              type="number"
-              value={product.quantity}
-              min = "0"
-              onChange={(e) => handleQuantityChange(product.Product.id, Number(e.target.value), product.productId, product.CartId)}
-            />
-          </div>
+              Quantity:
+              <button onClick={() => handleQuantityChange(product.Product.id, product.quantity - 1, product.productId, product.CartId)}>-</button>
+              <input
+                type="number"
+                value={product.quantity}
+                min="0"
+                onChange={(e) => handleQuantityChange(product.Product.id, Number(e.target.value), product.productId, product.CartId)}
+              />
+              <button onClick={() => handleQuantityChange(product.Product.id, product.quantity + 1, product.productId, product.CartId)}>+</button>
+            </div>
+
           <button onClick={() => handleRemoveFromCart(product.cartId, product.productId)}>
                   Remove from cart
           </button>
@@ -77,6 +91,8 @@ const Cart = () => {
 
           ))}
 
+<div className="TotalPrice">Total Price: ${getTotalPrice()}</div>
+
        <div className="Cart__Buttons">
         <button className="ContinueShoppingButton" onClick={handleContinueShopping}>Continue Shopping</button>
         <button className="CheckoutButton" onClick={handleCheckout}>
@@ -84,14 +100,15 @@ const Cart = () => {
         </button>
       </div>
 
-{/*
+
         <button className="CheckoutButton" onClick={() => handleClearCart(cartId)}>
           clear cart
-        </button> */}
-
-
+        </button>
 
     </div>
+
+
+    </>
   );
 };
 
