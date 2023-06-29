@@ -27,6 +27,8 @@
     padding: 10px;
     background-color: #f5f5f5;
     border-radius: 5px;
+   height: 150px;
+   width: 1000px;
   }
 
   .CartItem__Image {
@@ -36,7 +38,12 @@
 
   .CartItem__Image img {
     width: 100%;
-
+  }
+  .CartItem__Name {
+    font-size: 16px;
+    font-weight: bold;
+    justify-content: start;
+    width: 350px;
   }
 
   .ContinueShoppingButton{
@@ -82,4 +89,11 @@
         border: 1px solid rgb(16, 110, 190);
     }
 
+}
+
+
+.orderSummary{
+  border-style: double;
+  margin: 10px;
+  padding: 20px;
 }

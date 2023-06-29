@@ -45,33 +45,38 @@ const Cart = () => {
       dispatch(clearCart(cartId))
     }
 
-    const getTotalPrice = () => {
+    const getTotalPriceAndCount = () => {
       let totalPrice = 0;
+      let itemCount = 0;
+
       cartItemsArr.forEach((product) => {
         totalPrice += product.Product.price * product.quantity;
+        itemCount += product.quantity;
       });
-      return totalPrice.toFixed(2);
+
+      return {
+        totalPrice: totalPrice.toFixed(2),
+        itemCount: itemCount,
+      };
     };
+
 
   return loaded && (
 
     <>
 
-    <div className='shoppingCartBanner'> Shopping Cart </div>
+    <div className='shoppingCartBanner'> SHOPPING BAG </div>
     <div className="Cart">
           {cartItemsArr?.map((product)=> (
 
            <div key={product.Product.name} className="CartItem">
+
         <div className="CartItem__Image">
           <img src={product?.Product.previewImageUrl} alt={product?.Product.name} />
         </div>
+        <h3 className="CartItem__Name">{product?.Product.name}</h3>
 
-        <div className="CartItem__Details">
-          <h3 className="CartItem__Name">{product?.Product.name}</h3>
-
-          <div className="CartItem__Price">Price: ${(product.Product.price * product.quantity).toFixed(2)}</div>
-
-          <div className="CartItem__Quantity">
+        <div className="CartItem__Quantity">
               Quantity:
               <button onClick={() => handleQuantityChange(product.Product.id, product.quantity - 1, product.productId, product.CartId)}>-</button>
               <input
@@ -83,6 +88,13 @@ const Cart = () => {
               <button onClick={() => handleQuantityChange(product.Product.id, product.quantity + 1, product.productId, product.CartId)}>+</button>
             </div>
 
+        <div className="CartItem__Details">
+
+
+          <div className="CartItem__Price">Price: ${(product.Product.price * product.quantity).toFixed(2)}</div>
+
+
+
           <button onClick={() => handleRemoveFromCart(product.cartId, product.productId)}>
                   Remove from cart
           </button>
@@ -91,9 +103,19 @@ const Cart = () => {
 
           ))}
 
-<div className="TotalPrice">Total Price: ${getTotalPrice()}</div>
+          <div className='orderSummary'>
+          <h1>Order Summary</h1>
 
-       <div className="Cart__Buttons">
+            <div>Retail Price US${getTotalPriceAndCount().totalPrice}   </div>
+
+            <div>Estimated Shipping Fee US$0.00  </div>
+
+     <div className="TotalPrice">Subtotal: US${getTotalPriceAndCount().totalPrice}</div>
+    <div className="ItemCount">{getTotalPriceAndCount().itemCount} Items</div>
+
+
+    </div>
+    <div className="Cart__Buttons">
         <button className="ContinueShoppingButton" onClick={handleContinueShopping}>Continue Shopping</button>
         <button className="CheckoutButton" onClick={handleCheckout}>
           Checkout Now
@@ -105,8 +127,8 @@ const Cart = () => {
           clear cart
         </button>
 
-    </div>
 
+    </div>
 
     </>
   );
