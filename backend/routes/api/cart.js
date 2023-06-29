@@ -90,21 +90,21 @@ router.put("/:cartId", requireAuth, async (req, res, next) => {
 
 
 //clear cart
-router.delete("/:cartId", requireAuth, async (req, res, next) => {
-  const { cartId } = req.params;
+// router.delete("/:cartId", requireAuth, async (req, res, next) => {
+//   const { cartId } = req.params;
 
-  const ProductsInCart = await CartProduct.findAll({
-    where: { cartId }
-  });
+//   const ProductsInCart = await CartProduct.findAll({
+//     where: { cartId }
+//   });
 
-  if(!ProductsInCart){
-    const err = new Error("Cart items couldn't be found", 404);
-    return next(err);
-  }
+//   if(!ProductsInCart){
+//     const err = new Error("Cart items couldn't be found", 404);
+//     return next(err);
+//   }
 
-  await ProductsInCart.destroy()
-  return res.json({ message: 'Successfully removed all products from the cart' });
-});
+//   await ProductsInCart.destroy()
+//   return res.json({ message: 'Successfully removed all products from the cart' });
+// });
 
 
 //remove product

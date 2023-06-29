@@ -40,7 +40,7 @@
 }
 
 .CartItem__Quantity button:hover {
-  background-color: rgb(16, 110, 190);
+  background-color: #03045e;
 }
 
 .quantityInput{
@@ -129,11 +129,11 @@
     font-weight: 400;
     box-sizing: border-box;
     border: 1px solid rgb(0, 120, 212);
-    :hover {
-        background-color: rgb(16, 110, 190);
-        border: 1px solid rgb(16, 110, 190);
-    }
 
+  }
+
+  .ContinueShoppingButton:hover {
+    background-color: #03045e;
   }
 
 .CheckoutButton{
@@ -216,6 +216,9 @@
   margin-left: 10px;
 }
 
+.CheckoutButton:hover {
+  background-color: #03045e;
+}
 
 .EmptyCart{
   display: flex;

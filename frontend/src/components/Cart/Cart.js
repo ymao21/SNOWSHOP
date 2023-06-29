@@ -1,5 +1,5 @@
 import './Cart.css'
-import { loadAllCartThunk, editQuantityThunk, deleteCartThunk, clearCart } from '../../store/cart'
+import { loadAllCartThunk, editQuantityThunk, deleteCartThunk } from '../../store/cart'
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -11,7 +11,6 @@ const Cart = () => {
   const cartItemsObj = useSelector((state) => state.cartState.cartItems)
   const history = useHistory()
   const cartId = useSelector((state) => state.session.user.currentCart.id )
-
   const cartItemsArr = Object.values(cartItemsObj)
 
 
@@ -37,13 +36,26 @@ const Cart = () => {
       history.push('/checkedOut')
     };
 
+    const handleClearCart = () => {
+      if (cartItemsArr.length === 0) return;
+
+      const clearCartItem = (index) => {
+        const product = cartItemsArr[index];
+        handleRemoveFromCart(product.cartId, product.productId);
+        setTimeout(() => {
+          if (index < cartItemsArr.length - 1) {
+            clearCartItem(index + 1);
+          }
+        }, 10);
+      };
+
+      clearCartItem(0);
+    };
+
     const handleContinueShopping = () => {
       history.push('/products')
     }
 
-    const handleClearCart = (cartId) => {
-      dispatch(clearCart(cartId))
-    }
 
     const getTotalPriceAndCount = () => {
       let totalPrice = 0;
@@ -154,14 +166,17 @@ const Cart = () => {
 
 
 <div className="Cart__Buttons">
-  <button className="CheckoutButton" onClick={handleCheckout}>Checkout Now</button>
+
+<button className="CheckoutButton" onClick={() => { handleCheckout(); handleClearCart(); }}>
+  Checkout Now
+</button>
+
   <button className="ContinueShoppingButton" onClick={handleContinueShopping}>Continue Shopping</button>
 </div>
-
-
-        <button className="CheckoutButton" onClick={() => handleClearCart(cartId)}>
-          clear cart
-        </button>
+{/*
+<button className='CheckoutButton' onClick={handleClearCart}>
+            Clear Cart
+          </button> */}
     </div>
 
         )}
