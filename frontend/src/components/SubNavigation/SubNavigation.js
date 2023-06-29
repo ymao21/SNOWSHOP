@@ -12,7 +12,8 @@ const SubNavigation = () => {
   const location = useLocation();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
-
+  const cartItemsObj = useSelector((state) => state.cartState.cartItems)
+  const cartItemsArr = Object.values(cartItemsObj)
 
 
   const redirectCart = () => {

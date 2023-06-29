@@ -103,8 +103,12 @@ export const clearCartThunk = (cartId) => async (dispatch) => {
   const response = await csrfFetch(`/api/cart/${cartId}`, {
     method: 'DELETE'
 })
+
+
+
 if(response.ok) {
   const clearCart = await response.json()
+  console.log("clearcart", clearCart)
   dispatch(clearCart(cartId))
   return clearCart
 }

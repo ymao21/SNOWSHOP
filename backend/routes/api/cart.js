@@ -90,25 +90,21 @@ router.put("/:cartId", requireAuth, async (req, res, next) => {
 
 
 //clear cart
-// router.delete("/:cartId", requireAuth, async (req, res, next) => {
-//   const { cartId } = req.params;
+router.delete("/:cartId", requireAuth, async (req, res, next) => {
+  const { cartId } = req.params;
 
-//   const wholeCart = await CartProduct.findOne({
-//     where: { cartId }
-//   });
+  const ProductsInCart = await CartProduct.findAll({
+    where: { cartId }
+  });
 
-//   // const wholeCart = await CartProduct({ where: { cartId } });
+  if(!ProductsInCart){
+    const err = new Error("Cart items couldn't be found", 404);
+    return next(err);
+  }
 
-//   if (!wholeCart) {
-//     const err = new Error("Cart items couldn't be found", 404);
-//     return next(err);
-//   }
-
-//   // console.log("wholeCart", wholeCart)
-
-//   await wholeCart.destroy()
-//   return res.json({ message: 'Successfully cleared cart' });
-// });
+  await ProductsInCart.destroy()
+  return res.json({ message: 'Successfully removed all products from the cart' });
+});
 
 
 //remove product

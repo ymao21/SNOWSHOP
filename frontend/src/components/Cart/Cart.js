@@ -66,69 +66,106 @@ const Cart = () => {
     <>
 
     <div className='shoppingCartBanner'> SHOPPING BAG </div>
+
+    {cartItemsArr.length === 0 ? (
+
+          <div className='EmptyCart'>
+       <img src="https://www.misterjonesandmisskatie.com/assets/images/empty-cart.png" alt="Empty Cart Icon" className='EmptyCartImg'></img>
+          <h1 className="EmptyCartMessage">Your cart is currently empty empty</h1>
+          <button className="ContinueShoppingButton" onClick={handleContinueShopping}>Continue Shopping</button>
+          </div>
+
+        ) : (
+
     <div className="Cart">
           {cartItemsArr?.map((product)=> (
 
            <div key={product.Product.name} className="CartItem">
 
         <div className="CartItem__Image">
-          <img src={product?.Product.previewImageUrl} alt={product?.Product.name} />
+          <img src={product?.Product.previewImageUrl}  />
         </div>
-        <h3 className="CartItem__Name">{product?.Product.name}</h3>
-
+        <h3 className="CartItem__Name">
+    <a href={`/products/${product.Product.id}`}>{product?.Product.name}</a>
+  </h3>
         <div className="CartItem__Quantity">
-              Quantity:
-              <button onClick={() => handleQuantityChange(product.Product.id, product.quantity - 1, product.productId, product.CartId)}>-</button>
-              <input
-                type="number"
-                value={product.quantity}
-                min="0"
-                onChange={(e) => handleQuantityChange(product.Product.id, Number(e.target.value), product.productId, product.CartId)}
-              />
-              <button onClick={() => handleQuantityChange(product.Product.id, product.quantity + 1, product.productId, product.CartId)}>+</button>
-            </div>
-
-        <div className="CartItem__Details">
-
+  <button
+    onClick={() =>
+      handleQuantityChange(
+        product.Product.id,
+        product.quantity - 1,
+        product.productId,
+        product.CartId
+      )
+    }
+  >
+    -
+  </button>
+  <div className="QuantityInputContainer">
+    <input
+      type="number"
+      value={product.quantity}
+      min="0"
+      readOnly
+      className="InputNoBorder"
+    />
+  </div>
+  <button
+    onClick={() =>
+      handleQuantityChange(
+        product.Product.id,
+        product.quantity + 1,
+        product.productId,
+        product.CartId
+      )
+    }
+  >
+    +
+  </button>
+</div>
 
           <div className="CartItem__Price">Price: ${(product.Product.price * product.quantity).toFixed(2)}</div>
 
-
-
-          <button onClick={() => handleRemoveFromCart(product.cartId, product.productId)}>
-                  Remove from cart
+        <button className="cartRemoveBtn" onClick={() => handleRemoveFromCart(product.cartId, product.productId)}>
+                  remove
           </button>
-        </div>
       </div>
 
           ))}
 
-          <div className='orderSummary'>
-          <h1>Order Summary</h1>
+<div className='orderSummary'>
+  <h1>Order Summary</h1>
+  <h3 className="ItemCount">{getTotalPriceAndCount().itemCount} Items</h3>
+  <div>
+    <div>Retail Price</div>
+    <div className="price">US${getTotalPriceAndCount().totalPrice}</div>
+  </div>
+  <div>
+    <div>Estimated Shipping Fee</div>
+    <div className="price">US$0.00</div>
+  </div>
+  <div className="TotalPrice">
+    <div>Subtotal:</div>
+    <div className="price">US${getTotalPriceAndCount().totalPrice}</div>
+  </div>
 
-            <div>Retail Price US${getTotalPriceAndCount().totalPrice}   </div>
 
-            <div>Estimated Shipping Fee US$0.00  </div>
-
-     <div className="TotalPrice">Subtotal: US${getTotalPriceAndCount().totalPrice}</div>
-    <div className="ItemCount">{getTotalPriceAndCount().itemCount} Items</div>
+</div>
 
 
-    </div>
-    <div className="Cart__Buttons">
-        <button className="ContinueShoppingButton" onClick={handleContinueShopping}>Continue Shopping</button>
-        <button className="CheckoutButton" onClick={handleCheckout}>
-          Checkout Now
-        </button>
-      </div>
+<div className="Cart__Buttons">
+  <button className="CheckoutButton" onClick={handleCheckout}>Checkout Now</button>
+  <button className="ContinueShoppingButton" onClick={handleContinueShopping}>Continue Shopping</button>
+</div>
 
 
         <button className="CheckoutButton" onClick={() => handleClearCart(cartId)}>
           clear cart
         </button>
-
-
     </div>
+
+        )}
+
 
     </>
   );

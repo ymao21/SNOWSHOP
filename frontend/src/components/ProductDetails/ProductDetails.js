@@ -28,11 +28,10 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart =  () => {
-    const cartId = sessionuser.currentCart.id
+    const cartId = sessionuser?.currentCart.id
      dispatch(addToCartThunk({productId, cartId}));
-     history.push(`/cart/${sessionUser.currentCart.id}`);
+     history.push(`/cart/${sessionUser?.currentCart.id}`);
   };
-
 
   const isOwner = sessionuser && sessionuser.user.id === product?.userId
 
