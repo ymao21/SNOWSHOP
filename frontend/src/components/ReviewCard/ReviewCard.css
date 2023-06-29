@@ -66,3 +66,38 @@
     }
 
 }
+
+.reactionIcons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .thumbIcon {
+    cursor: pointer;
+  }
+
+  .thumbIcon.selected {
+    font-weight: bold;
+  }
+
+  .reactionCount {
+    font-size: 12px;
+    margin-left: 5px;
+  }
+
+  .ReviewUserIcon{
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  .ReviewEllipsisButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 5px;
+  }
+
