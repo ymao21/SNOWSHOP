@@ -1,0 +1,15 @@
+
+
+
+
+.checkOutPage{
+    display: flex;
+    margin: 100px;
+   flex-direction: column;
+   align-items: center;
+   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.CheckoutBag{
+    width: 150px;
+}

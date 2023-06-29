@@ -1,5 +1,5 @@
 import './Cart.css'
-import { loadAllCartThunk, editQuantityThunk, deleteCartThunk, clearCart } from '../../store/cart'
+import { loadAllCartThunk, editQuantityThunk, deleteCartThunk } from '../../store/cart'
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -21,8 +21,12 @@ const Cart = () => {
   }, [dispatch]);
 
 
-  const handleQuantityChange = (cartItemId, newQuantity,  productId, cartId) => {
-    dispatch(editQuantityThunk(cartItemId, newQuantity, productId, cartId))
+  const handleQuantityChange = (cartItemId, newQuantity, productId, cartId) => {
+    if (newQuantity < 1) {
+      handleRemoveFromCart(cartId, productId);
+    } else {
+      dispatch(editQuantityThunk(cartItemId, newQuantity, productId, cartId));
+    }
   };
 
   const handleRemoveFromCart = (cartId, productId) => {
@@ -30,17 +34,16 @@ const Cart = () => {
   }
 
     const handleCheckout = () => {
-      history.push('/products')
+      history.push('/checkedOut')
     };
 
     const handleContinueShopping = () => {
       history.push('/products')
     }
 
-    const handleClearCart = (cartId) => {
-      dispatch(clearCart(cartId))
-    }
-
+    // const handleClearCart = (cartId) => {
+    //   dispatch(clearCart(cartId))
+    // }
 
 
   return loaded && (
@@ -62,7 +65,7 @@ const Cart = () => {
             <input
               type="number"
               value={product.quantity}
-              min = "1"
+              min = "0"
               onChange={(e) => handleQuantityChange(product.Product.id, Number(e.target.value), product.productId, product.CartId)}
             />
           </div>
@@ -74,7 +77,6 @@ const Cart = () => {
 
           ))}
 
-
        <div className="Cart__Buttons">
         <button className="ContinueShoppingButton" onClick={handleContinueShopping}>Continue Shopping</button>
         <button className="CheckoutButton" onClick={handleCheckout}>
@@ -82,9 +84,12 @@ const Cart = () => {
         </button>
       </div>
 
-      <button className="CheckoutButton" onClick={handleClearCart}>
+{/*
+        <button className="CheckoutButton" onClick={() => handleClearCart(cartId)}>
           clear cart
-        </button>
+        </button> */}
+
+
 
     </div>
   );

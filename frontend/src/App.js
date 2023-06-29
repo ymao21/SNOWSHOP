@@ -9,6 +9,7 @@ import ProductList from "./components/ProductList/ProductList";
 import Cart from "./components/Cart/Cart";
 import Home from "./components/Home/Home"
 import SubNavigation from "./components/SubNavigation/SubNavigation";
+import CheckedOut from "./components/CheckedOut/CheckedOut";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +45,11 @@ function App() {
 
           <Route path="/cart/:cartId">
             <Cart/>
+          </Route>
+
+
+          <Route path="/checkedOut">
+            <CheckedOut/>
           </Route>
 
         </Switch>
