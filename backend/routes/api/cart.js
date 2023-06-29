@@ -89,8 +89,6 @@ router.put("/:cartId", requireAuth, async (req, res, next) => {
 })
 
 
-
-
 //clear cart
 router.delete("/:cartId", requireAuth, async (req, res, next) => {
   const { cartId } = req.params;

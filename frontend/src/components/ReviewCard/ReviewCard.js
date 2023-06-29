@@ -27,6 +27,7 @@ const ReviewCard = ({review}) => {
 
   return (
     <>
+    
       <div className='reviewUser'>{sessionUser.user.username}</div>
 
       <div className="star-rating">

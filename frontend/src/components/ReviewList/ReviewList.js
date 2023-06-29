@@ -43,7 +43,7 @@ useEffect(() => {
 	</div>
     <hr />
          <div className='ratingSummary'>
- 
+
 
 <div className="rating-summary-container">
   <h2 className='average-rating'>{averageRating} {averageRating === 1 ? 'star' : 'stars'}</h2>
