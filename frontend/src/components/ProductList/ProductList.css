@@ -13,7 +13,8 @@ margin-top: 50px;
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 2px;
-    max-width: 2000px;
+    width: 1200px;
+    height: 600px;
 
 }
 
