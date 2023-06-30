@@ -15,7 +15,7 @@ const SubNavigation = () => {
   const cartItemsObj = useSelector((state) => state.cartState.cartItems)
   const cartItemsArr = Object.values(cartItemsObj)
 
-  const isOwner = sessionUser
+  const isOwner = sessionUser.user
 
 
   const redirectCart = () => {
@@ -38,7 +38,17 @@ const SubNavigation = () => {
         </a>
       )}
 
-      <OpenModalButton modalComponent={<CreateProductForm />} buttonText="List My Product" />
+
+      {isOwner ? (
+        <OpenModalButton modalComponent={<CreateProductForm />} buttonText="List My Product" />
+      ) : (
+
+        <span class="LogInToSell">PLEASE LOG IN TO SELL</span>
+      )}
+
+
+
+
       <SearchBar />
       <img
         src="https://img.uxwing.com/wp-content/themes/uxwing/download/user-interface/search-icon.png"

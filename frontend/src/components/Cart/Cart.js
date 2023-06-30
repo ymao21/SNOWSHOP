@@ -84,7 +84,8 @@ const Cart = () => {
           <div className='EmptyCart'>
        <img src="https://www.misterjonesandmisskatie.com/assets/images/empty-cart.png" alt="Empty Cart Icon" className='EmptyCartImg'></img>
           <h1 className="EmptyCartMessage">Your cart is currently empty empty</h1>
-          <button className="ContinueShoppingButton" onClick={handleContinueShopping}>Continue Shopping</button>
+          <p className="EmptyCartMessageP">But not for long</p>
+          <button className="ContinueShoppingButton" onClick={handleContinueShopping}>Discover something unique to fill it up</button>
           </div>
 
         ) : (

@@ -48,3 +48,31 @@
   width: 100px;
  height: 50px;
 }
+
+.LogInToListProduct{
+  font-family: sans-serif;
+}
+
+body {
+  background: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 900;
+}
+
+
+.LogInToSell {
+  @supports (background-clip: text) or (-webkit-background-clip: text) {
+    background-image:
+      url("https://cdn.wallpapersafari.com/92/96/ZJP7vN.png");
+    background-size: 110% auto;
+    background-position: center;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}

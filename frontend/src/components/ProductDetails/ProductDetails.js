@@ -39,17 +39,7 @@ const ProductDetail = () => {
 
       <div className='productBackgroundContainer'>
 
-{/* <div className='EditandDelete'>
 
-<OpenModalButton
-productId = {productId}
-className="EditProductModal"
- modalComponent={<EditProductForm productId = {productId} />}
- buttonText="Edit Product"
- />
-
-{ isOwner && <button className="DeleteBtn" onClick={deletehandler}>Delete Product</button> }
-</div> */}
     <div className="ProductDetailContainer">
 
       <div className='productimgleft'>

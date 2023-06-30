@@ -5,6 +5,10 @@ import { useSelector } from 'react-redux';
 const ProductCard = ({ product }) => {
   const sessionUser = useSelector((state) => state.session.user);
 
+  const isOwner = sessionUser.user
+
+  console.log(isOwner)
+
   return (
     <div className='productCardContainer'>
 
