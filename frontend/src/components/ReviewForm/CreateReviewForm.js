@@ -15,7 +15,7 @@ const CreateReviewForm =() => {
     const productIdobj = useParams()
     const productId = productIdobj.productId
 
-    // console.log("frontendProductid",productIdobj )
+
 
     const [errors, setErrors] = useState([])
     const [body, setBody] = useState("");
@@ -24,7 +24,7 @@ const CreateReviewForm =() => {
     const createBody = (e) => setBody(e.target.value)
     const createRating = (e) => setRating(e.target.value)
 
-    // console.log(productId.productId)
+
 
     const submitHandler = (e) => {
         e.preventDefault();

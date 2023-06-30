@@ -1,32 +1,59 @@
 
 .reviewForm{
-    width: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     padding: 20px;
-    width: 700px;
-    position:relative;
- 
+
 }
 
 .starRating{
     display:none
 }
 
-.reviewInput{
-    box-shadow: 0 2px 3px 0 rgba(233, 226, 226, 0.2);
-    transition: 0.3s;
-    padding: 5px;
+.reviewInput {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background-color: transparent;
+    transition: border-color 0.3s;
+    padding: 10px;
     margin: 10px;
-    width: 700px;
-    border-radius: 3px;
+    width: 50%;
+    border-radius: 0;
     height: 50px;
     display: flex;
     align-items: center;
-    justify-content: center;
-}
+    font-size: 16px;
+    color: #333;
+  }
+
+  .reviewInput:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+
+  .reviewInput::placeholder {
+    color: #aaa;
+  }
+
+  .reviewInput::-webkit-input-placeholder {
+    color: #aaa;
+  }
+
+  .reviewInput::-moz-placeholder {
+    color: #aaa;
+  }
+
+  .reviewInput:-ms-input-placeholder {
+    color: #aaa;
+  }
+
+  .reviewInput:-moz-placeholder {
+    color: #aaa;
+  }
+  
+
 
 .Reviewsubmitbtn{
     margin-top: 3px;
