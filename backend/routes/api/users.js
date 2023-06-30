@@ -29,10 +29,10 @@ const validateSignup = [
       .exists({ checkFalsy: true })
       .isLength({ min: 6 })
       .withMessage('Password must be 6 characters or more.'),
-    check('about')
-      .exists({ checkFalsy: true })
-      .isLength({ min: 5 })
-      .withMessage('Please provide a description with at least 5 characters'),
+    // check('about')
+    //   .exists({ checkFalsy: false })
+    //   .isLength({ min: 1 })
+    //   .withMessage('Please provide a longer description'),
     handleValidationErrors
   ];
 

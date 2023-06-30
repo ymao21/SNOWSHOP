@@ -15,6 +15,8 @@ const SubNavigation = () => {
   const cartItemsObj = useSelector((state) => state.cartState.cartItems)
   const cartItemsArr = Object.values(cartItemsObj)
 
+  const isOwner = sessionUser
+
 
   const redirectCart = () => {
     history.push(`/cart/${sessionUser.currentCart.id}`);
