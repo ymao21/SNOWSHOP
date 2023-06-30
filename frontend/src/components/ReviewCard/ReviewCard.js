@@ -88,7 +88,7 @@ const ReviewCard = ({ review }) => {
         </div>
       </div>
 
-      <div className="reviewCard">
+      <div className="reviewCards">
         <div className="reviewCard">
           <div className="ReviewInput">{review?.body}</div>
 
@@ -141,7 +141,7 @@ const ReviewCard = ({ review }) => {
         </div>
       </div>
 
-      <hr />
+ 
     </>
   );
 };

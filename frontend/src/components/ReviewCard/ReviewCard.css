@@ -1,8 +1,11 @@
-.reviewCard{
-    margin: 10px;
-    font-size: 15px;
-    position:relative;
-    left:2px;
+.reviewCard {
+  margin: 10px;
+  font-size: 15px;
+  position: relative;
+  background-color: #f9f9f9;
+  border: 1px solid #e4e5e9;
+  border-radius: 4px;
+  padding: 15px;
 }
 
 .reviewUser{
@@ -20,7 +23,7 @@
 .deleteReviewBtn{
     margin-top: 7px;
     position:relative;
-    right:2px;
+    right:-70%;
     margin-right: 5px;
     display: inline-block;
     outline: none;
@@ -45,7 +48,7 @@
 .EditReviewBtn{
     margin-top: 7px;
     position:relative;
-    right:2px;
+    right:-70%;
     margin-right: 5px;
     display: inline-block;
     outline: none;
@@ -60,6 +63,7 @@
     background-color: #efeeea;
     transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
     padding: 0 18px;
+
     :hover {
         color: #241c15;
         background-color: #d9d7cd;
@@ -71,6 +75,9 @@
     display: flex;
     gap: 10px;
     margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .thumbIcon {
@@ -92,12 +99,3 @@
     margin-right: 5px;
     vertical-align: middle;
   }
-
-  .ReviewEllipsisButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    margin-left: 5px;
-  }
-

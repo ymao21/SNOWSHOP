@@ -32,6 +32,8 @@
   }
   .productDetRight{
     width: 30%;
+    /* background-color: red; */
+    margin-left: 40px;
   }
 
   .productimg {
