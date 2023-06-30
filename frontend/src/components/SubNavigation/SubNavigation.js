@@ -40,28 +40,28 @@ const SubNavigation = () => {
 
 
       {isOwner ? (
+           <>
         <OpenModalButton modalComponent={<CreateProductForm />} buttonText="List My Product" />
-      ) : (
-
-        <span class="LogInToSell">PLEASE LOG IN TO SELL</span>
-      )}
-
-
-
-
-      <SearchBar />
-      <img
+        <SearchBar />
+        <img
         src="https://img.uxwing.com/wp-content/themes/uxwing/download/user-interface/search-icon.png"
         alt="SearchSymbol"
         className="SearchSymbol"
       />
-      <button className="cartButton" onClick={redirectCart}>
+           <button className="cartButton" onClick={redirectCart}>
         <img
           src="https://www.freeiconspng.com/thumbs/bags-icon/bag-icon-6.png"
           alt="Shopping Cart"
           className="cartIcon"
         />
       </button>
+        </>
+      ) : (
+        <span class="LogInToSell">PLEASE LOG IN TO SELL AND EXPLORE</span>
+
+      )}
+
+
     </div>
   );
 };

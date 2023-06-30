@@ -51,17 +51,19 @@
 
 .LogInToListProduct{
   font-family: sans-serif;
+
 }
 
 body {
   background: #ffffff;
-  min-height: 100vh;
+  min-height: 130vh;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #000000;
   font-family: 'Work Sans', sans-serif;
   font-weight: 900;
+
 }
 
 
