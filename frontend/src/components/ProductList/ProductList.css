@@ -32,38 +32,48 @@ justify-content: center;
 
 
 .filterButtons {
-    outline: 0;
-    grid-gap: 8px;
-    margin: 10px;
-    align-items: center;
-    background: 0 0;
-    border: 1px solid #000;
-    border-radius: 4px;
-    cursor: pointer;
-    display: inline-flex;
-    flex-shrink: 0;
-    font-size: 16px;
-    gap: 8px;
-    justify-content: center;
-    line-height: 1.5;
-    overflow: hidden;
-    padding: 12px 16px;
-    text-decoration: none;
-    text-overflow: ellipsis;
-    transition: all .14s ease-out;
-    white-space: nowrap;
-    background-color: rgb(180, 172, 172);
-  }
+  outline: 0;
+  grid-gap: 8px;
+  margin: 10px;
+  align-items: center;
+  background: linear-gradient(45deg, #000000, #0d1198);
+  border: none;
 
-  .filterButtons:hover {
-    box-shadow: 4px 4px 0 #000;
-    transform: translate(-4px,-4px);
-  }
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 16px;
+  gap: 8px;
+  justify-content: center;
+  line-height: 1.5;
+  overflow: hidden;
+  padding: 12px 16px;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  transition: all .3s ease-out;
+  white-space: nowrap;
+  color: #fff;
+}
 
-  .filterButtons:focus{
-    outline-offset: 1px;
-    box-shadow: 4px 4px 0 #000;
+.filterButtons:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.filterButtons:focus {
+  outline-offset: 2px;
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
   }
+  100% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  }
+}
+
 
 .subFilters {
   display: none;
