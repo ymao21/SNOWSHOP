@@ -38,7 +38,7 @@ const ProductDetail = () => {
     return (
 
       <div className='productBackgroundContainer'>
-
+    <div className='productInfoName'> {product?.name} </div>
 
     <div className="ProductDetailContainer">
 
@@ -50,7 +50,7 @@ const ProductDetail = () => {
       <div className='productDetRight'>
 
      <div className='productInfo'>
-    <div className='productInfoName'> Name: {product?.name} </div>
+    {/* <div className='productInfoName'> Name: {product?.name} </div> */}
     <br/>
 
     <div className='productInfoPrice'>  $ {product?.price}  </div>
