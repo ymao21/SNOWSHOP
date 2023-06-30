@@ -15,18 +15,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
+	margin-top: -20px;
 
   }
 
   .average-rating {
     margin-right: -10px;
+
   }
 
   .number-of-reviews{
     display: flex;
     align-items: center;
     justify-content: center;
-
+	margin-top: -10px;
+	margin-bottom: -8px;
   }
 
 
@@ -37,11 +40,10 @@
 
 .ratingsAndReviews {
 	position: relative;
-    left: 15%;
+    left: 12%;
     padding: 10px;
-    margin: 15px;
+    margin: auto;
    border-radius: 1px;
-   margin-top: 480px;
    display: flex;
    align-items: center;
    justify-content: center;
@@ -49,7 +51,7 @@
 
 .ratingsAndReviews h2 {
 	color: #fff;
-	font-size: 5em;
+	font-size: 3em;
 	position: absolute;
 	transform: translate(-50%, -50%);
 }

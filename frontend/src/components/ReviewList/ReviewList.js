@@ -44,9 +44,8 @@ useEffect(() => {
     <hr />
          <div className='ratingSummary'>
 
-
 <div className="rating-summary-container">
-  <h2 className='average-rating'>{averageRating} {averageRating === 1 ? 'star' : 'stars'}</h2>
+  <h3 className='average-rating'>{averageRating} {averageRating === 1 ? 'star' : 'stars'}</h3>
   <div className="star-rating">
     <div>
       {[...Array(5)].map((star, index) => {
@@ -65,16 +64,16 @@ useEffect(() => {
     </div>
   </div>
 </div>
-
-<h2 className='number-of-reviews'>{reviewFiltered.length} {reviewFiltered.length === 1 ? 'review' : 'reviews'}</h2>
+<h3 className='number-of-reviews'>{reviewFiltered.length} {reviewFiltered.length === 1 ? 'review' : 'reviews'}</h3>
 
           </div>
-          <hr />
+
 
 
         <div className='eachReviewCard'> {reviewFiltered.map(review => (
             <ReviewCard key={review.id} review={review}/>
         ))} </div>
+
         <CreateReviewForm/>
 
         </>

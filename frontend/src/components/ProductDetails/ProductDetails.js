@@ -36,41 +36,62 @@ const ProductDetail = () => {
   const isOwner = sessionuser && sessionuser.user.id === product?.userId
 
     return (
+
       <div className='productBackgroundContainer'>
+
+<div className='EditandDelete'>
+
+<OpenModalButton
+productId = {productId}
+className="EditProductModal"
+ modalComponent={<EditProductForm productId = {productId} />}
+ buttonText="Edit Product"
+ />
+
+{ isOwner && <button className="DeleteBtn" onClick={deletehandler}>Delete Product</button> }
+</div>
     <div className="ProductDetailContainer">
+
+      <div className='productimgleft'>
+
       <img className='productimg' src = {product?.previewImageUrl} alt = "productimg" />
-      <div>
+      </div>
+
+      <div className='productDetRight'>
+
      <div className='productInfo'>
     <div className='productInfoName'> Name: {product?.name} </div>
     <br/>
+
     <div className='productInfoPrice'>  $ {product?.price}  </div>
     <br/>
+
     <div className='productInfoDesc'>Description: {product?.description}</div>
     <br/>
+
     <div className='productInfodet'> Color: {product?.color}</div>
     <br/>
+
     <div className='productInfodet'>Type: {product?.type}</div>
     <br/>
 
-    <div className="addToCartBtn">
       <button className="add" onClick= {handleAddToCart}>Add to Cart</button>
+
     </div>
 
+
+
+
     </div >
-     <OpenModalButton
-     productId = {productId}
-     className="EditProductModal"
-			modalComponent={<EditProductForm productId = {productId} />}
-			buttonText="Edit Product"
-			/>
-
-     </div>
 
 
-     { isOwner && <button className="DeleteBtn" onClick={deletehandler}>Delete Product</button> }
+    </div>
 
+
+     <div className='reviewListContainer'>
      <ReviewList/>
      </div>
+
 
     </div>
     );
