@@ -60,13 +60,9 @@
 
 body {
   background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: #000000;
   font-family: 'Work Sans', sans-serif;
   font-weight: 900;
-
 }
 
 
