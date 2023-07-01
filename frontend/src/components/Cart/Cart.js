@@ -62,7 +62,7 @@ const Cart = () => {
       let itemCount = 0;
 
       cartItemsArr.forEach((product) => {
-        totalPrice += product.Product.price * product.quantity;
+        totalPrice += product?.Product?.price * product?.quantity;
         itemCount += product.quantity;
       });
 
@@ -92,23 +92,21 @@ const Cart = () => {
 
     <div className="Cart">
           {cartItemsArr?.map((product)=> (
-
-           <div key={product.Product.name} className="CartItem">
-
+           <div key={product?.Product?.name} className="CartItem">
         <div className="CartItem__Image">
-          <img src={product?.Product.previewImageUrl}  />
+          <img src={product?.Product?.previewImageUrl}  />
         </div>
         <h3 className="CartItem__Name">
-    <a href={`/products/${product.Product.id}`}>{product?.Product.name}</a>
+    <a href={`/products/${product?.Product?.id}`}>{product?.Product?.name}</a>
   </h3>
         <div className="CartItem__Quantity">
   <button
     onClick={() =>
       handleQuantityChange(
-        product.Product.id,
-        product.quantity - 1,
-        product.productId,
-        product.CartId
+        product?.Product?.id,
+        product?.quantity - 1,
+        product?.productId,
+        product?.CartId
       )
     }
   >
@@ -117,7 +115,7 @@ const Cart = () => {
   <div className="QuantityInputContainer">
     <input
       type="number"
-      value={product.quantity}
+      value={product?.quantity}
       min="0"
       readOnly
       className="InputNoBorder"
@@ -137,9 +135,9 @@ const Cart = () => {
   </button>
 </div>
 
-          <div className="CartItem__Price">Price: ${(product.Product.price * product.quantity).toFixed(2)}</div>
+          <div className="CartItem__Price">Price: ${(product?.Product?.price * product?.quantity).toFixed(2)}</div>
 
-        <button className="cartRemoveBtn" onClick={() => handleRemoveFromCart(product.cartId, product.productId)}>
+        <button className="cartRemoveBtn" onClick={() => handleRemoveFromCart(product?.cartId, product?.productId)}>
                   remove
           </button>
       </div>

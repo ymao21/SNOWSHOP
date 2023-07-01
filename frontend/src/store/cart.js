@@ -4,7 +4,6 @@ const LOAD_CART = '/cart/LOAD_CART';
 const ADD_CART = '/cart/ADD_CART';
 const REMOVE_CART = '/cart/REMOVE_CART';
 const EDIT_QUANTITY = '/cart/EDIT_QUANTITY';
-const CLEAR_CART = '/cart/CLEAR_CART'
 
 // Action creators
 export const loadToCart = (products) => {
@@ -37,12 +36,6 @@ export const deleteFromCart = (cartId, productId) => {
   };
 };
 
-// export const clearCart = (cartId) => {
-//   return {
-//     type: CLEAR_CART,
-//     cartId
-//   }
-// }
 
 export const loadAllCartThunk = ({cartId}) => async (dispatch) => {
   const response = await csrfFetch(`/api/cart/${cartId}`);
@@ -61,6 +54,8 @@ export const addToCartThunk = ({cartId, productId}) => async (dispatch) => {
   method: 'POST',
   body: JSON.stringify({productId, cartId})
  });
+
+
 
   if (response.ok) {
     const product = await response.json();
@@ -98,21 +93,6 @@ export const deleteCartThunk = (cartId, productId) => async (dispatch) => {
     return removeFromCart
   }
 }
-
-// export const clearCartThunk = (cartId) => async (dispatch) => {
-//   const response = await csrfFetch(`/api/cart/${cartId}`, {
-//     method: 'DELETE'
-// })
-
-
-
-// if(response.ok) {
-//   const clearCart = await response.json()
-//   console.log("clearcart", clearCart)
-//   dispatch(clearCart(cartId))
-//   return clearCart
-// }
-// }
 
 const initialState = {
   cartItems: {},
