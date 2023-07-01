@@ -17,7 +17,7 @@ const SubNavigation = () => {
 
   const isOwner = sessionUser.user
 
-  // console.log(isOwner.username)
+
 
 
   const redirectCart = () => {

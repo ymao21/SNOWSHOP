@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         where: {
           [Op.or]: {
             username: credential,
-            email: credential
+            email: credential,
           }
         }
       });
@@ -95,7 +95,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       about: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       hashedPassword: {
         type: DataTypes.STRING.BINARY,

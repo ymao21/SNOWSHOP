@@ -11,6 +11,7 @@ function ProfileButton({ user }) {
   const sessionUser = useSelector(state => state.session.user);
   const history = useHistory()
 
+
   const redirectToHome = () => {
     history.push('/')
   }

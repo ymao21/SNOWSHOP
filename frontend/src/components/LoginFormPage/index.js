@@ -20,7 +20,7 @@ function LoginFormPage() {
   );
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     setErrors([]);
     return dispatch(sessionActions.login({ credential, password }))
       .catch(async (res) => {
@@ -68,10 +68,13 @@ function LoginFormPage() {
         />
       </label>
 
-      
 
 
-      <button className = "loginBtn" type="submit">Log In</button>
+
+      <button className = "loginBtn"type="submit" onClick={() => {
+         handleSubmit();
+          closeModal();
+        }}>Log In</button>
 
       <button className="loginBtn" onClick={() => {
           handleSubmitDemo();

@@ -3,6 +3,7 @@
     margin: 15px;
     border-radius: 1px;
     margin-top: 50px;
+	width: 60%;
 }
 
 .ratingSummary{
@@ -40,9 +41,9 @@
 
 .ratingsAndReviews {
 	position: relative;
-    left: 12%;
-    padding: 10px;
-    margin: auto;
+    left: 8%;
+    padding: 20px;
+  margin-top: 70px;
    border-radius: 1px;
    display: flex;
    align-items: center;

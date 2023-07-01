@@ -9,6 +9,8 @@
   width: 100%;
 }
 
+
+
 .reviewUser{
     position:relative;
     left:20px;
@@ -20,11 +22,17 @@
     position:relative;
     left:20px;
 }
-
+.DeleteEditReviewBtn{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+   width: 100%;
+   position: relative;
+   left: 5%;
+}
 .deleteReviewBtn{
     margin-top: 7px;
     position:relative;
-    right:-70%;
     margin-right: 5px;
     display: inline-block;
     outline: none;
@@ -39,17 +47,18 @@
     background-color: #efeeea;
     transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
     padding: 0 18px;
-    :hover {
-        color: #241c15;
-        background-color: #d9d7cd;
-    }
+
 
 }
+.deleteReviewBtn:hover{
+        color: #241c15;
+        background-color: #f6b4a7;
+}
+
 
 .EditReviewBtn{
     margin-top: 7px;
     position:relative;
-    right:-70%;
     margin-right: 5px;
     display: inline-block;
     outline: none;
@@ -65,11 +74,11 @@
     transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
     padding: 0 18px;
 
-    :hover {
-        color: #241c15;
-        background-color: #d9d7cd;
-    }
+}
 
+.EditReviewBtn:hover{
+     color: #241c15;
+        background-color: #d9d7cd;
 }
 
 .reactionIcons {

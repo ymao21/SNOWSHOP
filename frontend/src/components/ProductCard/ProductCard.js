@@ -24,11 +24,11 @@ const ProductCard = ({ product }) => {
     <div className='productCardContainer'>
       {isOwner ? (
         <a className='productImgTag' href={`/products/${product.id}`}>
-          <img className='productimg' src={product.previewImageUrl} alt='productimg' />
+          <img className='productimg' src={product?.previewImageUrl} alt='productimg' />
         </a>
       ) : (
         <div className='productImgTag'>
-          <img onClick={handleClick} className='productimg' src={product.previewImageUrl} alt='productimg' />
+          <img onClick={handleClick} className='productimg' src={product?.previewImageUrl} alt='productimg' />
         </div>
       )}
 

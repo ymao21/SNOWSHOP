@@ -98,7 +98,7 @@ export const editProductThunk = (payload) => async (dispatch) => {
   if (payload.image) {
     formData.append("image", payload.image);
   }
-  
+
     const response = await csrfFetch(`/api/products/${payload.productId}`, {
       method: "PUT",
       headers: {
@@ -109,7 +109,7 @@ export const editProductThunk = (payload) => async (dispatch) => {
 
     if (response.ok) {
       const productEdit = await response.json();
-      console.log("productEdit", productEdit);
+    //   console.log("productEdit", productEdit);
       dispatch(editProduct(productEdit));
       return productEdit;
     }

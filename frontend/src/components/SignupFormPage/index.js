@@ -28,6 +28,7 @@ function SignupFormPage() {
           username,
           password,
           firstName,
+          about,
           lastName,
         })
       )
@@ -40,6 +41,7 @@ function SignupFormPage() {
       "Confirm Password field must be the same as the Password field",
     ]);
   };
+
 
   return (
     <form className="signupform" onSubmit={handleSubmit}>

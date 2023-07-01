@@ -89,6 +89,7 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     margin-right: 10%;
+    white-space: nowrap;
     font-size: xxx-large;
     font-family: Brush Script MT, Brush Script Std, cursive;
   }

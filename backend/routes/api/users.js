@@ -29,18 +29,14 @@ const validateSignup = [
       .exists({ checkFalsy: true })
       .isLength({ min: 6 })
       .withMessage('Password must be 6 characters or more.'),
-    // check('about')
-    //   .exists({ checkFalsy: false })
-    //   .isLength({ min: 1 })
-    //   .withMessage('Please provide a longer description'),
+    check('about')
+      .exists({ checkFalsy: false })
+      .isLength({ min: 1 })
+      .withMessage('Please provide a longer description'),
     handleValidationErrors
   ];
 
-  router.post(
-    '/',
-    // singleMulterUpload("image"),
-    validateSignup,
-    async (req, res, next) => {
+  router.post('/', validateSignup, async (req, res, next) => {
       const { email, password, about, username, firstName, lastName } = req.body;
 
       const checkEmail = await User.findOne({
@@ -59,13 +55,7 @@ const validateSignup = [
       user.dataValues.token = await setTokenCookie(res, user);
 
       await setTokenCookie(res, user);
-
-      // return res.json({
-      //   user: user,
-      // });
-
       return res.json(user);
-
     }
   );
 

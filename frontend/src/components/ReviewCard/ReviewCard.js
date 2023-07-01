@@ -13,6 +13,8 @@ const ReviewCard = ({ review }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const isOwner = sessionUser && sessionUser.user.id === review.userId;
 
+   
+
   const deleteHandler = () => {
     dispatch(deleteReviewThunk(review.id));
   };
@@ -68,6 +70,8 @@ const ReviewCard = ({ review }) => {
     <>
       <div className="reviewUser">
       <img src="https://t3.ftcdn.net/jpg/05/26/72/48/240_F_526724825_fEKkOFrsAnTBW3G5Qc9VCZxArl3zWEdT.jpg" alt="user-icon" className="ReviewUserIcon" />
+
+
         {sessionUser.user.username}</div>
 
       <div className="star-rating">
@@ -88,33 +92,11 @@ const ReviewCard = ({ review }) => {
         </div>
       </div>
 
-      <div className="reviewCards">
+
         <div className="reviewCard">
           <div className="ReviewInput">{review?.body}</div>
 
-          {isOwner && (
-            <button
-              className="deleteReviewBtn"
-              onClick={() => {
-                deleteHandler();
-              }}
-            >
-              Delete Review
-            </button>
-          )}
 
-          {isEditing ? (
-            <EditReviewForm
-              review={review}
-              onSave={handleSave}
-              initialRating={rating}
-              setIsEditing={setIsEditing}
-            />
-          ) : (
-            <button className="EditReviewBtn" onClick={handleEdit}>
-              Edit Review
-            </button>
-          )}
 
 <div className="reactionIcons">
   <div
@@ -139,9 +121,40 @@ const ReviewCard = ({ review }) => {
 
 
         </div>
-      </div>
 
- 
+<div className='DeleteEditReviewBtn'>
+
+     {isOwner &&  (isEditing ? (
+            <EditReviewForm
+              review={review}
+              onSave={handleSave}
+              initialRating={rating}
+              setIsEditing={setIsEditing}
+            />
+          ) : (
+            <button className="EditReviewBtn" onClick={handleEdit}>
+              Edit Review
+            </button>
+          ))
+
+          }
+
+
+      {isOwner && (
+            <button
+              className="deleteReviewBtn"
+              onClick={() => {
+                deleteHandler();
+              }}
+            >
+              Delete Review
+            </button>
+          )}
+
+
+
+</div>
+
     </>
   );
 };

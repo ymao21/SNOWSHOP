@@ -19,12 +19,15 @@
     transition: border-color 0.3s;
     padding: 10px;
     margin: 10px;
-    width: 50%;
+    width: 200%;
     border-radius: 0;
     display: flex;
     align-items: center;
     font-size: 16px;
     color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .reviewInput:focus {
@@ -72,8 +75,9 @@
     background-color: #efeeea;
     transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
     padding: 0 18px;
-    :hover {
-        color: #241c15;
-        background-color: #d9d7cd;
-    }
+}
+
+.Reviewsubmitbtn:hover {
+  color: #241c15;
+  background-color: #d9d7cd;
 }

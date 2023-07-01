@@ -50,7 +50,7 @@ const ProductDetail = () => {
       <div className='productDetRight'>
 
      <div className='productInfo'>
-    {/* <div className='productInfoName'> Name: {product?.name} </div> */}
+
     <br/>
 
     <div className='productInfoPrice'>  $ {product?.price}  </div>
@@ -78,19 +78,22 @@ const ProductDetail = () => {
     </div>
     <div className='EditandDelete'>
 
+
+{isOwner &&
 <OpenModalButton
 productId = {productId}
 className="EditProductModal"
  modalComponent={<EditProductForm productId = {productId} />}
  buttonText="Edit Product"
  />
+}
 
 { isOwner && <button className="DeleteBtn" onClick={deletehandler}>Delete Product</button> }
 </div>
 
-     <div className='reviewListContainer'>
+    
      <ReviewList/>
-     </div>
+
 
 
     </div>
