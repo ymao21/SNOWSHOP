@@ -21,6 +21,8 @@ const EditProductForm = ({productId}) => {
 
     // const productImage = useSelector(state => state.productState[productId]?.image)
 
+    // console.log( "productImage" , productImage)
+
     const [name, setName] = useState(productName || "")
     const [color, setColor] = useState(productColor || "")
     const [price, setPrice] = useState(productPrice  || "")
@@ -41,7 +43,7 @@ const EditProductForm = ({productId}) => {
         e.preventDefault();
 
         setErrors([])
-        
+
         if (!name) {
           setErrors(prevErrors => [...prevErrors, "Name cannot be empty"]);
           return;

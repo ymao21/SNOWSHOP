@@ -1,6 +1,5 @@
 
 .productListContainer {
-
 background-color: rgb(254, 254, 254);
 text-align: center;
 height: 100%;
@@ -13,7 +12,6 @@ margin-top: 50px;
     flex-wrap: wrap;
     justify-content: space-evenly;
     width: 100%;
-
 }
 
 /* .productimg{
@@ -26,9 +24,7 @@ margin-top: 50px;
 .filterButtonsContainer {
 display: flex;
 justify-content: center;
-
 }
-
 
 .filterButtons {
     outline: 0;
