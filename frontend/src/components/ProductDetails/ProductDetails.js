@@ -27,38 +27,28 @@ const ProductDetail = () => {
     history.push(`/products`)
   }
 
-  const handleAddToCart =  () => {
+  const handleAddToCart = async () => {
     const cartId = sessionuser?.currentCart.id
-     dispatch(addToCartThunk({productId, cartId}));
-     history.push(`/cart/${sessionUser?.currentCart.id}`);
+     await dispatch(addToCartThunk({productId, cartId}))
+     history.push(`/cart/${sessionUser?.currentCart.id}`)
   };
 
   const isOwner = sessionuser && sessionuser.user.id === product?.userId
 
     return (
-
-      <div className='productBackgroundContainer'>
+    <div className='productBackgroundContainer'>
     <div className='productInfoName'> {product?.name} </div>
-
     <div className="ProductDetailContainer">
-
-      <div className='productimgleft'>
-
+    <div className='productimgleft'>
       <img className='productimg' src = {product?.previewImageUrl} alt = "productimg" />
       </div>
-
       <div className='productDetRight'>
-
-     <div className='productInfo'>
-
-    <br/>
-
+      <div className='productInfo'>
+      <br/>
     <div className='productInfoPrice'>  $ {product?.price}  </div>
     <br/>
-
     <div className='productInfoDesc'>Description: {product?.description}</div>
     <br/>
-
     <div className='productInfodet'> Color: {product?.color}</div>
     <br/>
 
@@ -69,12 +59,7 @@ const ProductDetail = () => {
 
     </div>
 
-
-
-
     </div >
-
-
     </div>
     <div className='EditandDelete'>
 
@@ -91,7 +76,7 @@ className="EditProductModal"
 { isOwner && <button className="DeleteBtn" onClick={deletehandler}>Delete Product</button> }
 </div>
 
-    
+
      <ReviewList/>
 
 

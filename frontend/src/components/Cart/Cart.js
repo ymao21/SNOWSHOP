@@ -63,7 +63,7 @@ const Cart = () => {
 
       cartItemsArr.forEach((product) => {
         totalPrice += product?.Product?.price * product?.quantity;
-        itemCount += product.quantity;
+        itemCount += product?.quantity;
       });
 
       return {
@@ -124,10 +124,10 @@ const Cart = () => {
   <button
     onClick={() =>
       handleQuantityChange(
-        product.Product.id,
-        product.quantity + 1,
-        product.productId,
-        product.CartId
+        product?.Product.id,
+        product?.quantity + 1,
+        product?.productId,
+        product?.CartId
       )
     }
   >

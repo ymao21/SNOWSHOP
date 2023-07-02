@@ -13,8 +13,6 @@ const ReviewCard = ({ review }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const isOwner = sessionUser && sessionUser.user.id === review.userId;
 
-   
-
   const deleteHandler = () => {
     dispatch(deleteReviewThunk(review.id));
   };
@@ -72,7 +70,7 @@ const ReviewCard = ({ review }) => {
       <img src="https://t3.ftcdn.net/jpg/05/26/72/48/240_F_526724825_fEKkOFrsAnTBW3G5Qc9VCZxArl3zWEdT.jpg" alt="user-icon" className="ReviewUserIcon" />
 
 
-        {sessionUser.user.username}</div>
+        {review?.User?.username}</div>
 
       <div className="star-rating">
         <div>
