@@ -33,16 +33,20 @@ const ProductCard = ({ product }) => {
       )}
 
       {isOwner ? (
+
+
         <Link className='titlelink' key={product?.id} to={`/products/${product.id}`}>
-          {product.name}
+        <div className='productPriceOnCard'>  ${product.price}</div>
+        <br></br>
+         {product.name}
         </Link>
+
+
       ) : (
         <div className='titlelink' onClick={handleClick}>
           {product.name}
         </div>
       )}
-
-
 
     </div>
   );

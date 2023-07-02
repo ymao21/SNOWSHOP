@@ -1,6 +1,6 @@
 
 .productListContainer {
-margin: 12px;
+
 background-color: rgb(254, 254, 254);
 text-align: center;
 height: 100%;
@@ -11,19 +11,17 @@ margin-top: 50px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 2px;
-    width: 1200px;
-    height: 600px;
+    justify-content: space-evenly;
+    width: 100%;
 
 }
 
-.productimg{
+/* .productimg{
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
     width: 200px;
-}
+} */
 
 .filterButtonsContainer {
 display: flex;
@@ -67,9 +65,6 @@ justify-content: center;
     outline-offset: 1px;
     box-shadow: 4px 4px 0 #000;
 }
-
-
-
 
 .subFilters {
   display: none;

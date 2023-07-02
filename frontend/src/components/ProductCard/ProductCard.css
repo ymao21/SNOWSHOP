@@ -2,50 +2,41 @@
 .productCardContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-content: space-between;
   justify-content: center;
-  padding: 30px;
-  background-color: #ffffff;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
-  height: 300px;
+  height: 330px;
   text-align: center;
-  margin-bottom: 50px;
+  height: 550px;
+  width: 400px;
+  gap: 0;
 }
 
-.productCardContainer:hover{
-  border-style: solid;
-}
+
 
 .productimg {
   width: auto;
-  height: 230px;
+  height: 380px;
   object-fit: cover;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
 }
 
-.productImgTag{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 200px;
-  height: 200px;
+.productPriceOnCard{
+  color: rgb(3, 3, 138);
 }
 
 .titlelink {
+  margin-top: 5px;
   text-decoration: none;
   color: #333;
   font-weight: bold;
   word-wrap: break-word;
   width: 200px;
-  text-align: center;
-  margin-top: auto;
+  text-align: left;
+  padding: 10px 20px;
+  margin-left: 10%;
+
 }
 
 .titlelink:hover {
   text-decoration: underline;
 }
-
-
