@@ -11,7 +11,7 @@ module.exports = {
     options.tableName = 'Products';
     await queryInterface.bulkInsert(options, [
       {
-        name: "Women's Burton Yeasayer Flat Top Snowboard",
+        name: "Women's Yeasayer Snowboard",
         price: 499.95,
         type: "snowboards",
         color: "pink",
@@ -21,7 +21,7 @@ module.exports = {
         userId: 1,
       },
       {
-        name: "Burton 1996 Dolphin Camber Snowboard",
+        name: "Dolphin Camber Snowboard",
         price: 609.95,
         type: "snowboards",
         color: "purple",
@@ -31,7 +31,7 @@ module.exports = {
         userId: 1,
       },
       {
-        name: "Used Burton 1987 Elite Flat Top Snowboard",
+        name: "Used Flat Top Snowboard",
         price: 299.95,
         type: "snowboards",
         color: "blue",
@@ -41,7 +41,7 @@ module.exports = {
         userId: 1,
       },
       {
-        name: "Women's Burton Ritual Step On Sweetspot Snowboard Boots",
+        name: "Women's Ritual Step On Snowboard Boots",
         price: 409.95,
         type: "boots",
         color: "blue",
@@ -51,7 +51,7 @@ module.exports = {
         userId: 1,
       },
       {
-        name: "Used Women's Burton Felix BOA Snowboard Boots",
+        name: "Used Women's BOA Snowboard Boots",
         price: 199.95,
         type: "boots",
         color: "white",
@@ -61,7 +61,7 @@ module.exports = {
         userId: 1,
       },
       {
-        name: "Men's Burton Carbonate GORE-TEX 3L Jacket",
+        name: "Men's Jacket",
         price: 299.95,
         type: "jackets",
         color: "white",
@@ -71,7 +71,7 @@ module.exports = {
         userId: 1,
       },
       {
-        name: "Used Men's Burton Carbonate GORE-TEX 2L Pants",
+        name: "Used Men's Carbonate GORE-TEX 2L Pants",
         price: 199.95,
         type: "pants",
         color: "blue",
@@ -101,7 +101,7 @@ module.exports = {
         userId: 1,
       },
       {
-        name: "Women's Burton Treeline GORE-TEX 2L Jacket",
+        name: "Women's Burton Jacket",
         price: 439.95,
         type: "jackets",
         color: "red",
@@ -121,7 +121,7 @@ module.exports = {
         userId: 1,
       },
       {
-        name: "Men's Stockrun Warmest Hooded Full-Zip Fleece",
+        name: "Men's Full-Zip Fleece",
         price: 199.95,
         type: "jackets",
         color: "black",
@@ -141,7 +141,7 @@ module.exports = {
         userId: 1,
       },
       {
-        name: "Women's Pyne 2L Jacket",
+        name: "Women's Jacket",
         price: 289.98,
         type: "jackets",
         color: "purple",

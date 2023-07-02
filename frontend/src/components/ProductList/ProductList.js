@@ -67,6 +67,8 @@ const ProductList = () => {
           Men
         </button>
       </div>
+
+     <div  className='SubFilterContainer'>
       {activeFilter === 'women' && (
         <div className='subFilters'>
           <button onClick={() => handleWomenCategoryChange('jackets')}>Jackets</button>
@@ -91,6 +93,8 @@ const ProductList = () => {
           <button onClick={() => handleMenCategoryChange('other')}>Other</button>
         </div>
       )}
+
+</div>
 
       <div className='eachProduct'>
         {filteredProducts.map((product) => (
