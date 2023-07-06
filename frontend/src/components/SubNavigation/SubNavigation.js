@@ -18,8 +18,6 @@ const SubNavigation = () => {
   const isOwner = sessionUser.user
 
 
-
-
   const redirectCart = () => {
     history.push(`/cart/${sessionUser.currentCart.id}`);
   };
@@ -32,8 +30,14 @@ const SubNavigation = () => {
 
   return (
     <div className="subNavigationContainer">
+
+
       {isRootRoute ? (
+        <>
         <img src={logo} className="logo" alt="logo" />
+
+        <div className= "WelcomeBackUser">Welcome Back {isOwner?.username}</div>
+        </>
       ) : (
         <a  className="logotext" onClick={redirectToRoot}>
           <img src={logotext} alt="logotext" />
@@ -44,7 +48,7 @@ const SubNavigation = () => {
       {isOwner ? (
            <>
 
-        <div className= "WelcomeBackUser">Welcome Back {isOwner?.username}</div>
+        {/* <div className= "WelcomeBackUser">Welcome Back {isOwner?.username}</div> */}
         <OpenModalButton modalComponent={<CreateProductForm />} buttonText="List My Product" />
         <SearchBar />
         <img

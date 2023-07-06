@@ -55,8 +55,6 @@ export const addToCartThunk = ({cartId, productId}) => async (dispatch) => {
   body: JSON.stringify({productId, cartId})
  });
 
-
-
   if (response.ok) {
     const product = await response.json();
     dispatch(addToCart(product));

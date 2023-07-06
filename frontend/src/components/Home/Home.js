@@ -4,6 +4,7 @@ import ProductCard from '../ProductCard/ProductCard';
 import { useEffect, useState } from 'react';
 import { getProductsThunk } from '../../store/products';
 import { useSelector, useDispatch } from 'react-redux';
+import HomePageProducts from '../HomePageProducts/HomePageProducts';
 
 const Home = () => {
   const history = useHistory();
@@ -32,7 +33,6 @@ const Home = () => {
   </div>
       </div>
 
-      <div className="hero-section">
 
         <div className="top-banner">
 
@@ -43,13 +43,6 @@ const Home = () => {
           <h1 className="hero-title">Welcome to Our Winter Collection</h1>
           <p className="hero-subtitle">Discover a wide range of snowboards, skis, accessories, and more</p>
           <button className="get-started-btn" onClick={redirectToProduct}>Buy Now</button>
-        </div>
-
-        <div className='eachProduct'>
-        {productArr.map((product) => (
-          <ProductCard key={product?.id} product={product} />
-        ))}
-      </div>
 
         {/* <div className="image-collage">
           <div className="collage-image top-left">
@@ -72,7 +65,7 @@ const Home = () => {
 
       </div>
 
-
+      <HomePageProducts/>
 
     </div>
 
