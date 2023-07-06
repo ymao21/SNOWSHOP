@@ -9,7 +9,11 @@
   text-align: center;
   height: 550px;
   width: 400px;
+  transition: all .2s ease-in-out;
+}
 
+.productCardContainer:hover{
+  transform: scale(1.1);
 }
 
 .productimg {
