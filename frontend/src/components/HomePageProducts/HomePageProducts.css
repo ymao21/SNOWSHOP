@@ -1,7 +1,32 @@
-.HomeEachProductListContainer{
-    background-color: rgb(228, 38, 38);
-    text-align: center;
-    height: 100%;
-    margin-top: 50px;
+.HomePageProductsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-}
+  .HomePageProductsScrollContainer {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: auto;
+    margin: auto;
+    width: 1300px;
+  }
+
+  .HomePageProductsButtons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .HomePageProductsButton {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }

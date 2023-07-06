@@ -21,6 +21,7 @@ const Home = () => {
   };
 
   return (
+    <>
     <div className="home-container">
 
     <div className="snowboardGif">
@@ -65,9 +66,14 @@ const Home = () => {
 
       </div>
 
-      <HomePageProducts/>
 
     </div>
+
+
+    <HomePageProducts/>
+
+
+</>
 
   );
 };
