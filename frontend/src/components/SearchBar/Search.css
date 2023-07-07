@@ -2,6 +2,7 @@
 
 
 .SearchInput{
+
     margin-left: 20px;
     padding: 6px 12px;
     font-size: 16px;
@@ -48,11 +49,10 @@
     left: 50%;
     width: 50%;
     background-color: #fff;
-
     border-top: none;
     border-radius: 0 0 4px 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    z-index: 3;
+    z-index: 5;
   }
 
   .SearchResultItem {
