@@ -26,6 +26,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  flex-direction: column;
    width: 100%;
    position: relative;
    left: 5%;
@@ -47,7 +48,7 @@
     background-color: #efeeea;
     transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
     padding: 0 18px;
-
+    width: 150px;
 
 }
 .deleteReviewBtn:hover{
@@ -73,7 +74,7 @@
     background-color: #efeeea;
     transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
     padding: 0 18px;
-
+width: 150px;
 }
 
 .EditReviewBtn:hover{

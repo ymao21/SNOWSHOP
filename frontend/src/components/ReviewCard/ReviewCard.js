@@ -122,6 +122,17 @@ const ReviewCard = ({ review }) => {
 
 <div className='DeleteEditReviewBtn'>
 
+{isOwner && (
+            <button
+              className="deleteReviewBtn"
+              onClick={() => {
+                deleteHandler();
+              }}
+            >
+              Delete Review
+            </button>
+          )}
+
      {isOwner &&  (isEditing ? (
             <EditReviewForm
               review={review}
@@ -138,16 +149,7 @@ const ReviewCard = ({ review }) => {
           }
 
 
-      {isOwner && (
-            <button
-              className="deleteReviewBtn"
-              onClick={() => {
-                deleteHandler();
-              }}
-            >
-              Delete Review
-            </button>
-          )}
+
 
 
 
