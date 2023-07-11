@@ -60,16 +60,16 @@
     box-sizing: border-box;
     color: rgb(255, 255, 255);
     margin-top: 20px;
-    background: #0077B6;
+    background: #000000;
     height: 30px;
-    border-radius: 5px;
     cursor: pointer;
     font-weight: 900;
-    box-shadow: 3px 3px 3px #cbced1, -6px -6px 6px white;
     transition: 0.5s;
 }
 
 .logoutbtn:hover{
     color: white;
     background-color: #03045e;
+    box-shadow: 3px 3px 3px #cbced1, -6px -6px 6px white;
+
 }
