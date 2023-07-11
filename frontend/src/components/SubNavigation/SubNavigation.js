@@ -36,7 +36,7 @@ const SubNavigation = () => {
         <>
         <img src={logo} className="logo" alt="logo" />
 
-        <div className= "WelcomeBackUser">Welcome Back {isOwner?.username}</div>
+        {/* <div className= "WelcomeBackUser">Welcome Back {isOwner?.username}</div> */}
         </>
       ) : (
         <a  className="logotext" onClick={redirectToRoot}>
@@ -48,14 +48,14 @@ const SubNavigation = () => {
       {isOwner ? (
            <>
 
-        {/* <div className= "WelcomeBackUser">Welcome Back {isOwner?.username}</div> */}
+        <div className= "WelcomeBackUser">Welcome Back {isOwner?.username}</div>
         <OpenModalButton modalComponent={<CreateProductForm />} buttonText="List My Product" />
         <SearchBar />
         <img
-        src="https://img.uxwing.com/wp-content/themes/uxwing/download/user-interface/search-icon.png"
+        src = "https://www.freeiconspng.com/thumbs/search-icon-png/search-icon-png-2.png"
         alt="SearchSymbol"
-        className="SearchSymbol"
-      />
+        className="SearchSymbol"/>
+
            <button className="cartButton" onClick={redirectCart}>
         <img
           src="https://www.freeiconspng.com/thumbs/bags-icon/bag-icon-6.png"
@@ -65,7 +65,7 @@ const SubNavigation = () => {
       </button>
         </>
       ) : (
-        <span class="LogInToSell">PLEASE LOG IN TO SELL AND EXPLORE</span>
+        <span class="LogInToSell">PLEASE LOG IN TO EXPLORE</span>
 
       )}
 

@@ -11,9 +11,6 @@ const ProductCard = ({ product }) => {
   const history = useHistory();
   const isOwner = sessionUser && sessionUser.user;
 
-
-  console.log("productCard", product)
-
   const handleClick = () => {
     if (isOwner) {
       history.push(`/products/${product.id}`);

@@ -80,6 +80,8 @@ function LoginFormPage() {
           handleSubmitDemo();
           closeModal();
         }} type="submit">Demo User</button>
+
+        <div className='termsCondition'> By clicking Sign in, you agree to our Terms and Conditions and Privacy Statement. </div>
     </form>
 
   );

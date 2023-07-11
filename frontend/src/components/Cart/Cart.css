@@ -19,6 +19,8 @@
 .QuantityInputContainer input {
   width: 40px;
   text-align: center;
+  border: none;
+  margin-left: 13px;
 }
 
 .CartItem__Quantity button {

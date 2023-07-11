@@ -19,10 +19,6 @@ const EditProductForm = ({productId}) => {
     const productType = useSelector(state => state.productState[productId]?.type)
     const productDescription = useSelector(state => state.productState[productId]?.description)
 
-    // const productImage = useSelector(state => state.productState[productId]?.image)
-
-    // console.log( "productImage" , productImage)
-
     const [name, setName] = useState(productName || "")
     const [color, setColor] = useState(productColor || "")
     const [price, setPrice] = useState(productPrice  || "")

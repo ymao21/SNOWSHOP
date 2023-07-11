@@ -3,7 +3,7 @@
 .loginform {
     position: relative;
     width: 350px;
-    height: 420px;
+    height: 520px;
     /* border-radius: 30px; */
     padding: 40px;
     box-sizing: border-box;
@@ -66,4 +66,9 @@
 .loginBtn:hover{
     background-color: #03045e;
     color: white;
+}
+
+
+.termsCondition{
+    margin-top: 40px;
 }
