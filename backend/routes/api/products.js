@@ -63,7 +63,7 @@ router.get("/:productId", async (req, res, next) => {
     const product = await Product.findByPk(productId,{})
 
     if(!product){
-        const err = newError("Product couldn't be found", 404)
+        const err = new Error("Product couldn't be found", 404)
         return next(err)
     }
     return res.json(product)
@@ -113,7 +113,7 @@ router.put("/:productId" , requireAuth , singleMulterUpload("image"), async (req
     }
 
     if(!product){
-        const err = newError("Product couldn't be found", 404)
+        const err = new Error("Product couldn't be found", 404)
         return next(err)
     }
 
@@ -152,7 +152,7 @@ router.get("/:productId/reviews", async (req, res, next) =>{
     const reviews = await Review.findAll({ include: User })
 
     if(!reviews){
-        const err = newError("reviews couldn't be found", 404)
+        const err = new Error("reviews couldn't be found", 404)
         return next(err);
     }
 
@@ -168,7 +168,7 @@ router.post("/:productId/reviews", requireAuth, validateReview, async (req, res,
     const review = await Review.findByPk(productId)
 
     if(productId !== null && !review) {
-        const err = newError("Product couldn't be found", 404)
+        const err = new Error("Product couldn't be found", 404)
         return next(err);
     }
 

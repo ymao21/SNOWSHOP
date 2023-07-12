@@ -46,7 +46,11 @@ const validateSignup = [
       })
 
       if(checkEmail){
-        const err = newError("User already exists with the specified email", 403, 'Email Error', ["User already exists with the specified Email or Username"])
+        const err = new Error('Sign up failed')
+        err.status = 401;
+        err.title = 'Sign up failed'
+        err.errors = ["User already exists with the specified email"]
+        // const err = newError("User already exists with the specified email", 403, 'Email Error', ["User already exists with the specified Email or Username"])
         return next(err)
       }
 
