@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { getProductsThunk } from '../../store/products';
 import { useSelector, useDispatch } from 'react-redux';
 import HomePageProducts from '../HomePageProducts/HomePageProducts';
+import Footer from '../Footer/Footer';
 
 const Home = () => {
   const history = useHistory();
@@ -45,25 +46,6 @@ const Home = () => {
           <p className="hero-subtitle">Discover a wide range of snowboards, skis, accessories, and more</p>
           <button className="get-started-btn" onClick={redirectToProduct}>Buy Now</button>
 
-        {/* <div className="image-collage">
-          <div className="collage-image top-left">
-            <img src="https://images.unsplash.com/photo-1565992441121-4367c2967103?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=627&q=80" alt="Collage Image 1" />
-            <div className="image-overlay2">Get ready for the winter season</div>
-          </div>
-          <div className="collage-image top-right">
-            <img src="https://images.unsplash.com/photo-1532124957326-34c5605398?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Collage Image 2" />
-            <div className="image-overlay4">Find the ultimate gift to embrace adventures</div>
-          </div>
-          <div className="collage-image bottom-left">
-            <img src="https://images.unsplash.com/photo-1614358606268-aa86853578b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=627&q=80" alt="Collage Image 3" />
-            <div className="image-overlay2">Conquer the mountains</div>
-          </div>
-          <div className="collage-image bottom-right">
-            <img src="https://images.unsplash.com/photo-1609952769887-7905b6b02c0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Collage Image 4" />
-            <div className="image-overlay4">Get the best deals on snowshop</div>
-          </div>
-        </div> */}
-
       </div>
 
 
@@ -71,7 +53,7 @@ const Home = () => {
 
 
     <HomePageProducts/>
-
+   <Footer/>
 
 </>
 

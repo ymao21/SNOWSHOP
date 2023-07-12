@@ -8,6 +8,7 @@
   .HomePageProductsScrollContainer {
     display: flex;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-behavior: smooth;
     padding: auto;
     margin: auto;
