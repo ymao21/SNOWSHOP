@@ -38,7 +38,6 @@ const EditProductForm = ({productId}) => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-
         setErrors([])
 
         if (!name) {
@@ -165,15 +164,23 @@ const EditProductForm = ({productId}) => {
               value={description}
               onChange={editProductDescription} />
 
-        <input className= 'fileInput' type="file" onChange={updateFile}  />
+        {/* <input className= 'fileInput' type="file" onChange={updateFile}  /> */}
 
         {/* <input type="file" id="selectedFile" styles={"display: none;"}
         onChange={updateFile}/>
 <input type="button" value="Browse..." onclick="document.getElementById('selectedFile').click();" /> */}
+<div className='UploadImageContainer'>
+            <img className="defaultImg" src= {image === defaultImage?defaultImage: URL.createObjectURL(image)} />
+            {/* <input className= 'fileInputEdit' type="file" onChange={updateFile}  /> */}
 
+            <div className="fileInputEdit">
+  <label className="fileInputLabel" htmlFor="fileInput">Choose File</label>
+  <input className="fileinputNoFileChosen" id="fileInput" type="file" onChange={updateFile} />
+</div>
+
+
+</div>
             <button className= "editProductBtn" type="submit" >Edit </button>
-            <img src= {image === defaultImage?defaultImage: URL.createObjectURL(image)} />
-
           </form>
         </section>
       ):
