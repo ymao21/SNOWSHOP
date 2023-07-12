@@ -1,6 +1,6 @@
 'use strict';
 let options = {};
-options.tableName = 'Products';
+options.tableName = 'Carts';
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;
 }

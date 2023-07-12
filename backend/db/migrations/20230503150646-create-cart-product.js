@@ -22,7 +22,8 @@ module.exports = {
         references: {
           model: "Carts",
           key: "id"
-        }
+        },
+        onDelete: 'cascade'
       },
       quantity: {
         type: Sequelize.INTEGER

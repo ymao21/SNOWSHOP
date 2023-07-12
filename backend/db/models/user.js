@@ -54,10 +54,14 @@ module.exports = (sequelize, DataTypes) => {
 
       User.hasMany(models.Product, {
         foreignKey: "userId",
+        onDelete: "CASCADE",
+        hooks:true
       });
 
       User.hasMany(models.Review, {
-        foreignKey: "userId"
+        foreignKey: "userId",
+        onDelete: "CASCADE",
+        hooks:true
       });
 
     }

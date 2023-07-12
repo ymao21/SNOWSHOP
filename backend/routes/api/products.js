@@ -141,6 +141,7 @@ router.delete("/:productId", requireAuth, restoreUser, async(req, res, next) => 
         err.status = 404
         return next(err);
     }
+    // await Review.destroy({ where: { productId } });
     await deleteProduct.destroy()
     return res.json({ message: 'Sucessfully deleted' });
     })
@@ -164,10 +165,12 @@ router.post("/:productId/reviews", requireAuth, validateReview, async (req, res,
     const userId = req.user.id
     const productId = req.params.productId
 
-    const {body, rating} = req.body
-    const review = await Review.findByPk(productId)
 
-    if(productId !== null && !review) {
+
+    const {body, rating} = req.body
+    const product = await Product.findByPk(productId)
+
+    if(!product) {
         const err = new Error("Product couldn't be found", 404)
         return next(err);
     }

@@ -18,6 +18,7 @@ const EditProductForm = ({productId}) => {
     const productCateogry = useSelector(state => state.productState[productId]?.category)
     const productType = useSelector(state => state.productState[productId]?.type)
     const productDescription = useSelector(state => state.productState[productId]?.description)
+    const defaultImage = useSelector(state => state.productState[productId]?.previewImageUrl)
 
     const [name, setName] = useState(productName || "")
     const [color, setColor] = useState(productColor || "")
@@ -25,7 +26,7 @@ const EditProductForm = ({productId}) => {
     const [category, setCateogry] = useState(productCateogry || "")
     const [type, setType] = useState(productType || "")
     const [description, setDescription] = useState(productDescription || "")
-    const [image, setImage] = useState(null)
+    const [image, setImage] = useState(defaultImage)
 
 
     const editProductName = (e) => setName(e.target.value)
@@ -164,9 +165,14 @@ const EditProductForm = ({productId}) => {
               value={description}
               onChange={editProductDescription} />
 
-        <input className= 'fileInput' type="file" onChange={updateFile} />
+        <input className= 'fileInput' type="file" onChange={updateFile}  />
+
+        {/* <input type="file" id="selectedFile" styles={"display: none;"}
+        onChange={updateFile}/>
+<input type="button" value="Browse..." onclick="document.getElementById('selectedFile').click();" /> */}
 
             <button className= "editProductBtn" type="submit" >Edit </button>
+            <img src= {image === defaultImage?defaultImage: URL.createObjectURL(image)} />
 
           </form>
         </section>
