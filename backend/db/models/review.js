@@ -12,6 +12,8 @@ module.exports = (sequelize, DataTypes) => {
 
       Review.belongsTo(models.Product, {
         foreignKey: "productId",
+        onDelete: "CASCADE",
+        hooks:true
       })
     }
   }

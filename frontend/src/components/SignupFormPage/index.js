@@ -16,47 +16,42 @@ function SignupFormPage() {
   const [about, setAbout] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const history = useHistory()
+  const history = useHistory();
 
   if (sessionUser.id) return <Redirect to="/" />;
 
   const redirectToHome = () => {
-    history.push('/')
-  }
+    history.push("/");
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(
-        sessionActions.signup({
-          email,
-          username,
-          password,
-          firstName,
-          about,
-          lastName,
-        })
-      )
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
-
+      try {
+        await dispatch(
+          sessionActions.signup({
+            email,
+            username,
+            password,
+            firstName,
+            about,
+            lastName,
+          })
+        );
+        redirectToHome();
+      } catch (res) {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      }
+    } else {
+      setErrors(["Confirm Password field must be the same as the Password field"]);
     }
-
-    return setErrors([
-      "Confirm Password field must be the same as the Password field",
-    ]);
   };
 
-
   return (
-    <form className="signupform" onSubmit={ () => {
-      handleSubmit();
-      redirectToHome();
-    }} >
-      <ul>
+    <form className="signupform" onSubmit={handleSubmit}>
+      <ul className="Errors">
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
@@ -142,6 +137,8 @@ function SignupFormPage() {
       <button className="signupBtn" type="submit">
         Sign Up
       </button>
+      <div className='termsConditions'>By clicking Sign in, you agree to our Terms and Conditions and Privacy Statement.</div>
+
     </form>
   );
 }
