@@ -6,12 +6,15 @@ export const loadSearch = (search) => ({
 });
 
 export const loadSearchThunk = (q) => async (dispatch) => {
-
   if (typeof q !== 'string') {
     throw new Error('Search term must be a string');
   }
 
   try {
+    if (q.trim() === '') {
+      return;
+    }
+
     const response = await fetch(`/api/search/${q}`);
 
     if (response.ok) {
@@ -23,8 +26,8 @@ export const loadSearchThunk = (q) => async (dispatch) => {
     console.error('Error loading search results:', error);
     throw error;
   }
-
 };
+
 
 const initialState = {};
 const searchReducer = (state = initialState, action) => {
