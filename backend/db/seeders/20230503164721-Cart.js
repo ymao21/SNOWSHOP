@@ -11,18 +11,15 @@ module.exports = {
     await queryInterface.bulkInsert(options, [
       {
         userId: 1,
-        quantity: 2,
-        productId: 1,
+        checkedOut: false
       },
       {
         userId: 1,
-        quantity: 1,
-        productId: 2,
+        checkedOut: true
       },
       {
         userId: 1,
-        quantity: 1,
-        productId: 3,
+        checkedOut: true
       }
     ], {});
   },

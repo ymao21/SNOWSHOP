@@ -10,25 +10,21 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Cart.hasMany(models.CartProduct,{
-        foreignKey: "productId",
-        onDelete: "CASCADE",
-        hooks:true
-      })
-
-      Cart.belongsToMany(models.Product,{
-        through: models.CartProduct,
-        foreignKey: "productId",
-        onDelete: "CASCADE",
-        hooks:true
-      })
 
       Cart.belongsTo(models.User, {
         foreignKey: "userId",
-        onDelete: "CASCADE",
-        hooks:true
+        // onDelete: "CASCADE",
+        // hooks:true
+      })
+
+      Cart.belongsToMany(models.Product, {
+        through: models.CartProduct,
+        foreignKey: "cartId",
+        // onDelete: "CASCADE",
+        // hooks:true
       })
     }
+
   }
   Cart.init({
     id: {
@@ -38,8 +34,8 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
     },
     userId: DataTypes.INTEGER,
-    quantity: DataTypes.INTEGER,
-    productId: DataTypes.INTEGER
+    checkedOut: {
+      type: DataTypes.BOOLEAN}
   }, {
     sequelize,
     modelName: 'Cart',

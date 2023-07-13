@@ -1,0 +1,59 @@
+.updateReviewBtn{
+    top: -6px;
+    position:relative;
+    margin-left: 10px;
+    right:2px;
+    margin-right: 20px;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-weight: 400;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+    color: #241c15;
+    background-color: #efeeea;
+    transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
+    padding: 0 18px;
+
+}
+.updateReviewBtn:hover {
+    color: #241c15;
+    background-color: #d9d7cd;
+}
+
+.EditReviewstar{
+    margin-top: 30px;
+
+}
+
+.reviewEditInput{
+    top: -6px;
+    left: -3px;
+    margin-right: 5px;
+    position: relative;
+    cursor: text;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0 16px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #d6d6e7;
+    border-radius: 3px;
+    color: rgb(35, 38, 59);
+    box-shadow: inset 0 1px 4px 0 rgb(119 122 175 / 30%);
+    overflow: hidden;
+    transition: all 100ms ease-in-out;
+    :focus {
+        border-color: #3c4fe0;
+        box-shadow: 0 1px 0 0 rgb(35 38 59 / 5%);
+    }
+
+}
+
+.editReviewForm{
+
+    position:relative;
+}

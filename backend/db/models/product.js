@@ -15,34 +15,28 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "userId"
       })
 
-      Product.hasMany(models.ProductImage,{
-        foreignKey: "productImageId",
-        onDelete: "CASCADE",
-        hooks:true
-      })
+      // Product.hasMany(models.ProductImage,{
+      //   foreignKey: "productId",
+      //   onDelete: "CASCADE",
+      //   hooks:true
+      // })
 
       Product.hasMany(models.Review,{
-        foreignKey: "reivewId",
+        foreignKey: "productId",
         onDelete: "CASCADE",
         hooks:true
       })
 
       Product.belongsToMany(models.Cart,{
         through: models.CartProduct,
-        foreignKey: "cardId",
-        onDelete: "CASCADE",
-        hooks:true
-      })
-
-      Product.hasMany(models.CartProduct, {
         foreignKey: "productId",
-        onDelete: "CASCADE",
-        hooks:true
+        // onDelete: "CASCADE",
+        // hooks:true
       })
-
 
     }
   }
+
   Product.init({
     id: {
       type: DataTypes.INTEGER,

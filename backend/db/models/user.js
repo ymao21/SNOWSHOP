@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     toSafeObject() {
-      const { id, username, email } = this; // context will be the User instance
+      const { id, username, email } = this;
       return { id, username, email };
     };
 
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         where: {
           [Op.or]: {
             username: credential,
-            email: credential
+            email: credential,
           }
         }
       });
@@ -32,9 +32,11 @@ module.exports = (sequelize, DataTypes) => {
       }
     };
 
-    static async signup({ username, email, about, password }) {
+    static async signup({ firstName, lastName, username, email, about, password }) {
       const hashedPassword = bcrypt.hashSync(password);
       const user = await User.create({
+        firstName,
+        lastName,
         username,
         email,
         about,
@@ -52,10 +54,14 @@ module.exports = (sequelize, DataTypes) => {
 
       User.hasMany(models.Product, {
         foreignKey: "userId",
+        onDelete: "CASCADE",
+        hooks:true
       });
 
       User.hasMany(models.Review, {
-        foreignKey: "userId"
+        foreignKey: "userId",
+        onDelete: "CASCADE",
+        hooks:true
       });
 
     }

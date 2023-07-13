@@ -1,6 +1,6 @@
 'use strict';
 let options = {};
-options.tableName = 'SongPlaylists';
+options.tableName = 'CartProduct';
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;
 }
@@ -22,7 +22,11 @@ module.exports = {
         references: {
           model: "Carts",
           key: "id"
-        }
+        },
+        onDelete: 'cascade'
+      },
+      quantity: {
+        type: Sequelize.INTEGER
       },
       productId: {
         type: Sequelize.INTEGER,
