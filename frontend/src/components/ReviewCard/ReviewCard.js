@@ -66,9 +66,9 @@ const ReviewCard = ({ review }) => {
 
   return (
     <>
+
       <div className="reviewUser">
       <img src="https://t3.ftcdn.net/jpg/05/26/72/48/240_F_526724825_fEKkOFrsAnTBW3G5Qc9VCZxArl3zWEdT.jpg" alt="user-icon" className="ReviewUserIcon" />
-
 
         {review?.User?.username}</div>
 

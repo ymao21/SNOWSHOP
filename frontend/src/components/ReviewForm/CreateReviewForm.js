@@ -14,17 +14,10 @@ const CreateReviewForm =() => {
 
     const productIdobj = useParams()
     const productId = productIdobj.productId
-
-
-
     const [errors, setErrors] = useState([])
     const [body, setBody] = useState("");
-
-
     const createBody = (e) => setBody(e.target.value)
     const createRating = (e) => setRating(e.target.value)
-
-
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -34,7 +27,6 @@ const CreateReviewForm =() => {
        if((body.length === 0) && (rating.length === 0)) {
         setErrors(['Review and ratingis required'])
       }
-
         const payload = {
             productId,
             body,
@@ -103,9 +95,7 @@ const CreateReviewForm =() => {
            <button className= "Reviewsubmitbtn">Submit</button>
            </div>
        </form>
-
        </>
-
     ) :
     null;
 

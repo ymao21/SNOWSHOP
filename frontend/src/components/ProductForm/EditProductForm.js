@@ -89,10 +89,20 @@ const EditProductForm = ({productId}) => {
         closeModal()
     }
 
+
     const updateFile = (e) => {
-        const file = e.target.files[0];
-        if (file) setImage(file);
-      };
+      const file = e.target.files[0];
+      if (file) {
+        setImage(file);
+      } else {
+        setImage(defaultImage);
+      }
+    };
+
+    // const updateFile = (e) => {
+    //     const file = e.target.files[0];
+    //     if (file) setImage(file);
+    //   };
 
 
     return sessionUser.user.id ? (
@@ -169,9 +179,11 @@ const EditProductForm = ({productId}) => {
         {/* <input type="file" id="selectedFile" styles={"display: none;"}
         onChange={updateFile}/>
 <input type="button" value="Browse..." onclick="document.getElementById('selectedFile').click();" /> */}
+
 <div className='UploadImageContainer'>
-            <img className="defaultImg" src= {image === defaultImage?defaultImage: URL.createObjectURL(image)} />
-            {/* <input className= 'fileInputEdit' type="file" onChange={updateFile}  /> */}
+{/* <img className="defaultImg" src= {image === defaultImage?defaultImage: URL.createObjectURL(image)} /> */}
+
+<img className="defaultImg" src={image && image.src !== defaultImage ? URL.createObjectURL(image) : defaultImage} alt="Default Image" />
 
             <div className="fileInputEdit">
   <label className="fileInputLabel" htmlFor="fileInput">Choose File</label>
@@ -179,7 +191,7 @@ const EditProductForm = ({productId}) => {
 </div>
 
 
-</div>
+ </div>
             <button className= "editProductBtn" type="submit" >Edit </button>
           </form>
         </section>
