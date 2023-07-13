@@ -105,11 +105,9 @@ router.put("/:productId" , requireAuth , singleMulterUpload("image"), async (req
     const {name, price, type, color, category, description} = req.body
     const product = await Product.findByPk(productId);
 
+    let previewImageUrl = product.previewImageUrl; 
     if (req.file) {
-        previewImageUrl = await singlePublicFileUpload(req.file);
-    } else {
-        previewImageUrl =
-            "https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png";
+      previewImageUrl = await singlePublicFileUpload(req.file);
     }
 
     if(!product){
