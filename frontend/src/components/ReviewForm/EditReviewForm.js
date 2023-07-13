@@ -4,24 +4,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { editReviewThunk } from '../../store/reviews';
 import { FaStar } from 'react-icons/fa';
 
-const EditReviewForm = ({ review , setIsEditing}) => {
+const EditReviewForm = ({ review, setIsEditing, onReviewUpdate }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const sessionUserId = sessionUser.user.id;
   const [errors, setErrors] = useState([]);
 
-  const reviewBody = review.body;
-  const reviewRating = review.rating;
-  const reviewId = review.id;
-
-  const [body, setBody] = useState(reviewBody);
-  const [rating, setRating] = useState(Number(reviewRating) || 0);
+  const [body, setBody] = useState(review.body);
+  const [rating, setRating] = useState(Number(review.rating) || 0);
   const [hover, setHover] = useState(0);
 
   useEffect(() => {
     setBody(review.body || '');
     setRating(Number(review.rating) || 0);
-  }, [review.body, review.rating]);
+  }, [review.body, review.rating, review.id]); // Add 'review.id' to the dependency array
 
   const updateBody = e => setBody(e.target.value);
   const updateRating = ratingValue => setRating(Number(ratingValue));
@@ -36,24 +32,24 @@ const EditReviewForm = ({ review , setIsEditing}) => {
     }
 
     const payload = {
-      reviewId,
+      reviewId: review.id,
       body,
       rating,
     };
 
     if (errors.length === 0) {
       dispatch(editReviewThunk(payload, sessionUser.user))
-        .then(() => {
+        .then(updatedReview => {
           setBody('');
           setRating(0);
+          setIsEditing(false);
+          onReviewUpdate(updatedReview); // Pass the updated review data to the callback
         })
         .catch(async response => {
           const data = await response.json();
           if (data.errors) setErrors(data.errors);
         });
     }
-
-    setIsEditing(false)
   };
 
   const renderStars = () => {
