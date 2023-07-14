@@ -11,14 +11,11 @@ const router = express.Router();
 router.get("/:cartId", async (req, res, next) => {
 
     const {cartId} = req.params
-
-
-    const CurrentInCart = await Cart.findByPk(cartId, {
-        include: {model: CartProduct,
-          include: Product
-        }
-
+    const CurrentInCart = await Cart.findByPk( cartId , {
+      include: Product
     })
+
+    // console.log("CurrentInCart", CurrentInCart.Products)
 
     if(!CurrentInCart) {
         const err = newError("products couldn't be found", 404)

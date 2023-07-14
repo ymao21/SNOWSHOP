@@ -8,10 +8,13 @@ import { useHistory } from 'react-router-dom';
 const Cart = () => {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false)
-  const cartItemsObj = useSelector((state) => state.cartState.cartItems)
+  const cartItemsObj = useSelector((state) => state.cartState)
   const history = useHistory()
+
   const cartId = useSelector((state) => state.session.user.currentCart.id )
-  const cartItemsArr = Object.values(cartItemsObj)
+  const cartItemsArr = Object.values(cartItemsObj.cartItems)
+
+
 
 
   useEffect(() => {
@@ -20,11 +23,12 @@ const Cart = () => {
   }, [dispatch]);
 
 
-  const handleQuantityChange = (cartItemId, newQuantity, productId, cartId) => {
+  const handleQuantityChange = async (cartItemId, newQuantity, productId, cartId) => {
+
     if (newQuantity < 1) {
       handleRemoveFromCart(cartId, productId);
     } else {
-      dispatch(editQuantityThunk(cartItemId, newQuantity, productId, cartId));
+    await dispatch(editQuantityThunk(cartItemId, newQuantity, productId, cartId));
     }
   };
 
@@ -62,8 +66,8 @@ const Cart = () => {
       let itemCount = 0;
 
       cartItemsArr.forEach((product) => {
-        totalPrice += product?.Product?.price * product?.quantity;
-        itemCount += product?.quantity;
+        totalPrice += product?.price * product?.CartProduct?.quantity;
+        itemCount += product?.CartProduct?.quantity;
       });
 
       return {
@@ -92,21 +96,21 @@ const Cart = () => {
 
     <div className="Cart">
           {cartItemsArr?.map((product)=> (
-           <div key={product?.Product?.name} className="CartItem">
+           <div key={product?.name} className="CartItem">
         <div className="CartItem__Image">
-          <img src={product?.Product?.previewImageUrl}  />
+          <img src={product?.previewImageUrl}  />
         </div>
         <h3 className="CartItem__Name">
-    <a href={`/products/${product?.Product?.id}`}>{product?.Product?.name}</a>
+    <a href={`/products/${product?.id}`}>{product?.name}</a>
   </h3>
         <div className="CartItem__Quantity">
   <button
     onClick={() =>
       handleQuantityChange(
-        product?.Product?.id,
-        product?.quantity - 1,
-        product?.productId,
-        product?.CartId
+        product?.CartProduct?.id,
+        product?.CartProduct?.quantity - 1,
+        product?.CartProduct?.productId,
+        product?.CartProduct?.cartId
       )
     }
   >
@@ -115,7 +119,7 @@ const Cart = () => {
   <div className="QuantityInputContainer">
     <input
       type="number"
-      value={product?.quantity}
+      value={product?.CartProduct?.quantity}
       min="0"
       readOnly
       className="InputNoBorder"
@@ -124,10 +128,10 @@ const Cart = () => {
   <button
     onClick={() =>
       handleQuantityChange(
-        product?.Product.id,
-        product?.quantity + 1,
-        product?.productId,
-        product?.CartId
+        product?.CartProduct?.id,
+        product?.CartProduct?.quantity + 1,
+        product?.CartProduct?.productId,
+        product?.CartProduct?.cartId
       )
     }
   >
@@ -135,9 +139,9 @@ const Cart = () => {
   </button>
 </div>
 
-          <div className="CartItem__Price">Price: ${(product?.Product?.price * product?.quantity).toFixed(2)}</div>
+          <div className="CartItem__Price">Price: ${(product?.price * product?.CartProduct?.quantity).toFixed(2)}</div>
 
-        <button className="cartRemoveBtn" onClick={() => handleRemoveFromCart(product?.cartId, product?.productId)}>
+        <button className="cartRemoveBtn" onClick={() => handleRemoveFromCart(product?.CartProduct?.cartId, product?.CartProduct?.productId)}>
                   remove
           </button>
       </div>
@@ -172,10 +176,7 @@ const Cart = () => {
 
   <button className="ContinueShoppingButton" onClick={handleContinueShopping}>Continue Shopping</button>
 </div>
-{/*
-<button className='CheckoutButton' onClick={handleClearCart}>
-            Clear Cart
-          </button> */}
+
     </div>
 
         )}
