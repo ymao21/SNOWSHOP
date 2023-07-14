@@ -133,6 +133,7 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cartItems: updatedCartItems,
       };
+
     default:
       return state;
   }

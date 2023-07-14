@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-
 const Cart = () => {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false)
@@ -14,14 +13,10 @@ const Cart = () => {
   const cartId = useSelector((state) => state.session.user.currentCart.id )
   const cartItemsArr = Object.values(cartItemsObj.cartItems)
 
-
-
-
   useEffect(() => {
     dispatch(loadAllCartThunk({cartId}))
     .then(()=> setLoaded(true))
   }, [dispatch]);
-
 
   const handleQuantityChange = async (cartItemId, newQuantity, productId, cartId) => {
 
@@ -32,7 +27,7 @@ const Cart = () => {
     }
   };
 
-  const handleRemoveFromCart = (cartId, productId) => {
+  const handleRemoveFromCart =  (cartId, productId) => {
     dispatch(deleteCartThunk(cartId, productId))
   }
 
@@ -44,8 +39,10 @@ const Cart = () => {
       if (cartItemsArr.length === 0) return;
 
       const clearCartItem = (index) => {
+
+
         const product = cartItemsArr[index];
-        handleRemoveFromCart(product.cartId, product.productId);
+        handleRemoveFromCart(product?.CartProduct?.cartId, product?.CartProduct?.productId);
         setTimeout(() => {
           if (index < cartItemsArr.length - 1) {
             clearCartItem(index + 1);
