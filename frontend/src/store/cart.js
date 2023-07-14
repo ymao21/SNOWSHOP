@@ -10,6 +10,7 @@ export const loadToCart = (products) => {
   return {
     type: LOAD_CART,
     products,
+
   };
 };
 
@@ -42,7 +43,7 @@ export const loadAllCartThunk = ({cartId}) => async (dispatch) => {
 
   if (response.ok) {
     const cartItems = await response.json();
-    dispatch(loadToCart(cartItems));
+    dispatch(loadToCart( cartItems));
     return cartItems;
   }
   return response;
@@ -74,7 +75,8 @@ export const editQuantityThunk = (cartItemId, newQuantity, productId, cartId) =>
 if (response.ok) {
 
   const product = await response.json()
-  dispatch(editQuantity(cartItemId, newQuantity ))
+  console.log(product)
+  dispatch(editQuantity(cartItemId, product.quantity ))
   return product
 
 }
@@ -93,15 +95,17 @@ export const deleteCartThunk = (cartId, productId) => async (dispatch) => {
 }
 
 const initialState = {
-  cartItems: {},
+  cartItems: {CartProduct: {}},
+
 };
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_CART:
-      const normalizedCartItems = action.products.CartProducts.reduce(
+    console.log("action", action.products )
+      const normalizedCartItems = action.products.Products.reduce(
         (acc, item) => {
-          acc[item.productId] = item;
+          acc[item.CartProduct.id] = item;
           return acc;
         },
         {}
@@ -109,6 +113,7 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cartItems: normalizedCartItems,
+        cartId: action.cartId
       };
     case ADD_CART:
       return {
@@ -119,27 +124,16 @@ const cartReducer = (state = initialState, action) => {
         },
       };
     case EDIT_QUANTITY:
-      return {
-        ...state,
-        cartItems: {
-          ...state.cartItems,
-          [action.cartItemId]: {
-            ...state.cartItems[action.cartItemId],
-            quantity: action.newQuantity,
-          },
-        },
-      };
+      const newState = {...state}
+      newState.cartItems[action.cartItemId].CartProduct.quantity = action.newQuantity
+      return newState
     case REMOVE_CART:
       const { [action.productId]: _, ...updatedCartItems } = state.cartItems;
       return {
         ...state,
         cartItems: updatedCartItems,
       };
-    // case CLEAR_CART:
-    //   return {
-    //     ...state,
-    //     cartItems: {},
-    //   };
+
     default:
       return state;
   }
