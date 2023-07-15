@@ -1,0 +1,135 @@
+.productBackgroundContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .ProductDetailContainer {
+    position: relative;
+    margin: auto;
+    margin-top: -10px;
+    margin-bottom: 60px;
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+  }
+
+  .productDetRight{
+    display: flex;
+
+
+  }
+  .productimgleft{
+    width: 30%;
+
+  }
+  .productDetRight{
+    width: 30%;
+    margin-left: 40px;
+  }
+
+  .productimg {
+   width: 50%;
+  }
+
+  .productInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .productInfoName{
+   margin-bottom: 60px;
+  }
+
+
+  .productInfoPrice,
+  .productInfoDesc,
+  .productInfodet {
+    margin-bottom: 10px;
+
+  }
+
+  .productInfoName {
+    margin-top: 70px;
+    font-size: 2em;
+    color: black;
+  }
+
+  .productInfoPrice {
+    color: #0077b6;
+    font-weight: bold;
+  }
+
+  .productInfoDesc {
+    color: black;
+  }
+
+  .productInfodet {
+    color: black;
+  }
+
+  .add {
+    padding: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    width: 200px;
+    cursor: pointer;
+    background-image: url("https://static.thenounproject.com/png/3809556-200.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 35px;
+    transition: background-color 0.2s ease;
+    background-position: 15px center;
+    margin-bottom: 20px;
+    justify-content: center;
+    font-weight: bold;
+
+  }
+
+  .add:hover {
+    background-color: #0056b3;
+  }
+
+  .DeleteBtn {
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    padding: 12px;
+    background-color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+  }
+
+  .DeleteBtn:hover {
+    background-color: #cb7171;
+    color: white;
+  }
+
+
+
+  .reviewListContainer {
+    padding: 50px;
+    margin: auto;
+  }
+
+
+  .EditandDelete{
+    margin-top: -40px;
+    margin-bottom: 70px;
+   position: relative;
+   width: 500px;
+   left: 20%;
+  }

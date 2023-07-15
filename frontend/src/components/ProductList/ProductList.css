@@ -1,0 +1,97 @@
+
+.productListContainer {
+background-color: rgb(254, 254, 254);
+text-align: center;
+height: 100%;
+margin-top: 50px;
+}
+
+.eachProduct {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.filterButtonsContainer {
+display: flex;
+justify-content: center;
+align-self: start;
+margin-top: -50px;
+height: 100px;
+
+}
+
+.filterButtons {
+    height: 40px;
+    margin: 30px;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-size: 16px;
+    gap: 8px;
+    justify-content: center;
+    line-height: 1.5;
+    transition: all .14s ease-out;
+    color: #000000;
+    font-weight: 200;
+    font-size: x-large;
+    background-color: white;
+    border: none;
+}
+
+.filterButtons:hover {
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.filterButtons:focus {
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+
+.SubFilterContainer{
+  display: flex;
+justify-content: center;
+}
+
+.subFilters {
+    top: 100%;
+    z-index: 3;
+    display: flex;
+    flex-direction: row;
+    word-break: break-word;
+    justify-content: space-evenly;
+    position: relative;
+    width: 60%;
+    margin-bottom: 30px;
+  }
+
+  .subFilters button {
+    border-radius: 4px;
+    z-index: 2;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-size: 16px;
+    justify-content: center;
+    line-height: 1.5;
+    padding: 12px 16px;
+    transition: all .14s ease-out;
+    color: #000000;
+    font-weight: 200;
+    font-size: large;
+    border: none;
+    background-color: white;
+  }
+
+  .subFilters button:hover {
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  .subFilters button:focus{
+    text-decoration: underline;
+    font-weight: 500;
+  }

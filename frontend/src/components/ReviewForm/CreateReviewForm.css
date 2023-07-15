@@ -1,0 +1,83 @@
+
+.reviewForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+
+}
+
+.starRating{
+    display:none
+}
+
+.reviewInput {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background-color: transparent;
+    transition: border-color 0.3s;
+    padding: 10px;
+    margin: 10px;
+    width: 200%;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .reviewInput:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+
+  .reviewInput::placeholder {
+    color: #aaa;
+  }
+
+  .reviewInput::-webkit-input-placeholder {
+    color: #aaa;
+  }
+
+  .reviewInput::-moz-placeholder {
+    color: #aaa;
+  }
+
+  .reviewInput:-ms-input-placeholder {
+    color: #aaa;
+  }
+
+  .reviewInput:-moz-placeholder {
+    color: #aaa;
+  }
+
+
+
+.Reviewsubmitbtn{
+    margin-top: 3px;
+    position:relative;
+    margin-left: 10px;
+    top: -5px;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-weight: 400;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    height: 26px;
+    line-height: 28px;
+    font-size: 12px;
+    color: #241c15;
+    background-color: #efeeea;
+    transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
+    padding: 0 18px;
+}
+
+.Reviewsubmitbtn:hover {
+  color: #241c15;
+  background-color: #d9d7cd;
+}

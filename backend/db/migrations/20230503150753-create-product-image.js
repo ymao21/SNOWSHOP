@@ -1,6 +1,6 @@
 'use strict';
 let options = {};
-options.tableName = 'Songs';
+options.tableName = 'Products';
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;
 }
@@ -23,6 +23,7 @@ module.exports = {
           model: "Products",
           key: "id"
         },
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

@@ -1,0 +1,112 @@
+.reviewCard {
+  margin: 10px;
+  font-size: 15px;
+  position: relative;
+  background-color: #f9f9f9;
+  border: 1px solid #e4e5e9;
+  border-radius: 4px;
+  padding: 15px;
+  width: 100%;
+}
+
+
+
+.reviewUser{
+    position:relative;
+    left:20px;
+    margin: 10px;
+
+}
+
+.star-rating{
+    position:relative;
+    left:20px;
+}
+.DeleteEditReviewBtn{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+   width: 100%;
+   position: relative;
+   left: 5%;
+}
+.deleteReviewBtn{
+    margin-top: 7px;
+    position:relative;
+    margin-right: 5px;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-weight: 400;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+    color: #241c15;
+    background-color: #efeeea;
+    transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
+    padding: 0 18px;
+    width: 150px;
+
+}
+.deleteReviewBtn:hover{
+        color: #241c15;
+        background-color: #f6b4a7;
+}
+
+
+.EditReviewBtn{
+    margin-top: 7px;
+    position:relative;
+    margin-right: 5px;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-weight: 400;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+    color: #241c15;
+    background-color: #efeeea;
+    transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
+    padding: 0 18px;
+width: 150px;
+}
+
+.EditReviewBtn:hover{
+     color: #241c15;
+        background-color: #d9d7cd;
+}
+
+.reactionIcons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .thumbIcon {
+    cursor: pointer;
+  }
+
+  .thumbIcon.selected {
+    font-weight: bold;
+  }
+
+  .reactionCount {
+    font-size: 12px;
+    margin-left: 5px;
+  }
+
+  .ReviewUserIcon{
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }

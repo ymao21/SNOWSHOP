@@ -1,0 +1,44 @@
+
+.productCardContainer {
+
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-start;
+  height: 330px;
+  text-align: center;
+  height: 550px;
+  width: 400px;
+  transition: all .2s ease-in-out;
+}
+
+.productCardContainer:hover{
+  transform: scale(1.1);
+}
+
+.productimg {
+  width: auto;
+  height: 380px;
+  object-fit: cover;
+}
+
+.productPriceOnCard{
+  color: rgb(3, 3, 138);
+}
+
+.titlelink {
+  margin-top: 5px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  word-wrap: break-word;
+  width: 200px;
+  text-align: left;
+  padding: 10px 20px;
+  margin-left: 10%;
+
+}
+
+.titlelink:hover {
+  text-decoration: underline;
+}
