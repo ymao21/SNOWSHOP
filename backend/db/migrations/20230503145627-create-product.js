@@ -31,7 +31,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(500)
+        // type: Sequelize.STRING
       },
       previewImageUrl: {
         type: Sequelize.STRING
