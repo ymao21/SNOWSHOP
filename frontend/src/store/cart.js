@@ -102,7 +102,7 @@ const initialState = {
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_CART:
-    console.log("action", action.products )
+    // console.log("action", action.products )
       const normalizedCartItems = action.products.Products.reduce(
         (acc, item) => {
           acc[item.CartProduct.id] = item;
@@ -127,6 +127,7 @@ const cartReducer = (state = initialState, action) => {
       const newState = {...state}
       newState.cartItems[action.cartItemId].CartProduct.quantity = action.newQuantity
       return newState
+
     case REMOVE_CART:
       const { [action.productId]: _, ...updatedCartItems } = state.cartItems;
       return {
