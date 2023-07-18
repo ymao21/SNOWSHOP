@@ -13,6 +13,10 @@ const Cart = () => {
   const cartId = useSelector((state) => state.session.user.currentCart.id )
   const cartItemsArr = Object.values(cartItemsObj.cartItems)
 
+  const handleRemoveFromCart =   (cartId, productId) => {
+    dispatch(deleteCartThunk(cartId, productId))
+  }
+
   useEffect(() => {
     dispatch(loadAllCartThunk({cartId}))
     .then(()=> setLoaded(true))
@@ -26,10 +30,6 @@ const Cart = () => {
     await dispatch(editQuantityThunk(cartItemId, newQuantity, productId, cartId));
     }
   };
-
-  const handleRemoveFromCart =  (cartId, productId) => {
-    dispatch(deleteCartThunk(cartId, productId))
-  }
 
     const handleCheckout = () => {
       history.push('/checkedOut')

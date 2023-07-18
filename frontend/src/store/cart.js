@@ -75,7 +75,6 @@ export const editQuantityThunk = (cartItemId, newQuantity, productId, cartId) =>
 if (response.ok) {
 
   const product = await response.json()
-  console.log(product)
   dispatch(editQuantity(cartItemId, product.quantity ))
   return product
 
@@ -102,7 +101,6 @@ const initialState = {
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_CART:
-    // console.log("action", action.products )
       const normalizedCartItems = action.products.Products.reduce(
         (acc, item) => {
           acc[item.CartProduct.id] = item;
@@ -133,7 +131,9 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cartItems: updatedCartItems,
+        cartId: action.cartId
       };
+
 
     default:
       return state;

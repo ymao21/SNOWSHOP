@@ -15,7 +15,6 @@ router.get("/:cartId", async (req, res, next) => {
       include: Product
     })
 
-    // console.log("CurrentInCart", CurrentInCart.Products)
 
     if(!CurrentInCart) {
         const err = newError("products couldn't be found", 404)
