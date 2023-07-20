@@ -13,10 +13,7 @@ const Cart = () => {
   const cartId = useSelector((state) => state.session.user.currentCart.id )
   const cartItemsArr = Object.values(cartItemsObj.cartItems)
 
-  console.log("current cart" , cartItemsArr)
-
   const handleRemoveFromCart = (cartId, cartProductId) => {
-    console.log("cartProductId", cartProductId)
     dispatch(deleteCartThunk(cartId, cartProductId))
   }
 
@@ -45,9 +42,8 @@ const Cart = () => {
 
       const clearCartItem = (index) => {
 
-
         const product = cartItemsArr[index];
-        handleRemoveFromCart(product?.CartProduct?.cartId, product?.CartProduct?.productId);
+        handleRemoveFromCart(product?.CartProduct?.cartId, product?.CartProduct?.id);
         setTimeout(() => {
           if (index < cartItemsArr.length - 1) {
             clearCartItem(index + 1);
@@ -142,7 +138,6 @@ const Cart = () => {
 </div>
 
           <div className="CartItem__Price">Price: ${(product?.price * product?.CartProduct?.quantity).toFixed(2)}</div>
-
         <button className="cartRemoveBtn" onClick={() => handleRemoveFromCart(product?.CartProduct?.cartId, product?.CartProduct?.id)}>
                   remove
           </button>
