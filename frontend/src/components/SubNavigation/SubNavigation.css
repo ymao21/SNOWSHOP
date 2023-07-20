@@ -8,6 +8,7 @@
 
   .cartButton {
     margin-left: 10px;
+    user-select: none;
   }
 
   .ModalBtn {
@@ -23,21 +24,25 @@
     text-transform: uppercase;
     border: none;
     cursor: pointer;
+    user-select: none;
   }
 
   .ModalBtn:hover {
     background-color: #03045e;
     color: white;
+    user-select: none;
   }
 
   .logo{
     margin-right: auto;
     width:145px;
     height: auto;
+    user-select: none;
 }
 .SearchSymbol{
   width:1.7%;
   height: auto;
+  user-select: none;
 }
 
 .logotext{
@@ -45,6 +50,7 @@
   display: inline-block;
   width: 100px;
  height: 50px;
+
 }
 .logotext:hover {
   cursor: pointer;

@@ -75,21 +75,20 @@ export const editQuantityThunk = (cartItemId, newQuantity, productId, cartId) =>
 if (response.ok) {
 
   const product = await response.json()
-  console.log(product)
   dispatch(editQuantity(cartItemId, product.quantity ))
   return product
 
 }
 }
 
-export const deleteCartThunk = (cartId, productId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/cart/${cartId}/${productId}`, {
+export const deleteCartThunk = (cartId, cartProductId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/cart/${cartId}/${cartProductId}`, {
       method: 'DELETE'
   })
 
   if(response.ok) {
     const removeFromCart = await response.json()
-    dispatch(deleteFromCart(cartId, productId))
+    dispatch(deleteFromCart(cartId, cartProductId))
     return removeFromCart
   }
 }
@@ -102,7 +101,6 @@ const initialState = {
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_CART:
-    console.log("action", action.products )
       const normalizedCartItems = action.products.Products.reduce(
         (acc, item) => {
           acc[item.CartProduct.id] = item;
@@ -127,12 +125,17 @@ const cartReducer = (state = initialState, action) => {
       const newState = {...state}
       newState.cartItems[action.cartItemId].CartProduct.quantity = action.newQuantity
       return newState
+
     case REMOVE_CART:
+
       const { [action.productId]: _, ...updatedCartItems } = state.cartItems;
-      return {
+      const removedCartObj = {
         ...state,
         cartItems: updatedCartItems,
+        cartId: action.cartId
       };
+
+      return removedCartObj
 
     default:
       return state;

@@ -15,7 +15,6 @@ router.get("/:cartId", async (req, res, next) => {
       include: Product
     })
 
-    // console.log("CurrentInCart", CurrentInCart.Products)
 
     if(!CurrentInCart) {
         const err = newError("products couldn't be found", 404)
@@ -87,12 +86,16 @@ router.put("/:cartId", requireAuth, async (req, res, next) => {
 
 
 //remove product
-router.delete("/:cartId/:productId", requireAuth, async (req, res, next) => {
-  const { cartId, productId } = req.params;
+router.delete("/:cartId/:cartProductId", requireAuth, async (req, res, next) => {
 
-  const ProductsInCart = await CartProduct.findOne({
-    where: { cartId, productId }
-  });
+  // debugger
+  const { cartId, cartProductId } = req.params;
+  // const ProductsInCart = await CartProduct.findOne({
+  //   where: { id: cartProductId }
+  // });
+
+  console.log("cartProductId", cartProductId)
+  const ProductsInCart = await CartProduct.findByPk(cartProductId)
 
   if(!ProductsInCart){
     const err = new Error("Cart items couldn't be found", 404);

@@ -19,7 +19,7 @@
     position: absolute;
     top: 40%;
     left: 10%;
-
+    user-select: none;
   font-size: 5vw;
   text-transform: uppercase;
   text-align: left;
@@ -46,7 +46,7 @@
     position: absolute;
     top:60%;
     left: 10%;
-
+    user-select: none;
   font-size: 5vw;
 
   text-align: left;
@@ -66,6 +66,7 @@
     padding: 12px 30px;
     font-size: 20px;
     border-radius: 2px;
+    user-select: none; 
 }
 
 .getstartedbtn:hover {
