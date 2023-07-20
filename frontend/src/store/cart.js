@@ -81,14 +81,14 @@ if (response.ok) {
 }
 }
 
-export const deleteCartThunk = (cartId, productId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/cart/${cartId}/${productId}`, {
+export const deleteCartThunk = (cartId, cartProductId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/cart/${cartId}/${cartProductId}`, {
       method: 'DELETE'
   })
 
   if(response.ok) {
     const removeFromCart = await response.json()
-    dispatch(deleteFromCart(cartId, productId))
+    dispatch(deleteFromCart(cartId, cartProductId))
     return removeFromCart
   }
 }
@@ -127,13 +127,15 @@ const cartReducer = (state = initialState, action) => {
       return newState
 
     case REMOVE_CART:
+
       const { [action.productId]: _, ...updatedCartItems } = state.cartItems;
-      return {
+      const removedCartObj = {
         ...state,
         cartItems: updatedCartItems,
         cartId: action.cartId
       };
 
+      return removedCartObj
 
     default:
       return state;

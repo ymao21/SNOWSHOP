@@ -13,8 +13,11 @@ const Cart = () => {
   const cartId = useSelector((state) => state.session.user.currentCart.id )
   const cartItemsArr = Object.values(cartItemsObj.cartItems)
 
-  const handleRemoveFromCart =   (cartId, productId) => {
-    dispatch(deleteCartThunk(cartId, productId))
+  console.log("current cart" , cartItemsArr)
+
+  const handleRemoveFromCart = (cartId, cartProductId) => {
+    console.log("cartProductId", cartProductId)
+    dispatch(deleteCartThunk(cartId, cartProductId))
   }
 
   useEffect(() => {
@@ -25,7 +28,7 @@ const Cart = () => {
   const handleQuantityChange = async (cartItemId, newQuantity, productId, cartId) => {
 
     if (newQuantity < 1) {
-      handleRemoveFromCart(cartId, productId);
+      handleRemoveFromCart(cartId, cartItemId);
     } else {
     await dispatch(editQuantityThunk(cartItemId, newQuantity, productId, cartId));
     }
@@ -34,6 +37,8 @@ const Cart = () => {
     const handleCheckout = () => {
       history.push('/checkedOut')
     };
+
+
 
     const handleClearCart = () => {
       if (cartItemsArr.length === 0) return;
@@ -138,7 +143,7 @@ const Cart = () => {
 
           <div className="CartItem__Price">Price: ${(product?.price * product?.CartProduct?.quantity).toFixed(2)}</div>
 
-        <button className="cartRemoveBtn" onClick={() => handleRemoveFromCart(product?.CartProduct?.cartId, product?.CartProduct?.productId)}>
+        <button className="cartRemoveBtn" onClick={() => handleRemoveFromCart(product?.CartProduct?.cartId, product?.CartProduct?.id)}>
                   remove
           </button>
       </div>
