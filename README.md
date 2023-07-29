@@ -41,50 +41,18 @@ SNOWSHOP is not only an application that replicates the functionality of an ecom
 
 ## code snippets:
 - AWS implementation with creating products in both backend routes and front end requests
-  ```
-  const singlePublicFileUpload = async (file) => {
-  const { originalname, mimetype, buffer } = await file;
-  const path = require("path");
-  const Key = new Date().getTime().toString() + path.extname(originalname);
-  const uploadParams = {
-    Bucket: NAME_OF_BUCKET,
-    Key,
-    Body: buffer,
-    ACL: "public-read",
-  };
-  const result = await s3.upload(uploadParams).promise();
+ ![Screen Shot 2023-07-29 at 2 53 47 PM](https://github.com/ymao21/SNOWSHOP/assets/103905774/c20fefe4-4e15-4b2d-aae1-129df84574e3)
+![Screen Shot 2023-07-29 at 2 54 04 PM](https://github.com/ymao21/SNOWSHOP/assets/103905774/61c1f6e6-a05a-4bfe-83d5-7339f28f5ca5)
+![Screen Shot 2023-07-29 at 2 54 17 PM](https://github
+![Screen Shot 2023-07-29 at 2 54 42 PM](https://github.com/ymao21/SNOWSHOP/assets/103905774/d8449d78-3877-422e-b566-43c8518b1531)
+.com/ymao21/SNOWSHOP/assets/103905774/887fb326-590f-494e-985a-955fe6716e02)
 
-  return result.Location;
-};
+- Compiled all modals into a single React component function to keep code DRY, while simultaneously providing the correct information to each component.
+  
+![Screen Shot 2023-07-29 at 2 56 20 PM](https://github.com/ymao21/SNOWSHOP/assets/103905774/7fe08b07-9c3a-4c2d-89eb-74ef789c430a)
 
-  router.post("/", requireAuth, singleMulterUpload("image"), async (req, res, next) => {
-    const userId = req.user.id;
-
-    const { name, price, type, color, category, description } = req.body;
-    let previewImageUrl = "";
-
-    if (req.file) {
-        previewImageUrl = await singlePublicFileUpload(req.file);
-    } else {
-        previewImageUrl =
-            "https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png";
-    }
-
-    const newProduct = await Product.create({
-        userId,
-        name,
-        price,
-        type,
-        color,
-        category,
-        description,
-        previewImageUrl,
-    });
-
-    return res.json(newProduct);
-});
-```
-
+- Implementing search
+![Screen Shot 2023-07-29 at 2 57 10 PM](https://github.com/ymao21/SNOWSHOP/assets/103905774/b2cc9ce8-1e8e-4b6f-a27c-d8c0bb503f11)
 
 ## Getting Started:
 
