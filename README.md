@@ -43,9 +43,7 @@ SNOWSHOP is not only an application that replicates the functionality of an ecom
 - AWS implementation with creating products in both backend routes and front end requests
  ![Screen Shot 2023-07-29 at 2 53 47 PM](https://github.com/ymao21/SNOWSHOP/assets/103905774/c20fefe4-4e15-4b2d-aae1-129df84574e3)
 ![Screen Shot 2023-07-29 at 2 54 04 PM](https://github.com/ymao21/SNOWSHOP/assets/103905774/61c1f6e6-a05a-4bfe-83d5-7339f28f5ca5)
-![Screen Shot 2023-07-29 at 2 54 17 PM](https://github
-![Screen Shot 2023-07-29 at 2 54 42 PM](https://github.com/ymao21/SNOWSHOP/assets/103905774/d8449d78-3877-422e-b566-43c8518b1531)
-.com/ymao21/SNOWSHOP/assets/103905774/887fb326-590f-494e-985a-955fe6716e02)
+![Screen Shot 2023-07-29 at 2 54 17 PM](https://github.com/ymao21/SNOWSHOP/assets/103905774/887fb326-590f-494e-985a-955fe6716e02)
 
 - Compiled all modals into a single React component function to keep code DRY, while simultaneously providing the correct information to each component.
   
