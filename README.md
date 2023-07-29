@@ -6,6 +6,12 @@ SNOWSHOP is a social ecommerce market place where users can buy and sell new and
 
 ## [View Live Site](https://snow-shop.onrender.com/)
 
+
+
+https://github.com/ymao21/SNOWSHOP/assets/103905774/6b53b05f-2e49-4b35-a419-8c398668ef83
+
+
+
 ## Technologies Used:
 
 - Frontend: React, JavaScript, HTML, CSS
