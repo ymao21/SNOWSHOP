@@ -39,6 +39,53 @@ SNOWSHOP is not only an application that replicates the functionality of an ecom
 
 ![Screen Shot 2023-07-29 at 2 43 07 PM](https://github.com/ymao21/SNOWSHOP/assets/103905774/b3504ebc-64da-4137-8e44-63b9580a6aa8)
 
+## code snippets:
+- AWS implementation with creating products in both backend routes and front end requests
+  ```
+  const singlePublicFileUpload = async (file) => {
+  const { originalname, mimetype, buffer } = await file;
+  const path = require("path");
+  const Key = new Date().getTime().toString() + path.extname(originalname);
+  const uploadParams = {
+    Bucket: NAME_OF_BUCKET,
+    Key,
+    Body: buffer,
+    ACL: "public-read",
+  };
+  const result = await s3.upload(uploadParams).promise();
+
+  return result.Location;
+};
+```
+  
+  ```
+  router.post("/", requireAuth, singleMulterUpload("image"), async (req, res, next) => {
+    const userId = req.user.id;
+
+    const { name, price, type, color, category, description } = req.body;
+    let previewImageUrl = "";
+
+    if (req.file) {
+        previewImageUrl = await singlePublicFileUpload(req.file);
+    } else {
+        previewImageUrl =
+            "https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png";
+    }
+
+    const newProduct = await Product.create({
+        userId,
+        name,
+        price,
+        type,
+        color,
+        category,
+        description,
+        previewImageUrl,
+    });
+
+    return res.json(newProduct);
+});
+```
 
 
 ## Getting Started:
