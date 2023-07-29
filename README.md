@@ -56,9 +56,7 @@ SNOWSHOP is not only an application that replicates the functionality of an ecom
 
   return result.Location;
 };
-```
-  
-  ```
+
   router.post("/", requireAuth, singleMulterUpload("image"), async (req, res, next) => {
     const userId = req.user.id;
 
