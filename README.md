@@ -23,10 +23,24 @@ SNOWSHOP is not only an application that replicates the functionality of an ecom
 - Authentication/Authorization: JSON Web Tokens (JWT), CSRF token
 - Amazon Web Services for storing images on cloud
 
-## Key features
+## Key features:
+- Users can browse available products, Logged-in users can create/add new products, update their own products and delete their own products
+
+![Screen Shot 2023-07-29 at 2 40 43 PM](https://github.com/ymao21/SNOWSHOP/assets/103905774/cbeb8d4a-b7e5-4ca6-8d02-8d92932db675)
+
+-Logged-in users can browse through reviews, create/add comments/reviews update their comments/reviews and delete their comments/reviews
+
+![Screen Shot 2023-07-29 at 2 41 39 PM](https://github.com/ymao21/SNOWSHOP/assets/103905774/dce4e900-342e-4201-a23a-9e34867d2d1d)
+
+-Users can browse their cart, add to their cart, update product quantities in their cart and delete products from their cart
+![Screen Shot 2023-07-29 at 2 42 29 PM](https://github.com/ymao21/SNOWSHOP/assets/103905774/15b2b091-dd95-4c10-9085-3696f1c310b7)
+
+-Users can search for desired products and view the product details by clicking into it 
+![Screen Shot 2023-07-29 at 2 43 07 PM](https://github.com/ymao21/SNOWSHOP/assets/103905774/b3504ebc-64da-4137-8e44-63b9580a6aa8)
 
 
-## Getting Started
+
+## Getting Started:
 
  1. Clone the repository: `git clone https://github.com/ymao21/SNOWSHOP.git`
  2. Install the dependencies in both the front end and back end folder: `npm install`
