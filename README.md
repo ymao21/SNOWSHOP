@@ -52,7 +52,7 @@ SNOWSHOP is not only an application that replicates the functionality of an ecom
   
 ![Screen Shot 2023-07-29 at 2 56 20 PM](https://github.com/ymao21/SNOWSHOP/assets/103905774/7fe08b07-9c3a-4c2d-89eb-74ef789c430a)
 
-- Implementing search
+- Implementing search <br/>
 ![Screen Shot 2023-07-29 at 2 57 10 PM](https://github.com/ymao21/SNOWSHOP/assets/103905774/b2cc9ce8-1e8e-4b6f-a27c-d8c0bb503f11)
 
 ## Getting Started:
