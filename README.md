@@ -4,7 +4,6 @@ Welcome to SNOWSHOP!
 
 SNOWSHOP is a full-stack web application ecommerce website for my fellow winter sports lovers. It is a social ecommerce market place where users can buy and sell new and secondhand snowboards/skis, winter gears and accessories. It uses Express.js with a PostgresSQL database on the back-end, and React.js and Redux on the front-end. It uses Amazon Web Services foor image storage for users to upload products without concerning about storage issues. 
 
-## [View Live Site](https://snow-shop.onrender.com/)
 
 
 https://github.com/ymao21/SNOWSHOP/assets/103905774/6b53b05f-2e49-4b35-a419-8c398668ef83
